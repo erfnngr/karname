@@ -1,0 +1,3010 @@
+{
+  "format": "karname-daily-quotes-v1",
+  "title": "سخن بزرگان",
+  "description": "گزیده سخنان و ابیات کوتاه از متون کلاسیک؛ عین متن منبع، بدون بازنویسی یا ترجمه ماشینی.",
+  "source": "گنجور",
+  "retrieved": "2026-10-26",
+  "attribution_note": "نام گوینده مطابق انتساب اثر در گنجور است. برای مطالعه بافت کامل، پیوند هر مورد را باز کنید.",
+  "quotes": [
+    {
+      "text": "بنی‌آدم اعضای یکدیگرند\nکه در آفرینش ز یک گوهرند",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "باب اول، حکایت ۱۰",
+      "source": "https://ganjoor.net/saadi/golestan/gbab1/sh10/",
+      "poem_id": 5078,
+      "id": "curated-saadi-0",
+      "type": "verse"
+    },
+    {
+      "text": "تو نیکویی کن و در دجله انداز\nکه ایزد در بیابانت دهد باز",
+      "author": "سعدی",
+      "work": "مواعظ",
+      "section": "مثنویات، حکایت ۴۱",
+      "source": "https://ganjoor.net/saadi/mavaez/masnaviat/sh41/",
+      "poem_id": 31813,
+      "id": "curated-saadi-1",
+      "type": "verse"
+    },
+    {
+      "text": "میان عیب و هنر پیش دوستان کریم\nتفاوتی نکند چون نظر به عین رضا‌ست",
+      "author": "سعدی",
+      "work": "دیوان اشعار",
+      "section": "غزل شمارهٔ  ۴۳",
+      "source": "https://ganjoor.net/saadi/divan/ghazals/sh43#bn3",
+      "poem_id": 9365,
+      "id": "6b4887318eb4a136",
+      "type": "verse"
+    },
+    {
+      "text": "نخواهد که بیند خردمند، ریش\nنه بر عُضوِ مردم، نه بر عُضوِ خویش",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۱۳ - حکایت در معنی رحمت با ناتوانان در حال توانایی",
+      "source": "https://ganjoor.net/saadi/boostan/bab1/sh13#bn18",
+      "poem_id": 10227,
+      "id": "22f58bc51b68fc27",
+      "type": "verse"
+    },
+    {
+      "text": "نکردند رغبت هنرپروران\nبه شادی خویش از غم دیگران",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۸ - حکایت در معنی شفقت",
+      "source": "https://ganjoor.net/saadi/boostan/bab1/sh8#bn14",
+      "poem_id": 10222,
+      "id": "bb2e709adc20b711",
+      "type": "verse"
+    },
+    {
+      "text": "سخن میان دو دشمن چنان گوی که گر دوست گردند شرم زده نشوی.",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۱۲",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh12#bn1",
+      "poem_id": 41484,
+      "id": "249bbbc989dd5c1c",
+      "type": "prose"
+    },
+    {
+      "text": "چه نیکی طمع دارد آن بی‌صفا\nکه باشد دعای بدش در قفا؟",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۱۶ - حکایت برادران ظالم و عادل و عاقبت ایشان",
+      "source": "https://ganjoor.net/saadi/boostan/bab1/sh16#bn30",
+      "poem_id": 10230,
+      "id": "3176f422d0edd654",
+      "type": "verse"
+    },
+    {
+      "text": "مده بوسه بر دست من دوستوار\nبرو دوستداران من دوست دار",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۱۱ - حکایت مرزبان ستمگار با زاهد",
+      "source": "https://ganjoor.net/saadi/boostan/bab1/sh11#bn22",
+      "poem_id": 10225,
+      "id": "33236222a319e5ed",
+      "type": "verse"
+    },
+    {
+      "text": "درختِ کرَم هر کجا بیخ کرد\nگذشت از فلک شاخ و بالای او",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۲",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh2#bn5",
+      "poem_id": 41474,
+      "id": "64aef8b6cfb41615",
+      "type": "verse"
+    },
+    {
+      "text": "دُرشتی و نَرمی به هَم دَر بِه است\nچو فاصد که جَراح و مَرهَم نِهْ است",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۱۸",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh18#bn2",
+      "poem_id": 41491,
+      "id": "1d16319d72460e9a",
+      "type": "verse"
+    },
+    {
+      "text": "فریب دشمن مخور و غرور مداح مخر، که این دام زرق نهاده است و آن دامن طمع گشاده.",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۲۸",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh28#bn1",
+      "poem_id": 41503,
+      "id": "70edd224d0771da9",
+      "type": "prose"
+    },
+    {
+      "text": "تا کار به زر برمی‌آید جان در خطر افکندن نشاید.",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۱۴",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh14#bn3",
+      "poem_id": 41486,
+      "id": "5b0ab75dda64bfa0",
+      "type": "prose"
+    },
+    {
+      "text": "دوستی را که به عمری فرا چنگ آرند، نشاید که به یک دم بیازارند.",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۵۵",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh55#bn1",
+      "poem_id": 41530,
+      "id": "d98ad3663bf9ece9",
+      "type": "prose"
+    },
+    {
+      "text": "یکی نام نیکو ببُرد از جهان\nیکی رسم بد ماند از او جاودان",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۱ - سر‌آغاز",
+      "source": "https://ganjoor.net/saadi/boostan/bab1/sh1#bn85",
+      "poem_id": 10215,
+      "id": "3d9cbdc98075c5b7",
+      "type": "verse"
+    },
+    {
+      "text": "چون در آید مِه از تویی به سخن\nگرچه بِه دانی، اعتراض مکن",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۳۶",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh36#bn2",
+      "poem_id": 41511,
+      "id": "3d9b4b26d94aabc4",
+      "type": "verse"
+    },
+    {
+      "text": "هر که با داناتر از خود بحث کند تا بدانند که داناست، بدانند که نادان است.",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۳۶",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh36#bn1",
+      "poem_id": 41511,
+      "id": "1182a7caea8d99a0",
+      "type": "prose"
+    },
+    {
+      "text": "اگر شبها همه قدر بودی، شب قدر بی قدر بودی.",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۴۱",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh41#bn1",
+      "poem_id": 41516,
+      "id": "496835c4989be730",
+      "type": "prose"
+    },
+    {
+      "text": "خمش کردم سخن کوتاه خوشتر\nکه این ساعت نمی‌گنجد علالا",
+      "author": "مولانا",
+      "work": "دیوان شمس",
+      "section": "غزل شمارهٔ ۱۰۳",
+      "source": "https://ganjoor.net/moulavi/shams/ghazalsh/sh103#bn11",
+      "poem_id": 2727,
+      "id": "e07501ccf6655c46",
+      "type": "verse"
+    },
+    {
+      "text": "صافی و تیرگی آب ز سرچشمه بود\nبی دل پاک، سخن پاک نگردد هرگز",
+      "author": "صائب",
+      "work": "دیوان اشعار",
+      "section": "تک‌بیت شمارهٔ ۹۵۹",
+      "source": "https://ganjoor.net/saeb/divan-saeb/takbeit/sh959#bn1",
+      "poem_id": 32577,
+      "id": "cdc3a59bc1d86b48",
+      "type": "verse"
+    },
+    {
+      "text": "کسی را چون دهی پندی شود حرص تو را بندی\nصبوری گرددت قندی پی آجل در این عاجل",
+      "author": "مولانا",
+      "work": "دیوان شمس",
+      "section": "غزل شمارهٔ ۱۳۴۰",
+      "source": "https://ganjoor.net/moulavi/shams/ghazalsh/sh1340#bn10",
+      "poem_id": 3964,
+      "id": "3d28342dafb20d4a",
+      "type": "verse"
+    },
+    {
+      "text": "گر امّیدواری کز او بر خوری\nبه منّت منه ارّه بر پای او",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۲",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh2#bn6",
+      "poem_id": 41474,
+      "id": "5ad69b2aab15360e",
+      "type": "verse"
+    },
+    {
+      "text": "چو مغز خشک شود تازه مغزیت بخشد\nکه جمله مغز شوی ای امیدوار مخسب",
+      "author": "مولانا",
+      "work": "دیوان شمس",
+      "section": "غزل شمارهٔ ۳۱۲",
+      "source": "https://ganjoor.net/moulavi/shams/ghazalsh/sh312#bn11",
+      "poem_id": 2936,
+      "id": "93118e8c68589a95",
+      "type": "verse"
+    },
+    {
+      "text": "هیچ کاری بی‌تأمل گرچه صائب خوب نیست\nبی‌تأمل آستین افشاندن از دنیا خوش است",
+      "author": "صائب",
+      "work": "دیوان اشعار",
+      "section": "غزل شمارهٔ ۱۰۱۲",
+      "source": "https://ganjoor.net/saeb/divan-saeb/ghazalkasa/sh1012#bn12",
+      "poem_id": 53209,
+      "id": "29a2b9f94fc27352",
+      "type": "verse"
+    },
+    {
+      "text": "آن که در راحت و تنعم زیست\nاو چه داند که حال گرسنه چیست",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۶۳",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh63#bn4",
+      "poem_id": 41538,
+      "id": "2789501d3ebc7cf8",
+      "type": "verse"
+    },
+    {
+      "text": "گره بر سر بند احسان مزن\nکه این زرق و شید است و آن مکر و فن",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۴ - گفتار اندر احسان با نیک و بد",
+      "source": "https://ganjoor.net/saadi/boostan/bab2/sh4#bn1",
+      "poem_id": 10259,
+      "id": "d89ab0d4803fc0d5",
+      "type": "verse"
+    },
+    {
+      "text": "چون نداری کمالِ فضل آن به\nکه زبان در دهان نگه داری",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۳۵",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh35#bn2",
+      "poem_id": 41510,
+      "id": "06158a4c8e991e10",
+      "type": "verse"
+    },
+    {
+      "text": "غم مخور صائب ز بی انصافیِ هم‌گوهران\nخسروِ صاحبقران چون می کند تحسین ترا",
+      "author": "صائب",
+      "work": "دیوان اشعار",
+      "section": "غزل شمارهٔ ۲۹",
+      "source": "https://ganjoor.net/saeb/divan-saeb/ghazalkasa/sh29#bn18",
+      "poem_id": 52226,
+      "id": "7576aa4be934d5e7",
+      "type": "verse"
+    },
+    {
+      "text": "هر که علم خواند و عمل نکرد بدان ماند که گاو راند و تخم نیفشاند.",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۳۸",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh38#bn2",
+      "poem_id": 41513,
+      "id": "e7ce76613d056531",
+      "type": "prose"
+    },
+    {
+      "text": "محال است چون دوست دارد تو را\nکه در دست دشمن گذارد تو را",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۶ - حکایت",
+      "source": "https://ganjoor.net/saadi/boostan/niyayesh/sh6#bn8",
+      "poem_id": 10214,
+      "id": "72973fab42545ec8",
+      "type": "verse"
+    },
+    {
+      "text": "نیست ممکن واشود دل بی سخنهای لطیف\nکز نسیم صبح دارد غنچه نسرین کلید",
+      "author": "صائب",
+      "work": "دیوان اشعار",
+      "section": "غزل شمارهٔ ۲۷۸۰",
+      "source": "https://ganjoor.net/saeb/divan-saeb/ghazalkasa/sh2780#bn6",
+      "poem_id": 54978,
+      "id": "d0e9d2efae925e31",
+      "type": "verse"
+    },
+    {
+      "text": "نکو بایدت نام و نیکی قبول\nنکو دار بازارگان و رسول",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۱ - سر‌آغاز",
+      "source": "https://ganjoor.net/saadi/boostan/bab1/sh1#bn43",
+      "poem_id": 10215,
+      "id": "41529bb598c11e01",
+      "type": "verse"
+    },
+    {
+      "text": "مُلک از خردمندان جمال گیرد و دین از پرهیزگاران کمال یابد.",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۶",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh6#bn1",
+      "poem_id": 41478,
+      "id": "afe20d8dc269b28e",
+      "type": "prose"
+    },
+    {
+      "text": "جوهر اگر در خلاب افتد، همچنان نفیس است و غبار اگر به فلک رسد، همان خسیس.",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۵۳",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh53#bn1",
+      "poem_id": 41528,
+      "id": "a95045f2a80ce38e",
+      "type": "prose"
+    },
+    {
+      "text": "چو مردم سخن گفت باید به هوش\nو‌گر‌‌نه شدن چون بهایم خموش",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۴ - حکایت در معنی سلامت جاهل در خاموشی",
+      "source": "https://ganjoor.net/saadi/boostan/bab7/sh4#bn16",
+      "poem_id": 10372,
+      "id": "684ba50aed959035",
+      "type": "verse"
+    },
+    {
+      "text": "الا ای خردمند پاکیزه‌خوی\nخردمند نشنیده‌ام عیب‌جوی",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۳ - سبب نظم کتاب",
+      "source": "https://ganjoor.net/saadi/boostan/niyayesh/sh3#bn20",
+      "poem_id": 10211,
+      "id": "d87a3066ac6a9291",
+      "type": "verse"
+    },
+    {
+      "text": "تو سخن گفتن بی‌لب هله خو کن چو ترازو\nکه نماند لب و دندان چو ز دنیا گذر آید",
+      "author": "مولانا",
+      "work": "دیوان شمس",
+      "section": "غزل شمارهٔ ۷۶۲",
+      "source": "https://ganjoor.net/moulavi/shams/ghazalsh/sh762#bn11",
+      "poem_id": 3386,
+      "id": "d4673414856e5625",
+      "type": "verse"
+    },
+    {
+      "text": "چون در امضای کاری متردد باشی آن طرف اختیار کن که بی آزارتر بر آید.",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۱۴",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh14#bn1",
+      "poem_id": 41486,
+      "id": "955e8a21356b0380",
+      "type": "prose"
+    },
+    {
+      "text": "به خردان مفرمای کار درشت\nکه سندان نشاید شکستن به مشت",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۳۵ - گفتار اندر تقویت مردان کار آزموده",
+      "source": "https://ganjoor.net/saadi/boostan/bab1/sh35#bn9",
+      "poem_id": 10249,
+      "id": "89eaae239cc6e120",
+      "type": "verse"
+    },
+    {
+      "text": "آدمی را زبان فضیحه کند\nجوزِ بی‌مغز را سبکساری",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۳۵",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh35#bn3",
+      "poem_id": 41510,
+      "id": "5bfd048c005b6bea",
+      "type": "verse"
+    },
+    {
+      "text": "از بدان نیکویی نیاموزی\nنکند گرگ پوستین دوزی",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۳۷",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh37#bn3",
+      "poem_id": 41512,
+      "id": "fcab6467955ab5d2",
+      "type": "verse"
+    },
+    {
+      "text": "ولیکن تو بستان که صاحب‌خرد\nاز ارزان‌فروشان به رغبت خرد",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۴ - گفتار اندر احسان با نیک و بد",
+      "source": "https://ganjoor.net/saadi/boostan/bab2/sh4#bn4",
+      "poem_id": 10259,
+      "id": "a293648978fbec72",
+      "type": "verse"
+    },
+    {
+      "text": "سنگِ بد گوهر اگر کاسه‌ زرّین بشکست\nقیمتِ سنگ نیفزاید و زر کم نشود",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۵۱",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh51#bn4",
+      "poem_id": 41526,
+      "id": "529938898359be85",
+      "type": "verse"
+    },
+    {
+      "text": "خواهی که مُمَتِّع شوی از دنییٖ و عُقبیٖ\nبا خلق کَرَم کن چو خدا با تو کَرَم کرد",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۲",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh2#bn3",
+      "poem_id": 41474,
+      "id": "a2721cc2b2206b89",
+      "type": "verse"
+    },
+    {
+      "text": "گرچه در نظم جهان کاری نمی‌آید ز ما\nاز حدیث راست، سرو این خیابانیم ما",
+      "author": "صائب",
+      "work": "دیوان اشعار",
+      "section": "غزل شمارهٔ ۲۸۱",
+      "source": "https://ganjoor.net/saeb/divan-saeb/ghazalkasa/sh281#bn15",
+      "poem_id": 52478,
+      "id": "f60bfd80889075f6",
+      "type": "verse"
+    },
+    {
+      "text": "ز چشم عاقبت بین، هر که امید ثمر دارد\nدر ایام بهاران درنبندد گلشن خود را",
+      "author": "صائب",
+      "work": "دیوان اشعار",
+      "section": "غزل شمارهٔ ۳۶۰",
+      "source": "https://ganjoor.net/saeb/divan-saeb/ghazalkasa/sh360#bn7",
+      "poem_id": 52557,
+      "id": "72e18eeb20d80ba5",
+      "type": "verse"
+    },
+    {
+      "text": "این سخن آبیست از دریای بی‌پایان عشق\nتا جهان را آب بخشد جسم‌ها را جان کند",
+      "author": "مولانا",
+      "work": "دیوان شمس",
+      "section": "غزل شمارهٔ ۷۲۹",
+      "source": "https://ganjoor.net/moulavi/shams/ghazalsh/sh729#bn18",
+      "poem_id": 3353,
+      "id": "53f247f731f5a02d",
+      "type": "verse"
+    },
+    {
+      "text": "چون دامن وصال به کوشش گرفته اند\nچندان که ممکن است نکوشد کسی چرا؟",
+      "author": "صائب",
+      "work": "دیوان اشعار",
+      "section": "غزل شمارهٔ ۶۹۱",
+      "source": "https://ganjoor.net/saeb/divan-saeb/ghazalkasa/sh691#bn5",
+      "poem_id": 52888,
+      "id": "cd6bc4b11db3e3b7",
+      "type": "verse"
+    },
+    {
+      "text": "بد و نیک مردم چو می‌بگذرند\nهمان به که نامت به نیکی برند",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۱ - سر‌آغاز",
+      "source": "https://ganjoor.net/saadi/boostan/bab1/sh1#bn31",
+      "poem_id": 10215,
+      "id": "f5727d3a64868267",
+      "type": "verse"
+    },
+    {
+      "text": "چون صبر گزیدند بدی جمله درختان\nآن هجر چو چاهست و صبوری رسن آمد",
+      "author": "مولانا",
+      "work": "دیوان شمس",
+      "section": "دوازدهم",
+      "source": "https://ganjoor.net/moulavi/shams/tarjeeat/sh12#bn29",
+      "poem_id": 5866,
+      "id": "1329fc4c164edd40",
+      "type": "verse"
+    },
+    {
+      "text": "نه هرگز شنیدیم در عمر خویش\nکه بدمرد را نیکی آمد به پیش",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۱۹ - گفتار اندر نکوکاری و بدکاری و عاقبت آنها",
+      "source": "https://ganjoor.net/saadi/boostan/bab1/sh19#bn11",
+      "poem_id": 10233,
+      "id": "e13883dca728cdf3",
+      "type": "verse"
+    },
+    {
+      "text": "سخن‌ها دارم از تو با تو بسیار\nولی خاموشیم پند عظیمست",
+      "author": "مولانا",
+      "work": "دیوان شمس",
+      "section": "غزل شمارهٔ ۳۴۴",
+      "source": "https://ganjoor.net/moulavi/shams/ghazalsh/sh344#bn3",
+      "poem_id": 2968,
+      "id": "a7b068a9b7880c99",
+      "type": "verse"
+    },
+    {
+      "text": "هر آن گه که عیبت نگویند پیش\nهنر دانی از جاهلی عیب خویش",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۲۹ - حکایت مأمون با کنیزک",
+      "source": "https://ganjoor.net/saadi/boostan/bab1/sh29#bn18",
+      "poem_id": 10243,
+      "id": "0539c9af9396aa2f",
+      "type": "verse"
+    },
+    {
+      "text": "بار گران، سبک به امید فکندن است\nعمری است بر امید عدم زنده‌ایم ما",
+      "author": "صائب",
+      "work": "دیوان اشعار",
+      "section": "تک‌بیت شمارهٔ ۲۵۷",
+      "source": "https://ganjoor.net/saeb/divan-saeb/takbeit/sh257#bn1",
+      "poem_id": 31875,
+      "id": "61b3747cba1e7619",
+      "type": "verse"
+    },
+    {
+      "text": "جان در حمایت یک دم است و دنیا وجودی میان دو عدم.",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۶۱",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh61#bn1",
+      "poem_id": 41536,
+      "id": "6de31833b1600a8c",
+      "type": "prose"
+    },
+    {
+      "text": "به بازو توانا نباشد سپاه\nبرو همت از ناتوانان بخواه",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۴۱ - گفتار اندر پوشیدن راز خویش",
+      "source": "https://ganjoor.net/saadi/boostan/bab1/sh41#bn9",
+      "poem_id": 10255,
+      "id": "68751f093c2c11ff",
+      "type": "verse"
+    },
+    {
+      "text": "یکباره بستن در انصاف خوب نیست\nدیوار باغ را مکن ای باغبان بلند",
+      "author": "صائب",
+      "work": "دیوان اشعار",
+      "section": "تک‌بیت شمارهٔ ۸۰۱",
+      "source": "https://ganjoor.net/saeb/divan-saeb/takbeit/sh801#bn1",
+      "poem_id": 32419,
+      "id": "ecb110268342db92",
+      "type": "verse"
+    },
+    {
+      "text": "کند هر آینه غیبت حسود کوته دست\nکه در مقابله گنگش بود زبان مقال",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۴۶",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh46#bn2",
+      "poem_id": 41521,
+      "id": "dc9db66327bf41cd",
+      "type": "verse"
+    },
+    {
+      "text": "مشک آن است که ببوید نه آن که عطار بگوید.",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۵۴",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh54#bn1",
+      "poem_id": 41529,
+      "id": "5a097dfcba5d19cf",
+      "type": "prose"
+    },
+    {
+      "text": "توانا بُوَد هر که دانا بُوَد\nز دانش، دل پیر، بُرنا بود",
+      "author": "فردوسی",
+      "work": "شاهنامه",
+      "section": "بخش ۱ - آغاز کتاب",
+      "source": "https://ganjoor.net/ferdousi/shahname/aghaz/sh1#bn14",
+      "poem_id": 1321,
+      "id": "59bf0a53be866382",
+      "type": "verse"
+    },
+    {
+      "text": "نکویی کن امسال چون ده تو راست\nکه سال دگر دیگری دهخداست",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۲۷ - حکایت",
+      "source": "https://ganjoor.net/saadi/boostan/bab1/sh27#bn9",
+      "poem_id": 10241,
+      "id": "cc03d7743512c84b",
+      "type": "verse"
+    },
+    {
+      "text": "الا گر جفاکاری اندیشه کن\nوفا پیش گیر و کرم پیشه کن",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۱۱ - حکایت",
+      "source": "https://ganjoor.net/saadi/boostan/bab2/sh11#bn5",
+      "poem_id": 10266,
+      "id": "94738452fe9859f5",
+      "type": "verse"
+    },
+    {
+      "text": "جهان گشته و دانش اندوخته\nسفر کرده و صحبت آموخته",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۲ - حکایت در تدبیر و تأخیر در سیاست",
+      "source": "https://ganjoor.net/saadi/boostan/bab1/sh2#bn3",
+      "poem_id": 10216,
+      "id": "7b0bb3172e560add",
+      "type": "verse"
+    },
+    {
+      "text": "کسی نیک بیند به هر دو سَرای\nکه نیکی رساند به خَلقِ خدای",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۱۷ - حکایت درویش با روباه",
+      "source": "https://ganjoor.net/saadi/boostan/bab2/sh17#bn20",
+      "poem_id": 10272,
+      "id": "ed70c64255146789",
+      "type": "verse"
+    },
+    {
+      "text": "خستگی اندر طلبت راحت است\nدرد کشیدن به امیدِ دوا",
+      "author": "سعدی",
+      "work": "دیوان اشعار",
+      "section": "غزل شمارهٔ  ۲",
+      "source": "https://ganjoor.net/saadi/divan/ghazals/sh2#bn11",
+      "poem_id": 9324,
+      "id": "d8fd0a816a17db53",
+      "type": "verse"
+    },
+    {
+      "text": "رودهٔ تنگ به یک نانِ تهی پُر گردد\nنعمتِ روی زمین پر نکند دیدهٔ تنگ",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۳۱",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh31#bn2",
+      "poem_id": 41506,
+      "id": "130589d4b521cf36",
+      "type": "verse"
+    },
+    {
+      "text": "که مَرد ارچه بر ساحل است، ای رفیق\nنیاساید و دوستانش غَریق",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۱۳ - حکایت در معنی رحمت با ناتوانان در حال توانایی",
+      "source": "https://ganjoor.net/saadi/boostan/bab1/sh13#bn16",
+      "poem_id": 10227,
+      "id": "6fce653c21d9cc39",
+      "type": "verse"
+    },
+    {
+      "text": "ایا به خویش فرورفته در غم کاری\nتو تا برون نروی از میان چه کار بود",
+      "author": "مولانا",
+      "work": "دیوان شمس",
+      "section": "غزل شمارهٔ ۹۲۲",
+      "source": "https://ganjoor.net/moulavi/shams/ghazalsh/sh922#bn8",
+      "poem_id": 3546,
+      "id": "6775c4928a74af07",
+      "type": "verse"
+    },
+    {
+      "text": "حکیمی که با جُهّال دراُفتد توقعِ عزّت ندارد وگر جاهلی به ‌زبان‌آوری بر حکیمی غالب آید عجب نیست که سنگی‌ست که گوهر همی‌شکند.",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۵۱",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh51#bn1",
+      "poem_id": 41526,
+      "id": "e891eac66b723f90",
+      "type": "prose"
+    },
+    {
+      "text": "اندک اندک به هم شود بسیار\nدانه دانه است غله در انبار",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۵۸",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh58#bn3",
+      "poem_id": 41533,
+      "id": "96f115321cc58ab8",
+      "type": "verse"
+    },
+    {
+      "text": "این محبت هم نتیجهٔ دانشست\nکی گزافه بر چنین تختی نشست",
+      "author": "مولانا",
+      "work": "مثنوی معنوی",
+      "section": "بخش ۳۱ - ظاهر شدن فضل و زیرکی لقمان پیش امتحان کنندگان",
+      "source": "https://ganjoor.net/moulavi/masnavi/daftar2/sh31#bn23",
+      "poem_id": 8095,
+      "id": "dbc48761c620eb30",
+      "type": "verse"
+    },
+    {
+      "text": "بزرگان مسافر به جان پرورند\nکه نام نکویی به عالم برند",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۱ - سر‌آغاز",
+      "source": "https://ganjoor.net/saadi/boostan/bab1/sh1#bn44",
+      "poem_id": 10215,
+      "id": "a717af328faa11b1",
+      "type": "verse"
+    },
+    {
+      "text": "بدخوی در دستِ دشمنی گرفتار است که هر کجا رود از چنگِ عقوبتِ او خلاص نیابد.",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۲۱",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh21#bn1",
+      "poem_id": 41494,
+      "id": "e7c9090366a482e4",
+      "type": "prose"
+    },
+    {
+      "text": "هر چه رفت از عمر، یاد آن به نیکی می‌کنند\nچهرهٔ امروز در آیینهٔ فردا خوش است",
+      "author": "صائب",
+      "work": "دیوان اشعار",
+      "section": "غزل شمارهٔ ۱۰۱۲",
+      "source": "https://ganjoor.net/saeb/divan-saeb/ghazalkasa/sh1012#bn7",
+      "poem_id": 53209,
+      "id": "9e266a6e083463c3",
+      "type": "verse"
+    },
+    {
+      "text": "چو لشکر برون تاخت خشم از کمین\nنه انصاف ماند نه تقوی نه دین",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۲ - حکایت در تدبیر و تأخیر در سیاست",
+      "source": "https://ganjoor.net/saadi/boostan/bab1/sh2#bn136",
+      "poem_id": 10216,
+      "id": "1f0ebd95a5738527",
+      "type": "verse"
+    },
+    {
+      "text": "مه پرستان که ستاره همه شب می‌شمرند\nآخر این کوشش و اومید به جایی برسد",
+      "author": "مولانا",
+      "work": "دیوان شمس",
+      "section": "غزل شمارهٔ ۷۹۵",
+      "source": "https://ganjoor.net/moulavi/shams/ghazalsh/sh795#bn7",
+      "poem_id": 3419,
+      "id": "3cef0cbdb1e4453d",
+      "type": "verse"
+    },
+    {
+      "text": "بسا نام نیکوی پنجاه سال\nکه یک نام زشتش کند پایمال",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۳ - گفتار اندر بخشایش بر ضعیفان",
+      "source": "https://ganjoor.net/saadi/boostan/bab1/sh3#bn12",
+      "poem_id": 10217,
+      "id": "dda88bb56bc86d07",
+      "type": "verse"
+    },
+    {
+      "text": "کرم پای دارد، نه دیهیم و تخت\nبده کز تو این ماند ای نیکبخت",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۳۱ - حکایت زورآزمای تنگدست",
+      "source": "https://ganjoor.net/saadi/boostan/bab1/sh31#bn21",
+      "poem_id": 10245,
+      "id": "27f7ac3925b562de",
+      "type": "verse"
+    },
+    {
+      "text": "اگر باد زمستانی کند باغ مرا ویران\nبهار شهریار من ز دی انصاف بستاند",
+      "author": "مولانا",
+      "work": "دیوان شمس",
+      "section": "غزل شمارهٔ ۵۹۲",
+      "source": "https://ganjoor.net/moulavi/shams/ghazalsh/sh592#bn3",
+      "poem_id": 3216,
+      "id": "10bd2942e206d2c3",
+      "type": "verse"
+    },
+    {
+      "text": "پیش دیوار آنچه گویی هوش دار\nتا نباشد در پس دیوار گوش",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۱۲",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh12#bn6",
+      "poem_id": 41484,
+      "id": "52d59be454492f0a",
+      "type": "verse"
+    },
+    {
+      "text": "جز به خردمند مفرما عمل\nگرچه عمل کار خردمند نیست",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۶",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh6#bn3",
+      "poem_id": 41478,
+      "id": "55fe42074fd76f3a",
+      "type": "verse"
+    },
+    {
+      "text": "شکر خدای کن که موفق شدی به خیر\nز انعام و فضل او، نه معطّل گذاشتت",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۲",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh2#bn7",
+      "poem_id": 41474,
+      "id": "1886c54ac01e4c20",
+      "type": "verse"
+    },
+    {
+      "text": "چو گل با روی خندان صرف کن گر خرده‌ای داری\nکه دل را تنگ سازد، در گره چون غنچه زر بستن",
+      "author": "صائب",
+      "work": "دیوان اشعار",
+      "section": "تک‌بیت شمارهٔ ۱۲۹۶",
+      "source": "https://ganjoor.net/saeb/divan-saeb/takbeit/sh1296#bn1",
+      "poem_id": 32914,
+      "id": "79f8437cbfe07749",
+      "type": "verse"
+    },
+    {
+      "text": "میان دو کس جنگ چون آتش است\nسخن چین بدبخت هیزم کش است",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۱۲",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh12#bn2",
+      "poem_id": 41484,
+      "id": "cf3782222383e079",
+      "type": "verse"
+    },
+    {
+      "text": "خردهٔ جانی که در غم‌صرف‌کردن ظلم بود\nچون گلِ بی‌درد خرجِ شادمانی شد مرا",
+      "author": "صائب",
+      "work": "دیوان اشعار",
+      "section": "غزل شمارهٔ ۱۳۵",
+      "source": "https://ganjoor.net/saeb/divan-saeb/ghazalkasa/sh135#bn9",
+      "poem_id": 52332,
+      "id": "86406cf151d13a10",
+      "type": "verse"
+    },
+    {
+      "text": "تو هم پاسبانی به انصاف و داد\nکه حفظ خدا پاسبان تو باد",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۳۲ - حکایت در معنی خاموشی از نصیحت کسی که پند نپذیرد",
+      "source": "https://ganjoor.net/saadi/boostan/bab1/sh32#bn13",
+      "poem_id": 10246,
+      "id": "b2b829f32f403a3b",
+      "type": "verse"
+    },
+    {
+      "text": "به دانش بزرگ و به همت بلند\nبه بازو دلیر و به دل هوشمند",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۵ - مدح محمد بن سعد بن ابوبکر",
+      "source": "https://ganjoor.net/saadi/boostan/niyayesh/sh5#bn3",
+      "poem_id": 10213,
+      "id": "afd9410fb6396a52",
+      "type": "verse"
+    },
+    {
+      "text": "گفتم ای خواجه گر تو بدبختی\nمردم نیکبخت را چه گناه",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۷۱",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh71#bn3",
+      "poem_id": 41546,
+      "id": "5e32f09ee46d107e",
+      "type": "verse"
+    },
+    {
+      "text": "بخندید مرد سخنگوی و گفت\nحق است این سخن، حق نشاید نهفت",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۲ - حکایت در تدبیر و تأخیر در سیاست",
+      "source": "https://ganjoor.net/saadi/boostan/bab1/sh2#bn103",
+      "poem_id": 10216,
+      "id": "24c5c35ae2167a25",
+      "type": "verse"
+    },
+    {
+      "text": "و گر خواجه با دشمنان نیکخوست\nبسی بر نیاید که گردند دوست",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۱۵ - گفتار اندر ثمره جوانمردی",
+      "source": "https://ganjoor.net/saadi/boostan/bab2/sh15#bn6",
+      "poem_id": 10270,
+      "id": "177543f511f79fc3",
+      "type": "verse"
+    },
+    {
+      "text": "آن کس که به دینار و درم خیر نیندوخت\nسر عاقبت اندر سر دینار و درم کرد",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۲",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh2#bn2",
+      "poem_id": 41474,
+      "id": "e53eaefb73a753e9",
+      "type": "verse"
+    },
+    {
+      "text": "نادان را به از خاموشی نیست وگر این مصلحت بدانستی نادان نبودی.",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۳۵",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh35#bn1",
+      "poem_id": 41510,
+      "id": "09830223f7116a04",
+      "type": "prose"
+    },
+    {
+      "text": "دانا چو طبلهٔ عطار است، خاموش و هنرنمای.",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۵۴",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh54#bn2",
+      "poem_id": 41529,
+      "id": "007d232c94e13ab9",
+      "type": "prose"
+    },
+    {
+      "text": "دل زنده می‌شود به امید وفای یار\nجان رقص می‌کند به سماع کلام دوست",
+      "author": "سعدی",
+      "work": "دیوان اشعار",
+      "section": "غزل شمارهٔ  ۱۰۰",
+      "source": "https://ganjoor.net/saadi/divan/ghazals/sh100#bn2",
+      "poem_id": 9422,
+      "id": "dda4644e11f6dfec",
+      "type": "verse"
+    },
+    {
+      "text": "الا تا درخت کرم پروری\nگر امیدواری کز او بر خوری",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۱۰ - حکایت ملک روم با دانشمند",
+      "source": "https://ganjoor.net/saadi/boostan/bab1/sh10#bn17",
+      "poem_id": 10224,
+      "id": "1e88956636760b3b",
+      "type": "verse"
+    },
+    {
+      "text": "درویش ضعیف‌حال را در خشکی تنگ‌سال مپرس که «چونی؟»، الا به شرط آن که مرهم ریشش بنهی و معلومی پیشش.",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۶۴",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh64#bn1",
+      "poem_id": 41539,
+      "id": "02018fdc29dc95cb",
+      "type": "prose"
+    },
+    {
+      "text": "تو گر پرنیانی نیابی، مجوش\nکرم کار فرما و حشوش بپوش",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۳ - سبب نظم کتاب",
+      "source": "https://ganjoor.net/saadi/boostan/niyayesh/sh3#bn22",
+      "poem_id": 10211,
+      "id": "11a0b93f45fda96b",
+      "type": "verse"
+    },
+    {
+      "text": "گر از بَسیطِ زمین، عقل، مُنعَدِم گردد\nبه خود، گمان نبَرَد هیچ‌کس که نادانم",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۳۰",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh30#bn5",
+      "poem_id": 41505,
+      "id": "02990366b0de7699",
+      "type": "verse"
+    },
+    {
+      "text": "ای سلیم آب ز سرچشمه ببند\nکه چو پر شد نتوان بستن جوی",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۱۰",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh10#bn4",
+      "poem_id": 41482,
+      "id": "cd699ba55083bc41",
+      "type": "verse"
+    },
+    {
+      "text": "مراعات دهقان کن از بهر خویش\nکه مزدور خوش‌دل کند کار بیش",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۱ - سر‌آغاز",
+      "source": "https://ganjoor.net/saadi/boostan/bab1/sh1#bn20",
+      "poem_id": 10215,
+      "id": "2433a48828619609",
+      "type": "verse"
+    },
+    {
+      "text": "بیستون بر کوهکن خواب فراغت تلخ کرد\nکارفرما می شود چون کار شیرین می شود",
+      "author": "صائب",
+      "work": "دیوان اشعار",
+      "section": "غزل شمارهٔ ۲۷۲۴",
+      "source": "https://ganjoor.net/saeb/divan-saeb/ghazalkasa/sh2724#bn4",
+      "poem_id": 54922,
+      "id": "01af744ba62da9f3",
+      "type": "verse"
+    },
+    {
+      "text": "چو هر گوشه تیر نیاز افکنی\nامید است ناگه که صیدی زنی",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۲۴ - حکایت",
+      "source": "https://ganjoor.net/saadi/boostan/bab2/sh24#bn22",
+      "poem_id": 10279,
+      "id": "2e0be7f6244502b2",
+      "type": "verse"
+    },
+    {
+      "text": "مال از بهر آسایش عمر است نه عمر از بهر گرد کردن مال.",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۱",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh1#bn1",
+      "poem_id": 41473,
+      "id": "9977cfac824dce92",
+      "type": "prose"
+    },
+    {
+      "text": "نکو دار ضیف و مسافر عزیز\nوز آسیبشان بر حذر باش نیز",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۱ - سر‌آغاز",
+      "source": "https://ganjoor.net/saadi/boostan/bab1/sh1#bn47",
+      "poem_id": 10215,
+      "id": "d4565bd7e312d89c",
+      "type": "verse"
+    },
+    {
+      "text": "غریب‌آشنا باش و سیّاح‌دوست\nکه سیّاح جلّاب نام نکوست",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۱ - سر‌آغاز",
+      "source": "https://ganjoor.net/saadi/boostan/bab1/sh1#bn46",
+      "poem_id": 10215,
+      "id": "ec1d7ab4ba25dae2",
+      "type": "verse"
+    },
+    {
+      "text": "مرا با تو دانی سر دوستی است\nتو را دشمنی با من از بهر چیست؟",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۱۱ - حکایت مرزبان ستمگار با زاهد",
+      "source": "https://ganjoor.net/saadi/boostan/bab1/sh11#bn15",
+      "poem_id": 10225,
+      "id": "ceae8c08b6c6b2a9",
+      "type": "verse"
+    },
+    {
+      "text": "طبیعت شود مرد را بخردی\nبه امّید نیکی و بیم بدی",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۱ - سر‌آغاز",
+      "source": "https://ganjoor.net/saadi/boostan/bab1/sh1#bn9",
+      "poem_id": 10215,
+      "id": "24d203138ff93558",
+      "type": "verse"
+    },
+    {
+      "text": "به پندار نتوان سخن گفت زود\nنگفتم تو را تا یقینم نبود",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۲ - حکایت در تدبیر و تأخیر در سیاست",
+      "source": "https://ganjoor.net/saadi/boostan/bab1/sh2#bn51",
+      "poem_id": 10216,
+      "id": "4f6462e41cb1cbe3",
+      "type": "verse"
+    },
+    {
+      "text": "نیک سهل است زنده بی جان کرد\nکشته را باز زنده نتوان کرد",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۵۰",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh50#bn2",
+      "poem_id": 41525,
+      "id": "701158b95a867729",
+      "type": "verse"
+    },
+    {
+      "text": "عام نادان پریشان روزگار\nبه ز دانشمند ناپرهیزگار",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۶۰",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh60#bn2",
+      "poem_id": 41535,
+      "id": "de56e1452dec66f7",
+      "type": "verse"
+    },
+    {
+      "text": "زند بر شیشه خود سنگ از بی دانشی صائب\nسبک عقلی که حرف سخت در کهسار می گوید",
+      "author": "صائب",
+      "work": "دیوان اشعار",
+      "section": "غزل شمارهٔ ۳۲۴۰",
+      "source": "https://ganjoor.net/saeb/divan-saeb/ghazalkasa/sh3240#bn10",
+      "poem_id": 55438,
+      "id": "5b38e335260d954d",
+      "type": "verse"
+    },
+    {
+      "text": "واسوختگی شیوهٔ ما نیست، و گرنه\nاز یک سخن سرد، دل ناز توان سوخت",
+      "author": "صائب",
+      "work": "دیوان اشعار",
+      "section": "تک‌بیت شمارهٔ ۳۱۷",
+      "source": "https://ganjoor.net/saeb/divan-saeb/takbeit/sh317#bn1",
+      "poem_id": 31935,
+      "id": "695738a22ae42b26",
+      "type": "verse"
+    },
+    {
+      "text": "دل روشن نکند دعوی دانش صائب\nعرض جوهر ندهد آینه چون رخشان است",
+      "author": "صائب",
+      "work": "دیوان اشعار",
+      "section": "غزل شمارهٔ ۱۴۸۸",
+      "source": "https://ganjoor.net/saeb/divan-saeb/ghazalkasa/sh1488#bn10",
+      "poem_id": 53685,
+      "id": "9ddc9f365447300d",
+      "type": "verse"
+    },
+    {
+      "text": "هیچ میزانی درین بازارِ چون انصاف نیست\nگوهرِ خود را نمی‌سنجی به این میزان چرا",
+      "author": "صائب",
+      "work": "دیوان اشعار",
+      "section": "غزل شمارهٔ ۳۸",
+      "source": "https://ganjoor.net/saeb/divan-saeb/ghazalkasa/sh38#bn6",
+      "poem_id": 52235,
+      "id": "1dedb96db8ca9ea5",
+      "type": "verse"
+    },
+    {
+      "text": "آنچه می ماند بجا از رفتگان، جز نام نیست\nنام نیکی کسب کن صائب در ایام حیات",
+      "author": "صائب",
+      "work": "دیوان اشعار",
+      "section": "غزل شمارهٔ ۹۲۲",
+      "source": "https://ganjoor.net/saeb/divan-saeb/ghazalkasa/sh922#bn13",
+      "poem_id": 53119,
+      "id": "5dd13f5f3f38f2dd",
+      "type": "verse"
+    },
+    {
+      "text": "هر که را جاه و دولت است و بدان\nخاطری خسته در نخواهد یافت",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۷۰",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh70#bn2",
+      "poem_id": 41545,
+      "id": "0274e22df56dc839",
+      "type": "verse"
+    },
+    {
+      "text": "کانچ با او تو کنی ای معتمد\nاز بد و نیکی خدا با تو کند",
+      "author": "مولانا",
+      "work": "مثنوی معنوی",
+      "section": "بخش ۱۱۳ - ذکر آن پادشاه که آن دانشمند را به اکراه در مجلس آورد و بنشاند ساقی شراب بر دانشمند عرضه کرد ساغر پیش او داشت رو بگردانید و ترشی و تندی آغاز کرد شاه ساقی را گفت کی هین در طبعش آر ساقی چندی بر سرش کوفت و شرابش در خورد داد الی آخره",
+      "source": "https://ganjoor.net/moulavi/masnavi/daftar6/sh113#bn43",
+      "poem_id": 8837,
+      "id": "498655c1c3b98763",
+      "type": "verse"
+    },
+    {
+      "text": "تو چه دانی تو چه دانی که چه کانی و چه جانی\nکه خدا داند و بیند هنری کز بشر آید",
+      "author": "مولانا",
+      "work": "دیوان شمس",
+      "section": "غزل شمارهٔ ۷۶۲",
+      "source": "https://ganjoor.net/moulavi/shams/ghazalsh/sh762#bn10",
+      "poem_id": 3386,
+      "id": "0b6f2d0444601cb9",
+      "type": "verse"
+    },
+    {
+      "text": "من ز سلام گرم او، آب شدم ز شرم او\nوز سخنان نرم او، آب شوند سنگ‌ها",
+      "author": "مولانا",
+      "work": "دیوان شمس",
+      "section": "غزل شمارهٔ ۴۴",
+      "source": "https://ganjoor.net/moulavi/shams/ghazalsh/sh44#bn3",
+      "poem_id": 2668,
+      "id": "469b4a855f5e6546",
+      "type": "verse"
+    },
+    {
+      "text": "نشاید بنی‌آدم خاکزاد\nکه در سر کند کبر و تندی و باد",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۲۰",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh20#bn2",
+      "poem_id": 41493,
+      "id": "50e166a49e2effd6",
+      "type": "verse"
+    },
+    {
+      "text": "که را جاودان ماندن امید ماند\nچو کس را نبینی که جاوید ماند؟",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۱۰ - حکایت ملک روم با دانشمند",
+      "source": "https://ganjoor.net/saadi/boostan/bab1/sh10#bn13",
+      "poem_id": 10224,
+      "id": "b6d004c531dfa696",
+      "type": "verse"
+    },
+    {
+      "text": "گر به تحسینِ تو نگشایند لب صائب مرنج\nکز سخن‌فهمان، شنیدن بس بود تحسین ترا",
+      "author": "صائب",
+      "work": "دیوان اشعار",
+      "section": "غزل شمارهٔ ۲۹",
+      "source": "https://ganjoor.net/saeb/divan-saeb/ghazalkasa/sh29#bn17",
+      "poem_id": 52226,
+      "id": "1cd828a74965d58a",
+      "type": "verse"
+    },
+    {
+      "text": "از آن بهره‌ورتر در آفاق کیست\nکه در ملکرانی به انصاف زیست",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۱ - سر‌آغاز",
+      "source": "https://ganjoor.net/saadi/boostan/bab1/sh1#bn29",
+      "poem_id": 10215,
+      "id": "a3e3b4b645f47863",
+      "type": "verse"
+    },
+    {
+      "text": "نخواهی که نفرین کنند از پست\nنکو باش تا بد نگوید کست",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۱۵ - اندر معنی عدل و ظلم و ثمرهٔ آن",
+      "source": "https://ganjoor.net/saadi/boostan/bab1/sh15#bn16",
+      "poem_id": 10229,
+      "id": "99b1eb24f9416e9f",
+      "type": "verse"
+    },
+    {
+      "text": "نکوکارپرور نبیند بدی\nچو بد پروری خصم خون خودی",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۱ - سر‌آغاز",
+      "source": "https://ganjoor.net/saadi/boostan/bab1/sh1#bn35",
+      "poem_id": 10215,
+      "id": "17d269788178c2bc",
+      "type": "verse"
+    },
+    {
+      "text": "چو با دوست دشخوار گیری و تنگ\nنخواهد که بیند تو را نقش و رنگ",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۱۵ - گفتار اندر ثمره جوانمردی",
+      "source": "https://ganjoor.net/saadi/boostan/bab2/sh15#bn5",
+      "poem_id": 10270,
+      "id": "37c53c61234f9ec9",
+      "type": "verse"
+    },
+    {
+      "text": "اگر جاده‌ای بایدت مستقیم\nره پارسایان امید است و بیم",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۱ - سر‌آغاز",
+      "source": "https://ganjoor.net/saadi/boostan/bab1/sh1#bn8",
+      "poem_id": 10215,
+      "id": "6a59e242d00c4f92",
+      "type": "verse"
+    },
+    {
+      "text": "نیامد کس اندر جهان کاو بماند\nمگر آن کز او نام نیکو بماند",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۱ - سر‌آغاز",
+      "source": "https://ganjoor.net/saadi/boostan/bab1/sh1#bn78",
+      "poem_id": 10215,
+      "id": "68b332a2638a16e6",
+      "type": "verse"
+    },
+    {
+      "text": "اما تو مگو که جهد و کوشش\nسودم نکند که بودنی بود",
+      "author": "مولانا",
+      "work": "دیوان شمس",
+      "section": "غزل شمارهٔ ۷۱۶",
+      "source": "https://ganjoor.net/moulavi/shams/ghazalsh/sh716#bn5",
+      "poem_id": 3340,
+      "id": "ce28d69f405f73ca",
+      "type": "verse"
+    },
+    {
+      "text": "گرچه همت می گشاید کارهای سخت را\nاز دل صد چاک کن دندانه های این کلید",
+      "author": "صائب",
+      "work": "دیوان اشعار",
+      "section": "غزل شمارهٔ ۲۷۸۰",
+      "source": "https://ganjoor.net/saeb/divan-saeb/ghazalkasa/sh2780#bn5",
+      "poem_id": 54978,
+      "id": "0faa31535490f665",
+      "type": "verse"
+    },
+    {
+      "text": "دُرشتی نگیرد خِرَدمَند پیش\nنه سُستی که ناقص کُنَد قَدرِ خویش",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۱۸",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh18#bn3",
+      "poem_id": 41491,
+      "id": "d0107f829abec687",
+      "type": "verse"
+    },
+    {
+      "text": "شد چو گل از روی خندان، خرده زر رزق ما\nچون صدف گشت از دهان پاک، گوهر رزق ما",
+      "author": "صائب",
+      "work": "دیوان اشعار",
+      "section": "غزل شمارهٔ ۲۵۶",
+      "source": "https://ganjoor.net/saeb/divan-saeb/ghazalkasa/sh256#bn1",
+      "poem_id": 52453,
+      "id": "c55d0452687718f5",
+      "type": "verse"
+    },
+    {
+      "text": "ز صاحب غرض تا سخن نشنوی\nکه گر کار بندی پشیمان شوی",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۲ - حکایت در تدبیر و تأخیر در سیاست",
+      "source": "https://ganjoor.net/saadi/boostan/bab1/sh2#bn120",
+      "poem_id": 10216,
+      "id": "8960a79ca458b43f",
+      "type": "verse"
+    },
+    {
+      "text": "به کوشش توان دجله را پیش بست\nنشاید زبان بداندیش بست",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۲۸ - گفتار اندر سلامت گوشه‌نشینی و صبر بر ایذاء خلق",
+      "source": "https://ganjoor.net/saadi/boostan/bab7/sh28#bn4",
+      "poem_id": 10396,
+      "id": "2dc4caf637ab3fb5",
+      "type": "verse"
+    },
+    {
+      "text": "خامشی به که ضمیر دل خویش\nبا کسی گفتن و گفتن که مگوی",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۱۰",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh10#bn3",
+      "poem_id": 41482,
+      "id": "83777c905bade074",
+      "type": "verse"
+    },
+    {
+      "text": "هین خمش کن تا توانی تخم نیکی کار تو\nزانک پیدا شد بهشت عدن ز افعال ثقات",
+      "author": "مولانا",
+      "work": "دیوان شمس",
+      "section": "غزل شمارهٔ ۳۸۵",
+      "source": "https://ganjoor.net/moulavi/shams/ghazalsh/sh385#bn7",
+      "poem_id": 3009,
+      "id": "077d7f1d42becf86",
+      "type": "verse"
+    },
+    {
+      "text": "گر هنرمند از اوباش جفایی بیند\nتا دلِ خویش نیازارد و در هم نشود",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۵۱",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh51#bn3",
+      "poem_id": 41526,
+      "id": "3d7177f7fa3b7c16",
+      "type": "verse"
+    },
+    {
+      "text": "میان دو تن آتش افروختن\nنه عقل است و خود در میان سوختن",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۱۲",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh12#bn4",
+      "poem_id": 41484,
+      "id": "7a91cdfce56fb628",
+      "type": "verse"
+    },
+    {
+      "text": "بسیجِ سَخُن گفتن آنگاه کن\nکه دانی که در کار گیرد سَخُن",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۲۶",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh26#bn2",
+      "poem_id": 41500,
+      "id": "c2c42ec63ae970af",
+      "type": "verse"
+    },
+    {
+      "text": "چو بیداد کردی توقع مدار\nکه نامت به نیکی رود در دیار",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۲۸ - حکایت پادشاه غور با روستایی",
+      "source": "https://ganjoor.net/saadi/boostan/bab1/sh28#bn50",
+      "poem_id": 10242,
+      "id": "0b16770069852d55",
+      "type": "verse"
+    },
+    {
+      "text": "کرم کن چنان که‌ت برآید ز دست\nجهانبان در خیر بر کس نبست",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۱۱ - حکایت",
+      "source": "https://ganjoor.net/saadi/boostan/bab2/sh11#bn7",
+      "poem_id": 10266,
+      "id": "cd109dfb960c6efd",
+      "type": "verse"
+    },
+    {
+      "text": "که حق مهربان است بر دادگر\nببخشای و بخشایش حق نگر",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۲۳ - حکایت در این معنی",
+      "source": "https://ganjoor.net/saadi/boostan/bab1/sh23#bn13",
+      "poem_id": 10237,
+      "id": "e8b8f831a4d3ebd6",
+      "type": "verse"
+    },
+    {
+      "text": "عیب یاران و دوستان هنر است\nسخن دشمنان نه معتبر است",
+      "author": "سعدی",
+      "work": "دیوان اشعار",
+      "section": "غزل شمارهٔ  ۶۵",
+      "source": "https://ganjoor.net/saadi/divan/ghazals/sh65#bn1",
+      "poem_id": 9387,
+      "id": "f6ea9ce431eba307",
+      "type": "verse"
+    },
+    {
+      "text": "به نام خداوندِ جان و خرد\nکز این برتر، اندیشه، بر نگذرد",
+      "author": "فردوسی",
+      "work": "شاهنامه",
+      "section": "بخش ۱ - آغاز کتاب",
+      "source": "https://ganjoor.net/ferdousi/shahname/aghaz/sh1#bn1",
+      "poem_id": 1321,
+      "id": "608bd0ba48c16402",
+      "type": "verse"
+    },
+    {
+      "text": "کسی را که همت بلند اوفتد\nمرادش کم اندر کمند اوفتد",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۱۰ - حکایت کرم مردان صاحبدل",
+      "source": "https://ganjoor.net/saadi/boostan/bab2/sh10#bn3",
+      "poem_id": 10265,
+      "id": "da3cfec99f295874",
+      "type": "verse"
+    },
+    {
+      "text": "به نطق است و عقل آدمی‌زاده فاش\nچو طوطی سخنگویِ نادان مباش",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۴ - حکایت در معنی سلامت جاهل در خاموشی",
+      "source": "https://ganjoor.net/saadi/boostan/bab7/sh4#bn17",
+      "poem_id": 10372,
+      "id": "c6458eae316a7c76",
+      "type": "verse"
+    },
+    {
+      "text": "زیان می‌کند مرد تفسیر‌دان\nکه علم و ادب می‌فروشد به نان",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۴ - گفتار اندر احسان با نیک و بد",
+      "source": "https://ganjoor.net/saadi/boostan/bab2/sh4#bn2",
+      "poem_id": 10259,
+      "id": "b8b578c25c357e5f",
+      "type": "verse"
+    },
+    {
+      "text": "کارها به صبر بر آید و مُستَعجِل به سر در آید.",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۳۴",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh34#bn1",
+      "poem_id": 41509,
+      "id": "1def7fce7e76ae84",
+      "type": "prose"
+    },
+    {
+      "text": "به چشمِ خویش دیدم در بیابان\nکه آهسته سَبَق بُرد از شتابان",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۳۴",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh34#bn2",
+      "poem_id": 41509,
+      "id": "3dec0be40e341712",
+      "type": "verse"
+    },
+    {
+      "text": "دل دوستان جمع بهتر که گنج\nخزینه تهی به که مردم به رنج",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۱۲ - گفتار اندر نگه داشتن خاطر درویشان",
+      "source": "https://ganjoor.net/saadi/boostan/bab1/sh12#bn7",
+      "poem_id": 10226,
+      "id": "0adac755ad19ce6d",
+      "type": "verse"
+    },
+    {
+      "text": "بی‌فایده هر که عمر در باخت\nچیزی نخرید و زر بینداخت",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۵",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh5#bn2",
+      "poem_id": 41477,
+      "id": "fb2ca190eb1e4166",
+      "type": "verse"
+    },
+    {
+      "text": "بد اختر تر از مردم‌آزار نیست\nکه روز مصیبت کسش یار نیست",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۳۲",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh32#bn2",
+      "poem_id": 41507,
+      "id": "62d61f889648f60d",
+      "type": "verse"
+    },
+    {
+      "text": "کسی با سگی نیکویی گم نکرد\nکجا گم شود خیر با نیکمرد؟",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۱۱ - حکایت",
+      "source": "https://ganjoor.net/saadi/boostan/bab2/sh11#bn6",
+      "poem_id": 10266,
+      "id": "42943649119a8507",
+      "type": "verse"
+    },
+    {
+      "text": "می‌شود قدر سخن‌سنجان پس از رفتن پدید\nجای بلبل در چمن، فصل خزان، پیدا شود",
+      "author": "صائب",
+      "work": "دیوان اشعار",
+      "section": "تک‌بیت شمارهٔ ۸۳۴",
+      "source": "https://ganjoor.net/saeb/divan-saeb/takbeit/sh834#bn1",
+      "poem_id": 32452,
+      "id": "34773cb2658fc076",
+      "type": "verse"
+    },
+    {
+      "text": "ما صلاح خویشتن در بی‌نوایی دیده‌ایم\nهر کسی گو مصلحت بینند کار خویش را",
+      "author": "سعدی",
+      "work": "دیوان اشعار",
+      "section": "غزل شمارهٔ  ۱۳",
+      "source": "https://ganjoor.net/saadi/divan/ghazals/sh13#bn16",
+      "poem_id": 9335,
+      "id": "92e07f2da4ea66da",
+      "type": "verse"
+    },
+    {
+      "text": "صحراست پر از شکر دریاست پر از گوهر\nیک جو نبری زین دو بی‌کوشش و اسبابی",
+      "author": "مولانا",
+      "work": "دیوان شمس",
+      "section": "غزل شمارهٔ ۲۵۸۰",
+      "source": "https://ganjoor.net/moulavi/shams/ghazalsh/sh2580#bn2",
+      "poem_id": 5204,
+      "id": "7a23d20e5a4140da",
+      "type": "verse"
+    },
+    {
+      "text": "بمرد آخر و نیکنامی ببرد\nزهی زندگانی که نامش نمرد",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۱۰ - حکایت کرم مردان صاحبدل",
+      "source": "https://ganjoor.net/saadi/boostan/bab2/sh10#bn22",
+      "poem_id": 10265,
+      "id": "51e5ddff9b7d2e39",
+      "type": "verse"
+    },
+    {
+      "text": "کرم کن که فردا که دیوان نهند\nمنازل به مقدار احسان دهند",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۱۰ - حکایت ملک روم با دانشمند",
+      "source": "https://ganjoor.net/saadi/boostan/bab1/sh10#bn18",
+      "poem_id": 10224,
+      "id": "55990b5f4066946c",
+      "type": "verse"
+    },
+    {
+      "text": "اگر بد کنی چشم نیکی مدار\nکه هرگز نیارد گز انگور بار",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۲۰ - حکایت شحنه مردم آزار",
+      "source": "https://ganjoor.net/saadi/boostan/bab1/sh20#bn10",
+      "poem_id": 10234,
+      "id": "25c3b34cefc0283b",
+      "type": "verse"
+    },
+    {
+      "text": "انتقام از دشمن عاجز به نیکی می کشم\nمی کنم سرسبز خاری را که در راه من است",
+      "author": "صائب",
+      "work": "دیوان اشعار",
+      "section": "غزل شمارهٔ ۱۰۸۳",
+      "source": "https://ganjoor.net/saeb/divan-saeb/ghazalkasa/sh1083#bn3",
+      "poem_id": 53280,
+      "id": "4cd2971e2d537b68",
+      "type": "verse"
+    },
+    {
+      "text": "جوانمرد که بخورد و بدهد، به از عابدی که روزه دارد و بنهد.",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۵۷",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh57#bn1",
+      "poem_id": 41532,
+      "id": "29facbd042b26083",
+      "type": "prose"
+    },
+    {
+      "text": "سَرش راست بَر شُد چو سَروِ بُلَند\nبه گفتارْ خوب و خِرَدْ کار بَند",
+      "author": "فردوسی",
+      "work": "شاهنامه",
+      "section": "بخش ۴ - گفتار اَندر آفرینشِ مَردُم",
+      "source": "https://ganjoor.net/ferdousi/shahname/aghaz/sh4#bn2",
+      "poem_id": 1324,
+      "id": "f20c89031691835e",
+      "type": "verse"
+    },
+    {
+      "text": "خردمندی را که در زمرهٔ اجلاف سخن ببندد شگفت مدار، که آواز بربط با غلبهٔ دهل بر نیاید و بوی عنبر از گند سیر فرو ماند.",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۵۲",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh52#bn1",
+      "poem_id": 41527,
+      "id": "350cc9faddf2d27e",
+      "type": "prose"
+    },
+    {
+      "text": "رازی که نهان خواهی، با کس در میان منه وگرچه دوست مخلص باشد که مر آن دوست را نیز دوستان مخلص باشد، همچنین مسلسل.",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۱۰",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh10#bn2",
+      "poem_id": 41482,
+      "id": "84a7d53cf09e4e0e",
+      "type": "prose"
+    },
+    {
+      "text": "چو دشمن کرم بیند و لطف و جود\nنیاید دگر خبث از او در وجود",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۱۵ - گفتار اندر ثمره جوانمردی",
+      "source": "https://ganjoor.net/saadi/boostan/bab2/sh15#bn3",
+      "poem_id": 10270,
+      "id": "39dac73c25107f0c",
+      "type": "verse"
+    },
+    {
+      "text": "منه انگشت بر حرفم، اگر درد سخن داری\nکه بر هر نقطه من صد بار چون پرگار گردیدم",
+      "author": "صائب",
+      "work": "دیوان اشعار",
+      "section": "تک‌بیت شمارهٔ ۱۱۲۲",
+      "source": "https://ganjoor.net/saeb/divan-saeb/takbeit/sh1122#bn1",
+      "poem_id": 32740,
+      "id": "ac8bb80983d80151",
+      "type": "verse"
+    },
+    {
+      "text": "نه هر که به صورت نکوست سیرت زیبا در اوست.",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۴۲",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh42#bn1",
+      "poem_id": 41517,
+      "id": "a84fe0090796c7b7",
+      "type": "prose"
+    },
+    {
+      "text": "هر چه زود بر آید دیر نپاید.",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۳۳",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh33#bn1",
+      "poem_id": 41508,
+      "id": "c7369a15295f0f68",
+      "type": "prose"
+    },
+    {
+      "text": "به یک بار بر دوستان زر مپاش\nوز آسیب دشمن به اندیشه باش",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۶ - حکایت ممسک و فرزند ناخلف",
+      "source": "https://ganjoor.net/saadi/boostan/bab2/sh6#bn11",
+      "poem_id": 10261,
+      "id": "741cd6e6a92a3bf2",
+      "type": "verse"
+    },
+    {
+      "text": "خرده بینی نیست صائب، ور نه چون خال بتان\nیک جهان معنی است در هر نقطه ای مضمر مرا",
+      "author": "صائب",
+      "work": "دیوان اشعار",
+      "section": "غزل شمارهٔ ۱۴۹",
+      "source": "https://ganjoor.net/saeb/divan-saeb/ghazalkasa/sh149#bn10",
+      "poem_id": 52346,
+      "id": "ed4d60a44450050e",
+      "type": "verse"
+    },
+    {
+      "text": "به آخر ندیدی که بر باد رفت؟\nخنک آن که با دانش و داد رفت",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۲۴ - گفتار اندر بی‌وفائی دنیا",
+      "source": "https://ganjoor.net/saadi/boostan/bab1/sh24#bn3",
+      "poem_id": 10238,
+      "id": "06c5322eb2ab4d5e",
+      "type": "verse"
+    },
+    {
+      "text": "چو بینی که یاران نباشند یار\nهزیمت ز میدان غنیمت شمار",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۳۵ - گفتار اندر تقویت مردان کار آزموده",
+      "source": "https://ganjoor.net/saadi/boostan/bab1/sh35#bn25",
+      "poem_id": 10249,
+      "id": "9a251b2006570060",
+      "type": "verse"
+    },
+    {
+      "text": "عیبِ خود دیدن مرا ز اهلِ هنر ممتاز کرد\nمنفعت از پا زیاد از پر بود طاوس را",
+      "author": "صائب",
+      "work": "دیوان اشعار",
+      "section": "غزل شمارهٔ ۷۵",
+      "source": "https://ganjoor.net/saeb/divan-saeb/ghazalkasa/sh75#bn3",
+      "poem_id": 52272,
+      "id": "d28ef334c20f16bd",
+      "type": "verse"
+    },
+    {
+      "text": "سنگی به چند سال شود لعل پاره‌ای\nزنهار تا به یک نفسش نشکنی به سنگ",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۵۵",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh55#bn2",
+      "poem_id": 41530,
+      "id": "547e25d97d31717a",
+      "type": "verse"
+    },
+    {
+      "text": "چو دیدار یابی به شاخِ سَخُن\nبدانی که دانش نیاید به بُن",
+      "author": "فردوسی",
+      "work": "شاهنامه",
+      "section": "بخش ۲ - ستایشِ خرد",
+      "source": "https://ganjoor.net/ferdousi/shahname/aghaz/sh2#bn19",
+      "poem_id": 1322,
+      "id": "6322b6887108180a",
+      "type": "verse"
+    },
+    {
+      "text": "بارگه عطا شود از کف عشق هر کفی\nکارگه وفا شود از تو جهانِ بی‌وفا",
+      "author": "مولانا",
+      "work": "دیوان شمس",
+      "section": "غزل شمارهٔ ۴۵",
+      "source": "https://ganjoor.net/moulavi/shams/ghazalsh/sh45#bn11",
+      "poem_id": 2669,
+      "id": "fbc42d818a24c075",
+      "type": "verse"
+    },
+    {
+      "text": "یکی را به زندانْ درش دوستان\nکجا مانَدَش، عیشِ در بوستان؟",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۱۳ - حکایت در معنی رحمت با ناتوانان در حال توانایی",
+      "source": "https://ganjoor.net/saadi/boostan/bab1/sh13#bn22",
+      "poem_id": 10227,
+      "id": "823e051bc9eadc15",
+      "type": "verse"
+    },
+    {
+      "text": "خردمند باشد جهاندیده مرد\nکه بسیار گرم آزموده‌ست و سرد",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۳۵ - گفتار اندر تقویت مردان کار آزموده",
+      "source": "https://ganjoor.net/saadi/boostan/bab1/sh35#bn5",
+      "poem_id": 10249,
+      "id": "95af30a4d96b73f4",
+      "type": "verse"
+    },
+    {
+      "text": "بزرگی و عفو و کرم پیشه کن\nز خردان اطفالش اندیشه کن",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۲۱ - حکایت حجاج یوسف",
+      "source": "https://ganjoor.net/saadi/boostan/bab1/sh21#bn10",
+      "poem_id": 10235,
+      "id": "10c6b53b2a89673f",
+      "type": "verse"
+    },
+    {
+      "text": "در جنگ، می کند لب خاموش کار تیغ\nدادن جواب مردم نادان چه لازم است؟",
+      "author": "صائب",
+      "work": "دیوان اشعار",
+      "section": "غزل شمارهٔ ۱۹۱۷",
+      "source": "https://ganjoor.net/saeb/divan-saeb/ghazalkasa/sh1917#bn7",
+      "poem_id": 54114,
+      "id": "d0ec62508ba09513",
+      "type": "verse"
+    },
+    {
+      "text": "خمش ز دعوی دانش، که جهل را صائب\nهزار حجت ناطق چو خودستایی نیست",
+      "author": "صائب",
+      "work": "دیوان اشعار",
+      "section": "غزل شمارهٔ ۱۸۲۱",
+      "source": "https://ganjoor.net/saeb/divan-saeb/ghazalkasa/sh1821#bn8",
+      "poem_id": 54018,
+      "id": "c7119578abb7b39b",
+      "type": "verse"
+    },
+    {
+      "text": "در سخن با دوستان آهسته باش\nتا ندارد دشمن خونخوار گوش",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۱۲",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh12#bn5",
+      "poem_id": 41484,
+      "id": "16a51ce236f5784d",
+      "type": "verse"
+    },
+    {
+      "text": "شدت نیکان روی در فرج دارد و دولت بدان سر در نشیب.",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۷۰",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh70#bn1",
+      "poem_id": 41545,
+      "id": "91739ab13262c678",
+      "type": "prose"
+    },
+    {
+      "text": "مروّت نباشد بدی با کسی\nکز او نیکویی دیده باشی بسی",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۱ - سر‌آغاز",
+      "source": "https://ganjoor.net/saadi/boostan/bab1/sh1#bn21",
+      "poem_id": 10215,
+      "id": "174eb24bb1f3ae76",
+      "type": "verse"
+    },
+    {
+      "text": "هر که با بدان نشیند، نیکی نبیند.",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۳۷",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh37#bn1",
+      "poem_id": 41512,
+      "id": "c5c491a186e0f2ee",
+      "type": "prose"
+    },
+    {
+      "text": "نیست چون طاوس چشم ما به بال و پر ز پا\nعیب خود را در نظر بیش از هنر داریم ما",
+      "author": "صائب",
+      "work": "دیوان اشعار",
+      "section": "غزل شمارهٔ ۲۶۷",
+      "source": "https://ganjoor.net/saeb/divan-saeb/ghazalkasa/sh267#bn8",
+      "poem_id": 52464,
+      "id": "d09f4def7a8885a3",
+      "type": "verse"
+    },
+    {
+      "text": "گر اندیشه باشد ز خصمت گزند\nبه تعویذِ احسان زبانش ببند",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۳۳ - گفتار اندر رای و تدبیر ملک و لشکرکشی",
+      "source": "https://ganjoor.net/saadi/boostan/bab1/sh33#bn3",
+      "poem_id": 10247,
+      "id": "4399da6620c1b61f",
+      "type": "verse"
+    },
+    {
+      "text": "عدو را به کوچک نباید شمرد\nکه کوه کلان دیدم از سنگ خرد",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۱۲ - گفتار اندر نگه داشتن خاطر درویشان",
+      "source": "https://ganjoor.net/saadi/boostan/bab1/sh12#bn3",
+      "poem_id": 10226,
+      "id": "eaaae29e0ccde3de",
+      "type": "verse"
+    },
+    {
+      "text": "زانک تکمیل خردها دور نیست\nلیک تکمیل بدن مقدور نیست",
+      "author": "مولانا",
+      "work": "مثنوی معنوی",
+      "section": "بخش ۳۱ - ظاهر شدن فضل و زیرکی لقمان پیش امتحان کنندگان",
+      "source": "https://ganjoor.net/moulavi/masnavi/daftar2/sh31#bn30",
+      "poem_id": 8095,
+      "id": "c5ca48afde0b7ead",
+      "type": "verse"
+    },
+    {
+      "text": "مسکین حریص در همه عالم همی‌رود\nاو در قفای رزق و اجل در قفای او",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۶۸",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh68#bn2",
+      "poem_id": 41543,
+      "id": "9d72606ae19fe032",
+      "type": "verse"
+    },
+    {
+      "text": "در پایهٔ خود، هیچ کسی خرد نباشد\nتا جغد بود ساکن ویرانه، بزرگ است",
+      "author": "صائب",
+      "work": "دیوان اشعار",
+      "section": "تک‌بیت شمارهٔ ۳۵۹",
+      "source": "https://ganjoor.net/saeb/divan-saeb/takbeit/sh359#bn1",
+      "poem_id": 31977,
+      "id": "532a5f334ed6d2ef",
+      "type": "verse"
+    },
+    {
+      "text": "سخنی در نهان نباید گفت\nکه بر انجمن نشاید گفت",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۱۰",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh10#bn5",
+      "poem_id": 41482,
+      "id": "4811a9865f0f2a40",
+      "type": "verse"
+    },
+    {
+      "text": "امید من به خاموشی، یکی ده گشت تا دیدم\nکه سامان می‌دهد دست از اشارت، کار لالان را",
+      "author": "صائب",
+      "work": "دیوان اشعار",
+      "section": "تک‌بیت شمارهٔ ۱۹۶",
+      "source": "https://ganjoor.net/saeb/divan-saeb/takbeit/sh196#bn1",
+      "poem_id": 31814,
+      "id": "a95019b5c8d83329",
+      "type": "verse"
+    },
+    {
+      "text": "اگر ز دست بلا بر فلک رود بدخوی\nز دست خوی بد خویش در بلا باشد",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۲۱",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh21#bn2",
+      "poem_id": 41494,
+      "id": "4da562deacc25838",
+      "type": "verse"
+    },
+    {
+      "text": "یکی را که معزول کردی ز جاه\nچو چندی برآید ببخشش گناه",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۱ - سر‌آغاز",
+      "source": "https://ganjoor.net/saadi/boostan/bab1/sh1#bn70",
+      "poem_id": 10215,
+      "id": "b3521caeda773b33",
+      "type": "verse"
+    },
+    {
+      "text": "تو هم بر دری هستی امیدوار\nپس امید بر در نشینان برآر",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۷ - هم در این معنی",
+      "source": "https://ganjoor.net/saadi/boostan/bab1/sh7#bn2",
+      "poem_id": 10221,
+      "id": "35ea7bd28f32d3e6",
+      "type": "verse"
+    },
+    {
+      "text": "مزن تا توانی بر ابرو گره\nکه دشمن اگرچه زبون، دوست به",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۳۳ - گفتار اندر رای و تدبیر ملک و لشکرکشی",
+      "source": "https://ganjoor.net/saadi/boostan/bab1/sh33#bn9",
+      "poem_id": 10247,
+      "id": "921cef0c2a60762e",
+      "type": "verse"
+    },
+    {
+      "text": "صبح امید بر در دل حلقه می زند\nگویا دهان او به شکر خنده وا شده است",
+      "author": "صائب",
+      "work": "دیوان اشعار",
+      "section": "غزل شمارهٔ ۱۹۷۵",
+      "source": "https://ganjoor.net/saeb/divan-saeb/ghazalkasa/sh1975#bn3",
+      "poem_id": 54172,
+      "id": "a8fde3cdf495e82a",
+      "type": "verse"
+    },
+    {
+      "text": "توان شناخت به یک روز در شمایل مرد\nکه تا کجاش رسیده‌ست پایگاه علوم",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۴۲",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh42#bn2",
+      "poem_id": 41517,
+      "id": "4970cf1a22576921",
+      "type": "verse"
+    },
+    {
+      "text": "نه عجب گر فرو رود نَفَسَش\nعندلیبی غُراب هم‌ قفسش",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۵۱",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh51#bn2",
+      "poem_id": 41526,
+      "id": "d09cf2a9b9e01a82",
+      "type": "verse"
+    },
+    {
+      "text": "بی رهی ور نه در ره کوشش\nهیچ کوشنده بی‌جرایت نیست",
+      "author": "مولانا",
+      "work": "دیوان شمس",
+      "section": "غزل شمارهٔ ۴۹۹",
+      "source": "https://ganjoor.net/moulavi/shams/ghazalsh/sh499#bn20",
+      "poem_id": 3123,
+      "id": "1515bfdbe0e255eb",
+      "type": "verse"
+    },
+    {
+      "text": "هر کجا ویران بوَد آن جا امید گنج هست\nگنج حق را می‌نجویی در دلِ ویران چرا ؟",
+      "author": "مولانا",
+      "work": "دیوان شمس",
+      "section": "غزل شمارهٔ ۱۴۱",
+      "source": "https://ganjoor.net/moulavi/shams/ghazalsh/sh141#bn9",
+      "poem_id": 2765,
+      "id": "1d04ba2c7e04c871",
+      "type": "verse"
+    },
+    {
+      "text": "خشمِ بیش از حد گرفتن وحشت آرد و لطفِ بی وقت هیبت ببرد.",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۱۸",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh18#bn1",
+      "poem_id": 41491,
+      "id": "b362190df52b1510",
+      "type": "prose"
+    },
+    {
+      "text": "به قول دشمن پیمان دوست بشکستی\nببین که از که بریدی و با که پیوستی",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۶۱",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh61#bn4",
+      "poem_id": 41536,
+      "id": "8ba7cd2d5b2c30a7",
+      "type": "verse"
+    },
+    {
+      "text": "که را دانش و جود و تقوی نبود\nبه صورت درش هیچ معنی نبود",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۱ - سر آغاز",
+      "source": "https://ganjoor.net/saadi/boostan/bab2/sh1#bn2",
+      "poem_id": 10256,
+      "id": "f290e60a9a9172e8",
+      "type": "verse"
+    },
+    {
+      "text": "به امید بیشی نداد و نخورد\nخردمند داند که ناخوب کرد",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۱۶ - حکایت برادران ظالم و عادل و عاقبت ایشان",
+      "source": "https://ganjoor.net/saadi/boostan/bab1/sh16#bn23",
+      "poem_id": 10230,
+      "id": "e1aa29abcc21f909",
+      "type": "verse"
+    },
+    {
+      "text": "چون روی آهنین ز صفا این هنر بیافت\nتا روی دل چه یابد کو را غبار نیست",
+      "author": "مولانا",
+      "work": "دیوان شمس",
+      "section": "غزل شمارهٔ ۴۵۵",
+      "source": "https://ganjoor.net/moulavi/shams/ghazalsh/sh455#bn15",
+      "poem_id": 3079,
+      "id": "a5deb9c9341e5732",
+      "type": "verse"
+    },
+    {
+      "text": "اسیر بند شکم را دو شب نگیرد خواب\nشبی ز معدهٔ سنگی شبی ز دلتنگی",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۴۷",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh47#bn3",
+      "poem_id": 41522,
+      "id": "4d5e051e758166ab",
+      "type": "verse"
+    },
+    {
+      "text": "غافل مشو ز حق به امید قبول خلق\nیوسف به سیم قلب فروشد کسی چرا؟",
+      "author": "صائب",
+      "work": "دیوان اشعار",
+      "section": "غزل شمارهٔ ۶۹۱",
+      "source": "https://ganjoor.net/saeb/divan-saeb/ghazalkasa/sh691#bn10",
+      "poem_id": 52888,
+      "id": "b7d79bd34dcb199f",
+      "type": "verse"
+    },
+    {
+      "text": "اندک اندک خیلی شود و قطره قطره سیلی گردد.",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۵۸",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh58#bn1",
+      "poem_id": 41533,
+      "id": "10acfc814a2dc127",
+      "type": "prose"
+    },
+    {
+      "text": "خدای ار به حکمت ببندد دری\nگشاید به فضل و کرم دیگری",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۱۳ - حکایت در معنی رحمت بر ضعیفان و اندیشه در عاقبت",
+      "source": "https://ganjoor.net/saadi/boostan/bab2/sh13#bn25",
+      "poem_id": 10268,
+      "id": "66a8548a38a2abdd",
+      "type": "verse"
+    },
+    {
+      "text": "طفلی است سخن گفتن مردی است خمش کردن\nتو رستم چالاکی نی کودک چالیکی",
+      "author": "مولانا",
+      "work": "دیوان شمس",
+      "section": "غزل شمارهٔ ۲۵۶۸",
+      "source": "https://ganjoor.net/moulavi/shams/ghazalsh/sh2568#bn7",
+      "poem_id": 5192,
+      "id": "2ffb2f241494a1f3",
+      "type": "verse"
+    },
+    {
+      "text": "دو کس رنج بیهوده بردند و سعی بی‌فایده کردند: یکی آن که اندوخت و نخورد و دیگر آن که آموخت و نکرد.",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۳",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh3#bn1",
+      "poem_id": 41475,
+      "id": "f86a261a21d3e4b1",
+      "type": "prose"
+    },
+    {
+      "text": "یک عمر می‌توان سخن از زلف یار گفت\nدر بند آن مباش که مضمون نمانده است",
+      "author": "صائب",
+      "work": "دیوان اشعار",
+      "section": "تک‌بیت شمارهٔ ۴۴۲",
+      "source": "https://ganjoor.net/saeb/divan-saeb/takbeit/sh442#bn1",
+      "poem_id": 32060,
+      "id": "0c81a8d00caadfc1",
+      "type": "verse"
+    },
+    {
+      "text": "به احسانی آسوده کردن دلی\nبه از اَلْف رکعت به هر منزلی",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۸ - حکایت",
+      "source": "https://ganjoor.net/saadi/boostan/bab2/sh8#bn8",
+      "poem_id": 10263,
+      "id": "d3b7c58ffed40f39",
+      "type": "verse"
+    },
+    {
+      "text": "به روی بت نرسی تو مگر به دام دو زلفش\nولیک کوشش می‌کن که کوششت بپزاند",
+      "author": "مولانا",
+      "work": "دیوان شمس",
+      "section": "غزل شمارهٔ ۹۰۵",
+      "source": "https://ganjoor.net/moulavi/shams/ghazalsh/sh905#bn6",
+      "poem_id": 3529,
+      "id": "fbfddbef3463fbc9",
+      "type": "verse"
+    },
+    {
+      "text": "اگرچه تشنه فریب است موجهای سراب\nمرا به جلوه دنیا شکار نتوان کرد",
+      "author": "صائب",
+      "work": "دیوان اشعار",
+      "section": "غزل شمارهٔ ۳۷۸۱",
+      "source": "https://ganjoor.net/saeb/divan-saeb/ghazalkasa/sh3781#bn2",
+      "poem_id": 55979,
+      "id": "1241ddf58267a02f",
+      "type": "verse"
+    },
+    {
+      "text": "مبر امید که عمرم بشد و یار نیامد\nبگه آید وی و بی‌گه نه همه در سحر آید",
+      "author": "مولانا",
+      "work": "دیوان شمس",
+      "section": "غزل شمارهٔ ۷۶۲",
+      "source": "https://ganjoor.net/moulavi/shams/ghazalsh/sh762#bn6",
+      "poem_id": 3386,
+      "id": "acdbcf3218591b31",
+      "type": "verse"
+    },
+    {
+      "text": "به خرده توان آتش افروختن\nپس آنگه درخت کهن سوختن",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۲ - حکایت در تدبیر و تأخیر در سیاست",
+      "source": "https://ganjoor.net/saadi/boostan/bab1/sh2#bn56",
+      "poem_id": 10216,
+      "id": "6e34af2a96357b1c",
+      "type": "verse"
+    },
+    {
+      "text": "صد هنر پردهٔ یک عیب چو نتواند شد\nزین چه حاصل که به هر مو هنری هست مرا؟",
+      "author": "صائب",
+      "work": "دیوان اشعار",
+      "section": "غزل شمارهٔ ۵۱۹",
+      "source": "https://ganjoor.net/saeb/divan-saeb/ghazalkasa/sh519#bn12",
+      "poem_id": 52716,
+      "id": "66dd2fdd74d967a4",
+      "type": "verse"
+    },
+    {
+      "text": "دعای ضعیفان امیدوار\nز بازوی مردی به آید به کار",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۴۱ - گفتار اندر پوشیدن راز خویش",
+      "source": "https://ganjoor.net/saadi/boostan/bab1/sh41#bn10",
+      "poem_id": 10255,
+      "id": "77aada7c55770230",
+      "type": "verse"
+    },
+    {
+      "text": "ز بعدِ وقت نومیدی، امیدی‌ست\nبه زیر کوری اندر سینه، دیدی‌ست",
+      "author": "مولانا",
+      "work": "دیوان شمس",
+      "section": "غزل شمارهٔ ۳۵۰",
+      "source": "https://ganjoor.net/moulavi/shams/ghazalsh/sh350#bn1",
+      "poem_id": 2974,
+      "id": "f4885d02e2badcef",
+      "type": "verse"
+    },
+    {
+      "text": "عالم ناپرهیزگار کور مشعله‌دار است.",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۵",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh5#bn1",
+      "poem_id": 41477,
+      "id": "3dba7e8f7a863729",
+      "type": "prose"
+    },
+    {
+      "text": "به جان تو که مرو از میان کار مخسب\nز عمر یک شب کم گیر و زنده دار مخسب",
+      "author": "مولانا",
+      "work": "دیوان شمس",
+      "section": "غزل شمارهٔ ۳۱۲",
+      "source": "https://ganjoor.net/moulavi/shams/ghazalsh/sh312#bn1",
+      "poem_id": 2936,
+      "id": "ef3a9fae491e30da",
+      "type": "verse"
+    },
+    {
+      "text": "هر که با ما می کند نیکی، نمی پاشد ز هم\nرشته شیرازه اوراق احسانیم ما",
+      "author": "صائب",
+      "work": "دیوان اشعار",
+      "section": "غزل شمارهٔ ۲۸۱",
+      "source": "https://ganjoor.net/saeb/divan-saeb/ghazalkasa/sh281#bn17",
+      "poem_id": 52478,
+      "id": "94c895de4cd28d18",
+      "type": "verse"
+    },
+    {
+      "text": "ز دشمن شنو سیرت خود که دوست\nهرآنچ از تو آید به چشمش نکوست",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۲۸ - حکایت پادشاه غور با روستایی",
+      "source": "https://ganjoor.net/saadi/boostan/bab1/sh28#bn67",
+      "poem_id": 10242,
+      "id": "425ef3ae8af35307",
+      "type": "verse"
+    },
+    {
+      "text": "هنوز با همه دردم امیدِ درمان است\nکه آخری بُوَد آخر، شبانِ یلدا را",
+      "author": "سعدی",
+      "work": "دیوان اشعار",
+      "section": "غزل شمارهٔ  ۴",
+      "source": "https://ganjoor.net/saadi/divan/ghazals/sh4#bn11",
+      "poem_id": 9326,
+      "id": "efa46eab02cbd8b1",
+      "type": "verse"
+    },
+    {
+      "text": "به عقلش بباید نخست آزمود\nبه قدر هنر پایگاهش فزود",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۲ - حکایت در تدبیر و تأخیر در سیاست",
+      "source": "https://ganjoor.net/saadi/boostan/bab1/sh2#bn20",
+      "poem_id": 10216,
+      "id": "a1346f658730d4b9",
+      "type": "verse"
+    },
+    {
+      "text": "گر سنگ همه لعل بدخشان بودی\nپس قیمت لعل و سنگ یکسان بودی",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۴۱",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh41#bn2",
+      "poem_id": 41516,
+      "id": "d3a144d5ad3fd47d",
+      "type": "verse"
+    },
+    {
+      "text": "ز آنک کف از خشک بود لایق دریا نبود\nنیک به نیکی رود و بد برود سوی بدی",
+      "author": "مولانا",
+      "work": "دیوان شمس",
+      "section": "غزل شمارهٔ ۲۴۵۴",
+      "source": "https://ganjoor.net/moulavi/shams/ghazalsh/sh2454#bn9",
+      "poem_id": 5078,
+      "id": "30672c90e4ee685d",
+      "type": "verse"
+    },
+    {
+      "text": "هر که در حال توانایی نکویی نکند در وقت ناتوانی سختی بیند.",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۳۲",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh32#bn1",
+      "poem_id": 41507,
+      "id": "d62719240ca3e375",
+      "type": "prose"
+    },
+    {
+      "text": "زنقش پای مجنون می توان پی برد حالش را\nکه حال رفتگان را بی سخن آثار می گوید",
+      "author": "صائب",
+      "work": "دیوان اشعار",
+      "section": "غزل شمارهٔ ۳۲۴۰",
+      "source": "https://ganjoor.net/saeb/divan-saeb/ghazalkasa/sh3240#bn5",
+      "poem_id": 55438,
+      "id": "2f0ea45c6178ae1f",
+      "type": "verse"
+    },
+    {
+      "text": "نکوکار مردم نباشد بدش\nنورزد کسی بد که نیک افتدش",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۱۹ - گفتار اندر نکوکاری و بدکاری و عاقبت آنها",
+      "source": "https://ganjoor.net/saadi/boostan/bab1/sh19#bn1",
+      "poem_id": 10233,
+      "id": "c8c8dde0dfc243f1",
+      "type": "verse"
+    },
+    {
+      "text": "هر که در زندگانی نانش نخورند، چون بمیرد نامش نبرند.",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۶۳",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh63#bn1",
+      "poem_id": 41538,
+      "id": "44a57a26763b0f62",
+      "type": "prose"
+    },
+    {
+      "text": "دعوی دانش بود صائب به نادانی دلیل\nهر که نادان می شمارد خویش را داناترست",
+      "author": "صائب",
+      "work": "دیوان اشعار",
+      "section": "غزل شمارهٔ ۹۷۷",
+      "source": "https://ganjoor.net/saeb/divan-saeb/ghazalkasa/sh977#bn9",
+      "poem_id": 53174,
+      "id": "2491e0213b21279c",
+      "type": "verse"
+    },
+    {
+      "text": "الا تا نخواهی بلا بر حسود\nکه آن بخت برگشته خود در بلاست",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۷۱",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh71#bn4",
+      "poem_id": 41546,
+      "id": "43546a782f6cc260",
+      "type": "verse"
+    },
+    {
+      "text": "هر کجا تخمی بکاری آن بروید عاقبت\nبرنروید هیچ از شه‌دانه‌ی احسان چرا ؟",
+      "author": "مولانا",
+      "work": "دیوان شمس",
+      "section": "غزل شمارهٔ ۱۴۱",
+      "source": "https://ganjoor.net/moulavi/shams/ghazalsh/sh141#bn8",
+      "poem_id": 2765,
+      "id": "f1dcd7bde3ca94d9",
+      "type": "verse"
+    },
+    {
+      "text": "هر که تأمل نکند در جواب\nبیشتر آید سخنش ناصواب",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۳۵",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh35#bn7",
+      "poem_id": 41510,
+      "id": "c2e82e6597a00f36",
+      "type": "verse"
+    },
+    {
+      "text": "از هرچه می‌رود، سخنِ دوست خوش‌تر است\nپیغام آشنا، نفَسِ روح‌پرور است",
+      "author": "سعدی",
+      "work": "دیوان اشعار",
+      "section": "غزل شمارهٔ  ۶۳",
+      "source": "https://ganjoor.net/saadi/divan/ghazals/sh63#bn1",
+      "poem_id": 9385,
+      "id": "5455f43969e07d2f",
+      "type": "verse"
+    },
+    {
+      "text": "عدو را به جای خَسَک زر بریز\nکه احسان کُنَد کُنْد، دندانِ تیز",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۳۳ - گفتار اندر رای و تدبیر ملک و لشکرکشی",
+      "source": "https://ganjoor.net/saadi/boostan/bab1/sh33#bn4",
+      "poem_id": 10247,
+      "id": "c56e3e63d5b816fe",
+      "type": "verse"
+    },
+    {
+      "text": "مستمع صاحب سخن را بر سر کار آورد\nغنچهٔ خاموش، بلبل را به گفتار آورد",
+      "author": "صائب",
+      "work": "دیوان اشعار",
+      "section": "تک‌بیت شمارهٔ ۶۸۵",
+      "source": "https://ganjoor.net/saeb/divan-saeb/takbeit/sh685#bn1",
+      "poem_id": 32303,
+      "id": "2318cd0f8d1318fb",
+      "type": "verse"
+    },
+    {
+      "text": "پادشه باید که تا به حدی خشم بر دشمنان نراند که دوستان را اعتماد نماند.",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۲۰",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh20#bn1",
+      "poem_id": 41493,
+      "id": "8d4bdf2fbcba9aee",
+      "type": "prose"
+    },
+    {
+      "text": "کآن به نابینایی از راه اوفتاد\nوین دو چشمش بود و در چاه اوفتاد",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۶۰",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh60#bn3",
+      "poem_id": 41535,
+      "id": "c7d1dc54383f2020",
+      "type": "verse"
+    },
+    {
+      "text": "گر او را هرم دست خدمت ببست\nتو را بر کرم همچنان دست هست",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۱ - سر‌آغاز",
+      "source": "https://ganjoor.net/saadi/boostan/bab1/sh1#bn56",
+      "poem_id": 10215,
+      "id": "c39df2f2374137b4",
+      "type": "verse"
+    },
+    {
+      "text": "از تن بی‌دل طاعت نیاید و پوست بی‌مغز را بضاعت نشاید.",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۳۹",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh39#bn1",
+      "poem_id": 41514,
+      "id": "254b4cdc2bb1cee6",
+      "type": "prose"
+    },
+    {
+      "text": "گدا گر تواضع کند خوی اوست\nز گردن فرازان تواضع نکوست",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۴ - مدح ابوبکر بن سعد بن زنگی",
+      "source": "https://ganjoor.net/saadi/boostan/niyayesh/sh4#bn13",
+      "poem_id": 10212,
+      "id": "d7df403368171a93",
+      "type": "verse"
+    },
+    {
+      "text": "از او تا هنرها یقینت نشد\nدر ایوان شاهی قرینت نشد",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۲ - حکایت در تدبیر و تأخیر در سیاست",
+      "source": "https://ganjoor.net/saadi/boostan/bab1/sh2#bn62",
+      "poem_id": 10216,
+      "id": "c547495b0633304f",
+      "type": "verse"
+    },
+    {
+      "text": "نیاید به نزدیک دانا پسند\nشبان خفته و گرگ درد گوسفند",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۱ - سر‌آغاز",
+      "source": "https://ganjoor.net/saadi/boostan/bab1/sh1#bn4",
+      "poem_id": 10215,
+      "id": "7e336a4ec5c466b0",
+      "type": "verse"
+    },
+    {
+      "text": "مکن جور بر خردکان ای پسر\nکه یک روزت افتد بزرگی به سر",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۲۲ - در نواخت رعیت و رحمت بر افتادگان",
+      "source": "https://ganjoor.net/saadi/boostan/bab1/sh22#bn4",
+      "poem_id": 10236,
+      "id": "5d6204bee2ff77df",
+      "type": "verse"
+    },
+    {
+      "text": "دشمن چو بینی ناتوان لاف از بروت خود مزن\nمغزیست در هر استخوان مردیست در هر پیرهن",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۱۵",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh15#bn2",
+      "poem_id": 41488,
+      "id": "8cf36ec85ecc9f00",
+      "type": "verse"
+    },
+    {
+      "text": "هر که نادان ساخت خود را پیش او دانا شود\nور بر او دانش فروشد غیرتش نادان کند",
+      "author": "مولانا",
+      "work": "دیوان شمس",
+      "section": "غزل شمارهٔ ۷۲۹",
+      "source": "https://ganjoor.net/moulavi/shams/ghazalsh/sh729#bn15",
+      "poem_id": 3353,
+      "id": "83e0189a5568cd9e",
+      "type": "verse"
+    },
+    {
+      "text": "دل است، ای خردمند، زندان راز\nچو گفتی نیاید به زنجیر باز",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۲ - حکایت در تدبیر و تأخیر در سیاست",
+      "source": "https://ganjoor.net/saadi/boostan/bab1/sh2#bn65",
+      "poem_id": 10216,
+      "id": "60a9a865d4c10080",
+      "type": "verse"
+    },
+    {
+      "text": "که دستی به جود و کرم کن دراز\nدگر دست کوته کن از ظلم و آز",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۲۵ - در تغیر روزگار و انتقال مملکت",
+      "source": "https://ganjoor.net/saadi/boostan/bab1/sh25#bn12",
+      "poem_id": 10239,
+      "id": "dbe1a1a642384a22",
+      "type": "verse"
+    },
+    {
+      "text": "چون صدف هر کس که شد افتادگان را دستگیر\nچون نباشد در میان، نیکی به فرزندش کنند",
+      "author": "صائب",
+      "work": "دیوان اشعار",
+      "section": "غزل شمارهٔ ۲۵۹۱",
+      "source": "https://ganjoor.net/saeb/divan-saeb/ghazalkasa/sh2591#bn8",
+      "poem_id": 54789,
+      "id": "697d8f55c0e92727",
+      "type": "verse"
+    },
+    {
+      "text": "همه کس به میدان کوشش درند\nولی گوی بخشش نه هر کس برند",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۳۲ - حکایت در معنی خاموشی از نصیحت کسی که پند نپذیرد",
+      "source": "https://ganjoor.net/saadi/boostan/bab1/sh32#bn16",
+      "poem_id": 10246,
+      "id": "0cca9d0634f5cff2",
+      "type": "verse"
+    },
+    {
+      "text": "با مردم سهل خوی دشخوار مگوی\nبا آن که در صلح زند جنگ مجوی",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۱۴",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh14#bn2",
+      "poem_id": 41486,
+      "id": "f62d6d85cc7dc2ef",
+      "type": "verse"
+    },
+    {
+      "text": "ملوک ار نکو نامی اندوختند\nز پیشینگان سیرت آموختند",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۴ - مدح ابوبکر بن سعد بن زنگی",
+      "source": "https://ganjoor.net/saadi/boostan/niyayesh/sh4#bn26",
+      "poem_id": 10212,
+      "id": "2b4e4883277c76a3",
+      "type": "verse"
+    },
+    {
+      "text": "صبوری کن مکن تیزی ز شمس الدین تبریزی\nبشر خسپی ملک خیزی که او شاهیست بس مفضل",
+      "author": "مولانا",
+      "work": "دیوان شمس",
+      "section": "غزل شمارهٔ ۱۳۴۰",
+      "source": "https://ganjoor.net/moulavi/shams/ghazalsh/sh1340#bn13",
+      "poem_id": 3964,
+      "id": "6e71b7574e68c9bf",
+      "type": "verse"
+    },
+    {
+      "text": "خبرش ده که هیچ دولت و جاه\nبه سرای دگر نخواهد یافت",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۷۰",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh70#bn3",
+      "poem_id": 41545,
+      "id": "c8010a4a183f0809",
+      "type": "verse"
+    },
+    {
+      "text": "چو زنهار خواهد کرم پیشه کن\nببخشای و از مکرش اندیشه کن",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۳۳ - گفتار اندر رای و تدبیر ملک و لشکرکشی",
+      "source": "https://ganjoor.net/saadi/boostan/bab1/sh33#bn23",
+      "poem_id": 10247,
+      "id": "45b002e5f6b35197",
+      "type": "verse"
+    },
+    {
+      "text": "هر که نصیحتِ خودرای می‌کند، او خود به نصیحتگری محتاج است.",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۲۷",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh27#bn1",
+      "poem_id": 41502,
+      "id": "179e8a7a100f05e6",
+      "type": "prose"
+    },
+    {
+      "text": "سمندِ بادپای از تک فرو ماند\nشتربان هم‌چنان آهسته می‌راند",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۳۴",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh34#bn3",
+      "poem_id": 41509,
+      "id": "ed5ae101d2b10b4c",
+      "type": "verse"
+    },
+    {
+      "text": "خرابی و بدنامی آید ز جور\nرسد پیش‌بین این سخن را به غور",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۱ - سر‌آغاز",
+      "source": "https://ganjoor.net/saadi/boostan/bab1/sh1#bn18",
+      "poem_id": 10215,
+      "id": "ae981e7799aaa41b",
+      "type": "verse"
+    },
+    {
+      "text": "ببخش ای پسر کآدمی زاده صید\nبه احسان توان کرد و، وحشی به قید",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۱۵ - گفتار اندر ثمره جوانمردی",
+      "source": "https://ganjoor.net/saadi/boostan/bab2/sh15#bn1",
+      "poem_id": 10270,
+      "id": "89169293d840f965",
+      "type": "verse"
+    },
+    {
+      "text": "ور ایدون که دشوارت آمد سخن\nدگر هر چه دشوارت آید مکن",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۲۸ - حکایت پادشاه غور با روستایی",
+      "source": "https://ganjoor.net/saadi/boostan/bab1/sh28#bn51",
+      "poem_id": 10242,
+      "id": "77311ad29569282f",
+      "type": "verse"
+    },
+    {
+      "text": "گفتا: برو چو خاک تحمل کن ای فقیه\nیا هر چه خوانده‌ای همه در زیر خاک کن",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۲۰",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh20#bn5",
+      "poem_id": 41493,
+      "id": "fe40235d5e0fde09",
+      "type": "verse"
+    },
+    {
+      "text": "آبگینه همه جا یابی از آن قدرش نیست\nلعل دشخوار به دست آید از آن است عزیز",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۳۳",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh33#bn6",
+      "poem_id": 41508,
+      "id": "19cf312d1515d280",
+      "type": "verse"
+    },
+    {
+      "text": "علم چندان که بیشتر خوانی\nچون عمل در تو نیست نادانی",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۳",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh3#bn2",
+      "poem_id": 41475,
+      "id": "224afa92f29a7a62",
+      "type": "verse"
+    },
+    {
+      "text": "فریب شمع چو پروانه خورده ام بسیار\nمرا به چرب زبانی شکار نتوان کرد",
+      "author": "صائب",
+      "work": "دیوان اشعار",
+      "section": "غزل شمارهٔ ۳۷۸۱",
+      "source": "https://ganjoor.net/saeb/divan-saeb/ghazalkasa/sh3781#bn5",
+      "poem_id": 55979,
+      "id": "b34ec12f25b648ed",
+      "type": "verse"
+    },
+    {
+      "text": "نگنجد کرمهای حق در قیاس\nچه خدمت گزارد زبان سپاس؟",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۵ - مدح محمد بن سعد بن ابوبکر",
+      "source": "https://ganjoor.net/saadi/boostan/niyayesh/sh5#bn16",
+      "poem_id": 10213,
+      "id": "8f0e10ea568825af",
+      "type": "verse"
+    },
+    {
+      "text": "به رَنج اَندر آری تَنَت را رَواست\nکه خود رَنج بُردن به دانش سِزاست",
+      "author": "فردوسی",
+      "work": "شاهنامه",
+      "section": "بخش ۴ - گفتار اَندر آفرینشِ مَردُم",
+      "source": "https://ganjoor.net/ferdousi/shahname/aghaz/sh4#bn10",
+      "poem_id": 1324,
+      "id": "392cd9ed18c158a4",
+      "type": "verse"
+    },
+    {
+      "text": "حسود از نعمت حق بخیل است و بندهٔ بی گناه را دشمن می‌دارد.",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۷۱",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh71#bn1",
+      "poem_id": 41546,
+      "id": "b16fc3eef80348b0",
+      "type": "prose"
+    },
+    {
+      "text": "حال درماندگان کسی داند\nکه به احوال خویش در ماند",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۶۳",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh63#bn5",
+      "poem_id": 41538,
+      "id": "61072b9d1d3e6692",
+      "type": "verse"
+    },
+    {
+      "text": "نسیم ناامیدی بد ورق گرداندنی دارد\nمکن نومید از درگاه خود امیدواران را",
+      "author": "صائب",
+      "work": "دیوان اشعار",
+      "section": "تک‌بیت شمارهٔ ۱۹۲",
+      "source": "https://ganjoor.net/saeb/divan-saeb/takbeit/sh192#bn1",
+      "poem_id": 31810,
+      "id": "4b79a70e9d397e3f",
+      "type": "verse"
+    },
+    {
+      "text": "ای که بر مرکب تازنده سواری هش دار\nکه خر خارکش مسکین در آب و گل است",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۶۳",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh63#bn6",
+      "poem_id": 41538,
+      "id": "0eadda4159bed0e4",
+      "type": "verse"
+    },
+    {
+      "text": "غبار حادثه در خلوتش ندارد راه\nدلی که آینه دانش ردای درویشی است",
+      "author": "صائب",
+      "work": "دیوان اشعار",
+      "section": "غزل شمارهٔ ۱۷۶۷",
+      "source": "https://ganjoor.net/saeb/divan-saeb/ghazalkasa/sh1767#bn7",
+      "poem_id": 53964,
+      "id": "eb3d6a2158ebfc44",
+      "type": "verse"
+    },
+    {
+      "text": "کرم کن، نه پرخاش و کین‌آوری\nکه عالم به زیر نگین آوری",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۴۱ - گفتار اندر پوشیدن راز خویش",
+      "source": "https://ganjoor.net/saadi/boostan/bab1/sh41#bn6",
+      "poem_id": 10255,
+      "id": "5011983853185a02",
+      "type": "verse"
+    },
+    {
+      "text": "مرا هرآینه خاموش بودن اولی‌تر\nکه جهل پیش خردمند، عذرِ نادان است",
+      "author": "سعدی",
+      "work": "دیوان اشعار",
+      "section": "غزل شمارهٔ  ۸۲",
+      "source": "https://ganjoor.net/saadi/divan/ghazals/sh82#bn10",
+      "poem_id": 9404,
+      "id": "79350c71d1f14994",
+      "type": "verse"
+    },
+    {
+      "text": "دانش ناقص نداند فرق را\nلاجرم خورشید داند برق را",
+      "author": "مولانا",
+      "work": "مثنوی معنوی",
+      "section": "بخش ۳۱ - ظاهر شدن فضل و زیرکی لقمان پیش امتحان کنندگان",
+      "source": "https://ganjoor.net/moulavi/masnavi/daftar2/sh31#bn26",
+      "poem_id": 8095,
+      "id": "1010905d836b39a3",
+      "type": "verse"
+    },
+    {
+      "text": "خرد، گر سخن، برگزیند همی\nهمان را گزیند که بیند همی",
+      "author": "فردوسی",
+      "work": "شاهنامه",
+      "section": "بخش ۱ - آغاز کتاب",
+      "source": "https://ganjoor.net/ferdousi/shahname/aghaz/sh1#bn8",
+      "poem_id": 1321,
+      "id": "b36070756c074aea",
+      "type": "verse"
+    },
+    {
+      "text": "نه مَر خویشتن را فُزونی نَهد\nنه یکباره تَن در مَذلت دَهد",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۱۸",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh18#bn4",
+      "poem_id": 41491,
+      "id": "210686d2970f9a37",
+      "type": "verse"
+    },
+    {
+      "text": "تمیز باید و تدبیر و عقل و آن‌گه مُلک\nکه مُلک و دولتِ نادان سلاح جنگ خداست",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۵۶",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh56#bn2",
+      "poem_id": 41531,
+      "id": "f200d188e2a5a10c",
+      "type": "verse"
+    },
+    {
+      "text": "هست امید زیستن از بام چرخ افتاده را\nوای بر آن کس کز اوج اعتبار افتاده است",
+      "author": "صائب",
+      "work": "دیوان اشعار",
+      "section": "تک‌بیت شمارهٔ ۴۱۶",
+      "source": "https://ganjoor.net/saeb/divan-saeb/takbeit/sh416#bn1",
+      "poem_id": 32034,
+      "id": "99b61d28087e2144",
+      "type": "verse"
+    },
+    {
+      "text": "گر جور شکم نیستی، هیچ مرغ در دام صیاد نیوفتادی بلکه صیاد خود دام ننهادی.",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۴۷",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh47#bn1",
+      "poem_id": 41522,
+      "id": "1738ade8debe15be",
+      "type": "prose"
+    },
+    {
+      "text": "علم از بهر دین پروردن است نه از بهر دنیا خوردن.",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۴",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh4#bn1",
+      "poem_id": 41476,
+      "id": "badf818e0cc33ef9",
+      "type": "prose"
+    },
+    {
+      "text": "مردمان را عیب نهانی پیدا مکن که مر ایشان را رسوا کنی و خود را بی اعتماد.",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۳۸",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh38#bn1",
+      "poem_id": 41513,
+      "id": "2a8c91fa034bd655",
+      "type": "prose"
+    },
+    {
+      "text": "چو در تنگدستی نداری شکیب\nنگه‌دار وقت فراخی حسیب",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۶ - حکایت ممسک و فرزند ناخلف",
+      "source": "https://ganjoor.net/saadi/boostan/bab2/sh6#bn7",
+      "poem_id": 10261,
+      "id": "c8cf445481438ce9",
+      "type": "verse"
+    },
+    {
+      "text": "هنر بنمای اگر داری نه گوهر\nگُل از خار است و ابراهیم از آزر",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۵۳",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh53#bn3",
+      "poem_id": 41528,
+      "id": "294ee16914188d2e",
+      "type": "verse"
+    },
+    {
+      "text": "به نزد من آن کس نکوخواه توست\nکه گوید فلان خار در راه توست",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۲۹ - حکایت مأمون با کنیزک",
+      "source": "https://ganjoor.net/saadi/boostan/bab1/sh29#bn16",
+      "poem_id": 10243,
+      "id": "7950234312fcb9ce",
+      "type": "verse"
+    },
+    {
+      "text": "صوفی و کنج خلوت، سعدی و طرْف صحرا\nصاحب هنر نگیرد، بر بی‌هنر بهانه",
+      "author": "سعدی",
+      "work": "دیوان اشعار",
+      "section": "غزل شمارهٔ  ۴۹۵",
+      "source": "https://ganjoor.net/saadi/divan/ghazals/sh495#bn8",
+      "poem_id": 9817,
+      "id": "6fa80695ff28331d",
+      "type": "verse"
+    },
+    {
+      "text": "هر آن سری که در سر داری با دوست در میان منه چه دانی که وقتی دشمن گردد و هر گزندی که توانی، به دشمن مرسان که باشد که وقتی دوست شود.",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۱۰",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh10#bn1",
+      "poem_id": 41482,
+      "id": "55cde908ff8835f6",
+      "type": "prose"
+    },
+    {
+      "text": "همه کس را عقلِ خود به کمال نماید و فرزندِ خود به جمال.",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۳۰",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh30#bn1",
+      "poem_id": 41505,
+      "id": "4ba994e154b28e48",
+      "type": "prose"
+    },
+    {
+      "text": "یوسف صدیق علیه السلام در خشکسال مصر سیر نخوردی تا گرسنگان فراموش نکند.",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۶۳",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh63#bn3",
+      "poem_id": 41538,
+      "id": "9a0a2c16daec2c43",
+      "type": "prose"
+    },
+    {
+      "text": "به همت برآر از ستیهنده شور\nکه بازوی همت به از دست زور",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۱۲ - گفتار اندر نگه داشتن خاطر درویشان",
+      "source": "https://ganjoor.net/saadi/boostan/bab1/sh12#bn10",
+      "poem_id": 10226,
+      "id": "36f186e5940ae45e",
+      "type": "verse"
+    },
+    {
+      "text": "زِ هَر دانشی چون سخن بِشنَوی\nاز آموختن یِک زَمان نَغنَوی",
+      "author": "فردوسی",
+      "work": "شاهنامه",
+      "section": "بخش ۲ - ستایشِ خرد",
+      "source": "https://ganjoor.net/ferdousi/shahname/aghaz/sh2#bn18",
+      "poem_id": 1322,
+      "id": "6f0930b5c181bd44",
+      "type": "verse"
+    },
+    {
+      "text": "نِگَه کُن سَرانجامِ خود را ببین\nچو کاری بیابی اَز این بِه گُزین",
+      "author": "فردوسی",
+      "work": "شاهنامه",
+      "section": "بخش ۴ - گفتار اَندر آفرینشِ مَردُم",
+      "source": "https://ganjoor.net/ferdousi/shahname/aghaz/sh4#bn9",
+      "poem_id": 1324,
+      "id": "f6d2c8d1d92a6f68",
+      "type": "verse"
+    },
+    {
+      "text": "به است از دد انسان صاحب خرد\nنه انسان که در مردم افتد چو دد",
+      "author": "سعدی",
+      "work": "بوستان",
+      "section": "بخش ۱۹ - گفتار اندر نکوکاری و بدکاری و عاقبت آنها",
+      "source": "https://ganjoor.net/saadi/boostan/bab1/sh19#bn7",
+      "poem_id": 10233,
+      "id": "2a9e3eaf66326626",
+      "type": "verse"
+    },
+    {
+      "text": "هر سر موی تو از غفلت به راهی می‌رود\nجمع کن پیش از گذشتن کاروان خویش را",
+      "author": "صائب",
+      "work": "دیوان اشعار",
+      "section": "تک‌بیت شمارهٔ ۷۶",
+      "source": "https://ganjoor.net/saeb/divan-saeb/takbeit/sh76#bn1",
+      "poem_id": 31694,
+      "id": "3cacae1678ce5728",
+      "type": "verse"
+    },
+    {
+      "text": "هنر بیار و زبان آوری مکن سعدی\nچه حاجت است بگوید شکر که شیرینم",
+      "author": "سعدی",
+      "work": "دیوان اشعار",
+      "section": "غزل شمارهٔ  ۴۲۴",
+      "source": "https://ganjoor.net/saadi/divan/ghazals/sh424#bn12",
+      "poem_id": 9746,
+      "id": "f29174e3c5b83b2a",
+      "type": "verse"
+    },
+    {
+      "text": "از صبوری در گشاد کارها بگزین کلید\nبر نیاید هیچ قفل محکمی با این کلید",
+      "author": "صائب",
+      "work": "دیوان اشعار",
+      "section": "غزل شمارهٔ ۲۷۸۰",
+      "source": "https://ganjoor.net/saeb/divan-saeb/ghazalkasa/sh2780#bn1",
+      "poem_id": 54978,
+      "id": "6d0f01b5c25785b9",
+      "type": "verse"
+    },
+    {
+      "text": "شرط عقل است صبر تیرانداز\nکه چو رفت از کمان نیاید باز",
+      "author": "سعدی",
+      "work": "گلستان",
+      "section": "حکمت شمارهٔ ۵۰",
+      "source": "https://ganjoor.net/saadi/golestan/gbab8/sh50#bn3",
+      "poem_id": 41525,
+      "id": "f850f71d95dbe70e",
+      "type": "verse"
+    }
+  ]
+}
