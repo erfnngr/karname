@@ -37,3 +37,30 @@ SCHEMAS.update({
 })
 next(f for f in SCHEMAS['tax_case']['fields'] if f['key']=='tax_type')['choices'].append('بیمه کارکنان')
 SCHEMAS['tax_case']['fields'].extend([F('insurance_workshop','کد کارگاهی بیمه'),F('insured_names','اسامی بیمه‌شدگان ماه؛ هر خط یک نفر','multiline')])
+SCHEMAS['insurance_workshop']=dict(label='کارگاه بیمه',area='finance',fields=[
+ F('title','نام کارگاه',required=True),F('workshop_code','کد کارگاه',required=True),
+ F('employer_name','نام کارفرما'),F('national_id','شناسه ملی شرکت'),
+ F('branch','شعبه تأمین اجتماعی'),F('address','نشانی','multiline'),F('contact','اطلاعات تماس'),
+ F('contract_row','ردیف پیمان'),F('workshop_type','نوع کارگاه'),
+ F('labor_law','وضعیت شمول قانون کار','choice',False,['نامشخص','مشمول','غیرمشمول']),
+ F('unemployment','وضعیت بیمه بیکاری','choice',False,['نامشخص','مشمول','غیرمشمول']),
+ F('wage_type','نوع دستمزد','choice',False,['نامشخص','عادی','مقطوع','طبقه‌بندی مشاغل']),
+ F('hard_work','وضعیت مشاغل سخت و زیان‌آور','choice',False,['نامشخص','احراز نشده','احراز شده']),
+ F('exemptions','مجوزها و معافیت‌های قابل بررسی','multiline'),F('notes','توضیحات','multiline')])
+SCHEMAS['insurance_employee']=dict(label='اطلاعات بیمه‌ای کارمند',area='finance',fields=[
+ F('title','عنوان پرونده',required=True),F('employee_id','کارمند مرتبط',required=True),F('workshop_id','کارگاه مرتبط',required=True),
+ F('national_id','کد ملی'),F('insurance_number','شماره بیمه'),F('birth_certificate','شماره شناسنامه'),
+ F('father_name','نام پدر'),F('birth_date','تاریخ تولد شمسی','date'),F('issue_place','محل صدور'),
+ F('gender','جنسیت','choice',False,['نامشخص','زن','مرد']),F('nationality','تابعیت'),
+ F('job_title','عنوان شغلی'),F('job_code','کد شغلی'),F('start_date','شروع همکاری','date'),F('end_date','پایان همکاری','date'),
+ F('employment_type','نوع همکاری'),F('insurance_status','وضعیت بیمه'),F('seniority_basis','سابقه قابل بررسی سنوات'),
+ F('marital_status','وضعیت تأهل','choice',False,['نامشخص','مجرد','متأهل']),F('marital_changed','تاریخ تغییر تأهل','date'),
+ F('exemptions','معافیت‌ها و مدارک','multiline'),F('notes','توضیحات','multiline')])
+SCHEMAS['insurance_list']=dict(label='پیش‌نویس لیست بیمه ماهانه',area='finance',fields=[
+ F('title','عنوان',required=True),F('workshop_id','کارگاه',required=True),F('period','ماه شمسی',required=True),
+ F('list_no','شماره لیست',required=True),F('list_type','نوع لیست'),F('notes','توضیحات','multiline')])
+SCHEMAS['insurance_rules']=dict(label='نسخه قواعد بیمه',area='finance',fields=[
+ F('title','عنوان',required=True),F('rules_version','شناسه نسخه',required=True),F('source','منبع و شماره بخشنامه',required=True),
+ F('effective_from','اعتبار از','date',True),F('effective_to','اعتبار تا','date',True),
+ F('worker_rate','درصد کارمند',required=True),F('employer_rate','درصد کارفرما',required=True),F('unemployment_rate','درصد بیکاری',required=True),
+ F('minimum_daily','حداقل روزانه ریال',required=True),F('maximum_daily','حداکثر روزانه ریال',required=True),F('approved','تأیید اعتبار قواعد','bool')])

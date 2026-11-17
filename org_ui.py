@@ -17,9 +17,9 @@ def action(title,key,fn):
 class Result(QObject):done=Signal(object,object)
 
 class RecordDialog(QDialog):
-    def __init__(self,parent,kind,record=None):
+    def __init__(self,parent,kind,record=None,company_id=None):
         super().__init__(parent);self.panel=parent;self.kind=kind;self.record=record;self.widgets={};self.setWindowTitle(('ویرایش ' if record else 'افزودن ')+parent.kind.itemText(parent.kind.findData(kind)));self.resize(650,690)
-        root=QVBoxLayout(self);area=QScrollArea();area.setWidgetResizable(True);body=QWidget();form=QFormLayout(body);area.setWidget(body);root.addWidget(area);p=record['payload'] if record else {}
+        root=QVBoxLayout(self);area=QScrollArea();area.setWidgetResizable(True);body=QWidget();form=QFormLayout(body);area.setWidget(body);root.addWidget(area);p=record['payload'] if record else {};target_company=company_id or parent.company.currentData()
         fields=SCHEMAS[kind]['fields'] if kind in SCHEMAS else [dict(key='title',label='عنوان',type='text',required=True),dict(key='notes',label='توضیحات',type='multiline')]
         if kind=='task':
             fields=[dict(key=k,label=l,type=t,choices=c,required=k in ('title','due_date')) for k,l,t,c in [('title','عنوان','text',[]),('due_date','موعد شمسی','date',[]),('estimate_hours','زمان برآوردی؛ ساعت','number',[]),('status','وضعیت','choice',list(STATUSES)),('assignee_id','مسئول انجام','user',[]),('reviewer_id','مسئول تأیید','user',[]),('substitute_id','جانشین','user',[]),('category','بخش','choice',['مالیات','بیمه','سایر']),('department','واحد','text',[]),('private','فقط برای خودم','bool',[]),('require_approval','تأیید مسئول الزامی','bool',[]),('require_evidence','مدرک الزامی','bool',[]),('reference','شماره رسید / پیگیری','text',[]),('deadline_source','منبع موعد','text',[]),('dependencies','پیش‌نیازها','dependencies',[]),('checklist','چک‌لیست؛ هر خط یک مورد، انجام با [x]','multiline',[]),('notes','شرح کار','multiline',[])]]
@@ -30,16 +30,18 @@ class RecordDialog(QDialog):
             if k=='form_id':t='form'
             if k=='client_id':t='client'
             if k=='contract_id':t='contract'
-            if t in ('choice','user','rate','form','client','contract'):
+            if self.kind=='insurance_employee' and k=='employee_id':t='employee'
+            if self.kind=='insurance_employee' and k=='workshop_id':t='insurance_workshop'
+            if t in ('choice','user','rate','form','client','contract','employee','insurance_workshop'):
                 w=QComboBox();w.addItem('—','')
                 if t=='choice':
                     for choice in f.get('choices',[]):w.addItem(STATUSES.get(choice,{'pending':'منتظر بررسی','approved':'تأیید','rejected':'رد / اصلاح','imported':'واردشده','needs_review':'بررسی لازم','overdue':'تأخیر در موعد','review':'انتظار تأیید','attachment':'رسیدن مدرک'}.get(choice,choice)),choice)
                 elif t=='user':
                     for person in parent.people:
-                        if person['global_role']=='group_admin' or any(m['company_id']==parent.company.currentData() for m in person['memberships']):w.addItem(person['fullname'],person['id'])
+                        if person['global_role']=='group_admin' or any(m['company_id']==target_company for m in person['memberships']):w.addItem(person['fullname'],person['id'])
                 else:
                     for r in parent.records:
-                        if r['kind']==t and r['company_id']==parent.company.currentData():w.addItem(r['title'],r['id'])
+                        if r['kind']==t and r['company_id']==target_company:w.addItem(r['title'],r['id'])
                 w.setCurrentIndex(max(0,w.findData(value)))
             elif t=='bool':
                 w=QCheckBox();w.setChecked(bool(record.get('private') if record and k=='private' else value if value!='' else k=='require_approval'))
@@ -78,7 +80,7 @@ class RecordDialog(QDialog):
         try:
             p=copy.deepcopy(self.record['payload']) if self.record else {}
             for k,(w,t) in self.widgets.items():
-                p[k]=w.isChecked() if t=='bool' else w.currentData() if t in ('choice','user','rate','form','client','contract') else w.toPlainText() if t=='multiline' else (w.currentData() if w.currentIndex()>=0 and w.currentText()==w.itemText(w.currentIndex()) else w.currentText()) if t=='dependencies' else w.text().strip()
+                p[k]=w.isChecked() if t=='bool' else w.currentData() if t in ('choice','user','rate','form','client','contract','employee','insurance_workshop') else w.toPlainText() if t=='multiline' else (w.currentData() if w.currentIndex()>=0 and w.currentText()==w.itemText(w.currentIndex()) else w.currentText()) if t=='dependencies' else w.text().strip()
             if self.kind=='form_response' and self.answer_widgets:p['answers']=json.dumps({k:w.text() for k,w in self.answer_widgets.items()},ensure_ascii=False)
             if self.kind=='task':
                 p['dependencies']=[x.strip() for x in (p['dependencies'] or '').split(',') if x.strip()];p['checklist']=[dict(text=line.strip().removeprefix('[x]').removeprefix('[X]').removeprefix('[ ]').strip(),done=line.strip().lower().startswith('[x]')) for line in p['checklist'].splitlines() if line.strip()]

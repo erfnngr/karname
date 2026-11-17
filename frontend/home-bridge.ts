@@ -74,6 +74,7 @@ export type HomeState = {
     density: 'compact' | 'comfortable' | 'spacious';
   };
   today: { jalali: string; gregorian: string; weekday: string };
+  mini_calendar?: {title:string;offset:number;days:{day:number;label:string;date:string;today:boolean;holiday:boolean;has_events:boolean}[]} | null;
   permissions: {
     calendar: boolean;
     calendar_create: boolean;

@@ -273,6 +273,68 @@ class TaxCenter(QWidget):
                 result=request_wait(self.owner,'records',dict(kind='tax_case',company=state['company_id'],id=state['id'],version=state['version'],payload=p));state.update(result);self.owner.org.sync();show_step()
             except Exception as exc:QMessageBox.warning(d,'ذخیره مرحله',str(exc))
         button.clicked.connect(advance);back.clicked.connect(undo);show_step();d.exec()
+    def insurance_workshops(self):
+        if not self.company_permitted() or not self.owner.org.client:
+            QMessageBox.information(self,'کارگاه‌های بیمه','اتصال به مرکز شرکت و دسترسی مالیات لازم است.');return
+        from org_ui import RecordDialog
+        from personalization_ui import request_wait
+        company=self.company.currentData();org=self.owner.org
+        rows=[r for r in org.records if r.get('kind')=='insurance_workshop' and r.get('company_id')==company]
+        d=QDialog(self);d.setWindowTitle('کارگاه‌های بیمه · '+self.company.currentText());d.resize(720,480);v=QVBoxLayout(d)
+        note=QLabel('اطلاعات هر کارگاه و ردیف پیمان جداگانه و در شرکت انتخاب‌شده ذخیره می‌شود. وضعیت‌ها باید براساس مدارک کارگاه بررسی شوند.');note.setWordWrap(True);v.addWidget(note)
+        table=QTableWidget(0,4);table.setHorizontalHeaderLabels(['نام کارگاه','کد کارگاه','ردیف پیمان','شعبه']);table.horizontalHeader().setSectionResizeMode(0,QHeaderView.Stretch);table.setSelectionBehavior(QAbstractItemView.SelectRows);table.setEditTriggers(QAbstractItemView.NoEditTriggers);v.addWidget(table)
+        def refresh():
+            table.setRowCount(len(rows))
+            for i,r in enumerate(rows):
+                pl=r['payload']
+                for col,key in enumerate(('title','workshop_code','contract_row','branch')):table.setItem(i,col,QTableWidgetItem(str(pl.get(key,''))))
+        def edit(index=None):
+            if not self.company_permitted('edit' if index is not None else 'create'):return
+            record=rows[index] if index is not None and 0<=index<len(rows) else None
+            form=RecordDialog(org,'insurance_workshop',record);form.setWindowTitle('ویرایش کارگاه بیمه' if record else 'ثبت کارگاه بیمه')
+            if form.exec()!=QDialog.Accepted:return
+            try:
+                result=request_wait(self.owner,'records',dict(kind='insurance_workshop',company=company,id=record['id'] if record else None,version=record['version'] if record else None,payload=form.payload))
+                if record:rows[index]=result
+                else:rows.append(result)
+                refresh();org.sync()
+            except Exception as exc:QMessageBox.warning(d,'ذخیره کارگاه',str(exc))
+        controls=QHBoxLayout();v.addLayout(controls)
+        add=QPushButton('افزودن کارگاه');add.setEnabled(self.company_permitted('create'));add.clicked.connect(lambda:edit());controls.addWidget(add)
+        change=QPushButton('ویرایش کارگاه انتخاب‌شده');change.setEnabled(self.company_permitted('edit'));change.clicked.connect(lambda:edit(table.currentRow()) if table.currentRow()>=0 else None);controls.addWidget(change)
+        refresh();d.exec()
+    def insurance_employee_profiles(self):
+        company=self.company.currentData();org=self.owner.org;actor=self.owner.session_user
+        if not org.client or not actor or not self.company_permitted() or not company_allowed(actor,company,'payroll','view'):
+            QMessageBox.information(self,'اطلاعات بیمه‌ای کارکنان','اتصال مرکز و دسترسی مالیات و حقوق برای این شرکت لازم است.');return
+        from org_ui import RecordDialog
+        from personalization_ui import request_wait
+        rows=[r for r in org.records if r.get('kind')=='insurance_employee' and r.get('company_id')==company]
+        d=QDialog(self);d.setWindowTitle('اطلاعات بیمه‌ای کارکنان · '+self.company.currentText());d.resize(730,480);v=QVBoxLayout(d)
+        note=QLabel('هر پرونده به یک کارمند و کارگاه همین شرکت متصل است. شناسه‌ها با صفرهای ابتدایی نگهداری می‌شوند.');note.setWordWrap(True);v.addWidget(note)
+        table=QTableWidget(0,3);table.setHorizontalHeaderLabels(['پرونده','کارمند','کارگاه']);table.horizontalHeader().setSectionResizeMode(0,QHeaderView.Stretch);table.setSelectionBehavior(QAbstractItemView.SelectRows);table.setEditTriggers(QAbstractItemView.NoEditTriggers);v.addWidget(table)
+        def refresh():
+            names={r['id']:r['title'] for r in org.records if r.get('company_id')==company and r.get('kind') in ('employee','insurance_workshop')}
+            table.setRowCount(len(rows))
+            for i,r in enumerate(rows):
+                pl=r['payload']
+                for col,value in enumerate((r['title'],names.get(pl.get('employee_id'),'غیرقابل مشاهده'),names.get(pl.get('workshop_id'),'غیرقابل مشاهده'))):table.setItem(i,col,QTableWidgetItem(str(value)))
+        def edit(index=None):
+            if not company_allowed(actor,company,'payroll','create'):return
+            record=rows[index] if index is not None and 0<=index<len(rows) else None
+            form=RecordDialog(org,'insurance_employee',record,company_id=company);form.setWindowTitle('ویرایش اطلاعات بیمه‌ای' if record else 'ثبت اطلاعات بیمه‌ای')
+            if record:form.widgets['employee_id'][0].setEnabled(False)
+            if form.exec()!=QDialog.Accepted:return
+            try:
+                result=request_wait(self.owner,'records',dict(kind='insurance_employee',company=company,id=record['id'] if record else None,version=record['version'] if record else None,payload=form.payload))
+                if record:rows[index]=result
+                else:rows.append(result)
+                refresh();org.sync()
+            except Exception as exc:QMessageBox.warning(d,'ذخیره اطلاعات بیمه‌ای',str(exc))
+        controls=QHBoxLayout();v.addLayout(controls)
+        add=QPushButton('افزودن پرونده');add.setEnabled(company_allowed(actor,company,'payroll','create'));add.clicked.connect(lambda:edit());controls.addWidget(add)
+        change=QPushButton('ویرایش پرونده انتخاب‌شده');change.setEnabled(company_allowed(actor,company,'payroll','create'));change.clicked.connect(lambda:edit(table.currentRow()) if table.currentRow()>=0 else None);controls.addWidget(change)
+        refresh();d.exec()
     def insured_people(self):
         record=self.selected()
         if not record or not self.company_permitted():return

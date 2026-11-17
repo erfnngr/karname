@@ -18,6 +18,7 @@ import {
 } from "lucide-react";
 import { connectAppearance } from "./appearance";
 import HowItWorks from "./components/ui/how-it-works";
+import { InsurancePreview } from "./InsurancePreview";
 
 type TaxCaseSummary = { id: string; label: string };
 type TaxCaseDetail = {
@@ -105,6 +106,7 @@ export function TaxView() {
     null
   );
   const [toolsOpen, setToolsOpen] = useState(false);
+  const [insurancePreviewOpen, setInsurancePreviewOpen] = useState(false);
 
   // Inline VAT invoice comparison state inside step modal
   const [compareOpen, setCompareOpen] = useState(false);
@@ -143,6 +145,9 @@ export function TaxView() {
           "case_details",
           "case_review",
           "insured_people",
+          "insurance_workshops",
+          "insurance_employee_profiles",
+          "insurance_lists",
         ].includes(action)
           ? 1800000
           : 60000;
@@ -792,6 +797,27 @@ export function TaxView() {
                   </button>
                 )}
 
+                {state.category === "بیمه کارکنان" && (
+                  <>
+                    <button type="button" onClick={() => void run("insurance_workshops")} disabled={busyAction !== null}
+                      className="glass-pill rounded-xl px-3 py-2 text-xs font-medium text-foreground disabled:opacity-50">
+                      کارگاه‌های بیمه
+                    </button>
+                    <button type="button" onClick={() => void run("insurance_employee_profiles")} disabled={busyAction !== null}
+                      className="glass-pill rounded-xl px-3 py-2 text-xs font-medium text-foreground disabled:opacity-50">
+                      اطلاعات بیمه‌ای کارکنان
+                    </button>
+                    <button type="button" onClick={() => void run("insurance_lists")} disabled={busyAction !== null}
+                      className="glass-pill rounded-xl px-3 py-2 text-xs font-medium text-foreground disabled:opacity-50">
+                      لیست‌های ماهانه بیمه
+                    </button>
+                    <button type="button" onClick={() => setInsurancePreviewOpen(v => !v)}
+                      className="glass-pill rounded-xl px-3 py-2 text-xs font-medium text-foreground">
+                      محاسبه آزمایشی بیمه
+                    </button>
+                  </>
+                )}
+
                 {state.category === "ارزش افزوده" && (
                   <button
                     type="button"
@@ -813,6 +839,10 @@ export function TaxView() {
                   <span>درگاه رسمی</span>
                 </button>
               </div>
+
+              {state.category === "بیمه کارکنان" && insurancePreviewOpen && (
+                <InsurancePreview calculate={(values) => call<Record<string, number | string>>("insurance_calculate", values)} />
+              )}
 
               {/* Inline VAT Invoice Comparison tool */}
               {compareOpen && state.category === "ارزش افزوده" && (

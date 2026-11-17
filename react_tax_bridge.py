@@ -73,6 +73,16 @@ class ReactTaxBridge(QObject):
             elif action=='insured_people' and not data and p.company_permitted():
                 if not p.select_map_case_row():raise ValueError('ابتدا پرونده را انتخاب کنید.')
                 p.insured_people()
+            elif action=='insurance_workshops' and not data and p.company_permitted() and p.workflow.currentText()=='بیمه کارکنان':
+                p.insurance_workshops()
+            elif action=='insurance_employee_profiles' and not data and p.company_permitted() and p.workflow.currentText()=='بیمه کارکنان':
+                p.insurance_employee_profiles()
+            elif action=='insurance_lists' and not data and p.company_permitted() and p.workflow.currentText()=='بیمه کارکنان':
+                from insurance_monthly_ui import show_insurance_lists
+                show_insurance_lists(p)
+            elif action=='insurance_calculate' and p.company_permitted() and p.workflow.currentText()=='بیمه کارکنان':
+                from insurance_preview import calculate_preview
+                value=calculate_preview(data)
             elif action=='open_portal' and not data and p.company_permitted():
                 category=p.workflow.currentText()
                 url='https://es.tamin.ir/' if category=='بیمه کارکنان' else 'https://tp.tax.gov.ir/' if category=='سامانه مؤدیان' else 'https://my.tax.gov.ir/'

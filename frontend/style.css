@@ -178,6 +178,13 @@ button, input, textarea, select {
   background-color: var(--color-background);
   transition: background-color 180ms ease;
 }
+.sea-home-shell [class*="backdrop-blur"] {
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+@media (prefers-reduced-motion: reduce) {
+  .sea-home-shell *, .sea-home-shell::before { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
 .home-no-scroll {
   height: 100%;
   overflow: hidden;
@@ -204,7 +211,7 @@ button, input, textarea, select {
   position: fixed;
   inset: 0;
   z-index: -2;
-  background-image: url('./ocean.png');
+  background-image: url('/ocean.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

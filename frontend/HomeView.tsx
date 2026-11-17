@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import { HomeMiniCalendar } from './HomeMiniCalendar';
+import React, { useEffect, useState, useRef } from 'react';
 import {
   ArrowUpRight,
   CheckCircle2,
@@ -16,7 +17,7 @@ import {
   WeatherGlyph,
   themeWashStyle,
 } from './HomeSkins';
-import { instantToggleAppearance } from './appearance';
+import { instantToggleAppearance, reconcileAppearance } from './appearance';
 import { HomeState, homeRequest, onHomeState } from './home-bridge';
 
 function faNumber(num: number): string {
@@ -26,6 +27,7 @@ function faNumber(num: number): string {
 
 export function HomeView() {
   const [state, setState] = useState<HomeState | null>(null);
+  const toggleInFlight = useRef(false);
   const [optimisticDark, setOptimisticDark] = useState<boolean | null>(null);
   const [weatherDetailsOpen, setWeatherDetailsOpen] = useState(false);
   const [error, setError] = useState('');
@@ -33,7 +35,7 @@ export function HomeView() {
   useEffect(() => {
     return onHomeState((nextState) => {
       setState(nextState);
-      setOptimisticDark(null);
+      setOptimisticDark(current => current !== null && (nextState.theme === 'dark') === current ? null : current);
     });
   }, []);
 
@@ -67,11 +69,17 @@ export function HomeView() {
   };
 
   const handleToggleDark = () => {
+    if (toggleInFlight.current) return;
+    toggleInFlight.current = true;
     const nextDark = !dark;
     setOptimisticDark(nextDark);
     instantToggleAppearance(nextDark);
-    setState((prev) => (prev ? { ...prev, theme: nextDark ? 'dark' : 'light' } : prev));
-    void act('toggle_theme').finally(() => setOptimisticDark(null));
+    setError('');
+    void homeRequest('toggle_theme').catch((e: Error) => {
+      setOptimisticDark(null);
+      instantToggleAppearance(!nextDark);
+      setError(e.message);
+    }).finally(() => { toggleInFlight.current = false; setOptimisticDark(null); reconcileAppearance(); });
   };
 
   const presetCardRadius =
@@ -144,7 +152,7 @@ export function HomeView() {
           {showWeather && (
             <section
               aria-label="آب‌وهوای تهران"
-              className={`${spanCls} rounded-2xl border ${presetCardFrame} bg-[var(--glass-bg)] ${padCls} flex flex-col justify-between gap-2.5 backdrop-blur-lg transition-colors duration-200 min-h-0`}
+              className={`${spanCls} rounded-2xl border ${presetCardFrame} bg-[var(--glass-bg)] ${padCls} flex flex-col gap-2.5 overflow-y-auto backdrop-blur-lg transition-colors duration-200 min-h-0`}
               style={{ boxShadow: 'var(--glass-shadow)', borderRadius: presetCardRadius }}
             >
               <WeatherForecastCompact
@@ -169,7 +177,7 @@ export function HomeView() {
           {showToday && (
           <section
             aria-label="امروز"
-            className={`${spanCls} rounded-2xl border ${presetCardFrame} bg-[var(--glass-bg)] ${padCls} flex flex-col justify-between gap-2.5 backdrop-blur-lg transition-colors duration-200 min-h-0`}
+            className={`${spanCls} rounded-2xl border ${presetCardFrame} bg-[var(--glass-bg)] ${padCls} flex flex-col gap-2.5 overflow-y-auto backdrop-blur-lg transition-colors duration-200 min-h-0`}
             style={{ boxShadow: 'var(--glass-shadow)', borderRadius: presetCardRadius }}
           >
             <div className="flex items-start justify-between gap-2 pb-2 border-b border-[var(--color-border)]">
@@ -189,6 +197,8 @@ export function HomeView() {
                 </button>
               )}
             </div>
+
+            <HomeMiniCalendar state={state} act={act} />
 
             {cards.has('activity_stats') && state.activity.allowed && (
               <div className="grid grid-cols-3 gap-2 text-center">

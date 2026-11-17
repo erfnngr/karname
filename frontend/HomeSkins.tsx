@@ -1,3 +1,4 @@
+import { HomeMiniCalendar } from './HomeMiniCalendar';
 import React, { useState } from 'react';
 import {
   Bot,
@@ -260,6 +261,9 @@ export function WeatherForecastCompact({
 }) {
   const [tab, setTab] = useState<'hourly' | 'weekly'>('hourly');
   const w = state.weather;
+  const hourlyAvailable = !!w.show_hourly && !!w.hours?.length;
+  const weeklyAvailable = !!w.show_weekly && !!w.days?.length;
+  const activeTab = tab === 'hourly' && !hourlyAvailable && weeklyAvailable ? 'weekly' : tab === 'weekly' && !weeklyAvailable && hourlyAvailable ? 'hourly' : tab;
   if (!w.enabled) return null;
 
   return (
@@ -326,14 +330,15 @@ export function WeatherForecastCompact({
             </div>
           </div>
 
-          {interactiveToggle && (w.hours?.length || w.days?.length) ? (
+          {interactiveToggle && (hourlyAvailable || weeklyAvailable) ? (
             <div className="flex flex-col gap-2">
               <div className="inline-flex self-start rounded-full bg-[var(--color-background)] border border-[var(--color-border)] p-0.5 text-[11px]">
                 <button
                   type="button"
                   onClick={() => setTab('hourly')}
-                  className={`px-3 py-1 rounded-full cursor-pointer transition font-semibold ${
-                    tab === 'hourly'
+                  disabled={!hourlyAvailable}
+                  className={`px-3 py-1 rounded-full cursor-pointer transition font-semibold disabled:opacity-40 disabled:cursor-not-allowed ${
+                    activeTab === 'hourly'
                       ? 'bg-sky-500 text-white'
                       : 'text-[var(--color-muted-foreground)]'
                   }`}
@@ -343,8 +348,9 @@ export function WeatherForecastCompact({
                 <button
                   type="button"
                   onClick={() => setTab('weekly')}
-                  className={`px-3 py-1 rounded-full cursor-pointer transition font-semibold ${
-                    tab === 'weekly'
+                  disabled={!weeklyAvailable}
+                  className={`px-3 py-1 rounded-full cursor-pointer transition font-semibold disabled:opacity-40 disabled:cursor-not-allowed ${
+                    activeTab === 'weekly'
                       ? 'bg-emerald-500 text-white'
                       : 'text-[var(--color-muted-foreground)]'
                   }`}
@@ -352,7 +358,7 @@ export function WeatherForecastCompact({
                   هفتگی
                 </button>
               </div>
-              {tab === 'hourly' && w.show_hourly && (w.hours?.length ?? 0) > 0 && (
+              {activeTab === 'hourly' && w.show_hourly && (w.hours?.length ?? 0) > 0 && (
                 <div className="flex gap-1.5 overflow-x-auto pb-1">
                   {w.hours!.slice(0, 10).map((h, idx) => (
                     <div
@@ -366,7 +372,7 @@ export function WeatherForecastCompact({
                   ))}
                 </div>
               )}
-              {tab === 'weekly' && w.show_weekly && (w.days?.length ?? 0) > 0 && (
+              {activeTab === 'weekly' && w.show_weekly && (w.days?.length ?? 0) > 0 && (
                 <div className="flex flex-col gap-1">
                   {w.days!.slice(0, 4).map((d, idx) => (
                     <div
@@ -483,7 +489,7 @@ export function AiDailyBriefingCard({
     <section
       data-ai-briefing="true"
       aria-label="خلاصه هوشمند امروز"
-      className={`rounded-2xl border bg-[var(--glass-bg)] text-[var(--color-foreground)] p-3.5 flex flex-col justify-between gap-2.5 backdrop-blur-lg transition-colors duration-150 min-w-0 min-h-0 ${cardClass}`}
+      className={`rounded-2xl border bg-[var(--glass-bg)] text-[var(--color-foreground)] p-3.5 flex flex-col gap-2.5 overflow-y-auto backdrop-blur-lg transition-colors duration-150 min-w-0 min-h-0 ${cardClass}`}
       style={cardStyle}
     >
       <div className="flex flex-wrap items-center justify-between gap-2">
@@ -499,7 +505,7 @@ export function AiDailyBriefingCard({
         </span>
       </div>
 
-      <p className="text-xs leading-6 rounded-xl border border-[var(--color-border)] bg-[var(--color-background)]/80 px-3 py-2 text-[var(--color-foreground)] line-clamp-3">
+      <p className="text-xs leading-6 rounded-xl border border-[var(--color-border)] bg-[var(--color-background)]/80 px-3 py-2 text-[var(--color-foreground)]">
         {briefing?.summary || `امروز ${state.today.weekday} ${state.today.jalali} است و برنامه کاری شما آماده است.`}
       </p>
 
@@ -513,7 +519,7 @@ export function AiDailyBriefingCard({
               <span className="mt-0.5">{bulletIcon(b.type)}</span>
               <div className="min-w-0 flex-1">
                 <div className="text-[11px] font-bold truncate">{b.title}</div>
-                <div className="text-[10px] text-[var(--color-muted-foreground)] leading-4 truncate">
+                <div className="text-[10px] text-[var(--color-muted-foreground)] leading-4 break-words">
                   {b.detail}
                 </div>
               </div>
@@ -642,7 +648,7 @@ export function CommandBentoLayout({
               <div className="grid grid-cols-1 md:grid-cols-2 gap-1.5">
                 {state.reminders.length === 0 ? (
                   <div className="text-[11px] leading-5 text-[var(--color-muted-foreground)]">
-                    امروز یادآوری ثبت نشده است.
+                    برای امروز یادآور باز وجود ندارد.
                   </div>
                 ) : (
                   state.reminders.slice(0, 2).map((r, i) => (
@@ -663,7 +669,7 @@ export function CommandBentoLayout({
         </div>
 
         {/* Left 4 Cols in RTL: Weather Cockpit + Quick Status + Daily Quote Bento */}
-        <div className="lg:col-span-4 flex flex-col justify-between gap-2.5 min-w-0 min-h-0">
+        <div className="lg:col-span-4 flex flex-col gap-2.5 min-w-0 min-h-0 overflow-y-auto">
           {cards.has('weather') && state.weather.enabled && (
             <section
               aria-label="آب‌وهوای تهران"
@@ -677,6 +683,8 @@ export function CommandBentoLayout({
               />
             </section>
           )}
+
+          <HomeMiniCalendar state={state} act={act} />
 
           {cards.has('today_reminders') && (
             <section

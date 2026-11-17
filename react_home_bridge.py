@@ -1,11 +1,11 @@
 """Adapter between the React Home dashboard and existing Python/Qt services."""
-from datetime import date, datetime
+from datetime import date, datetime, timedelta, timezone
 import json
 import jdatetime
 from PySide6.QtCore import QObject, QTimer, Signal, Slot
 from occasions import on_date as occasions_on_date
 from quotes import daily_quote
-from storage import due_on, fa, jformat, today_j
+from storage import due_on, fa, jformat, today_j, jalali_date, month_last_day, MONTHS, parse_j
 from ui_permissions import allowed
 from weather import weather_kind
 from weather_ui import measurement_caption
@@ -122,7 +122,7 @@ class ReactHomeBridge(QObject):
             ws.changed.connect(self.publish)
             ws.comparison_changed.connect(self.publish)
         self.timer = QTimer(self)
-        self.timer.setInterval(2500)
+        self.timer.setInterval(5000)
         self.timer.timeout.connect(self._tick)
         self.timer.start()
 
@@ -231,10 +231,11 @@ class ReactHomeBridge(QObject):
 
         reminders = []
         reminders_total = 0
+        calendar_events = owner.display_events() if cal_allowed else []
         if cal_allowed:
-            due = [e for e in owner.display_events() if due_on(e, g_today)]
+            due = [e for e in calendar_events if due_on(e, g_today)]
             reminders_total = len(due)
-            for item in due[:8]:
+            for item in due:
                 reminders.append({
                     'title': str(item.get('title', '')),
                     'company': str(item.get('company', 'شخصی') or 'شخصی'),
@@ -256,6 +257,18 @@ class ReactHomeBridge(QObject):
             snap = getattr(getattr(owner, 'workspace', None), 'snapshot', None) or {}
             tasks = snap.get('tasks', [])
             meetings = snap.get('meetings', [])
+            meeting_label = ''
+            if meetings:
+                meeting = meetings[0]
+                meeting_label = str(meeting.get('title', '')[:48])
+                try:
+                    at = datetime.fromisoformat(str(meeting.get('at', '')).replace('Z', '+00:00'))
+                    if at.tzinfo is not None:
+                        local = at.astimezone(timezone(timedelta(hours=3, minutes=30)))
+                        jd = jdatetime.date.fromgregorian(date=local.date())
+                        meeting_label += ' · ' + fa(jformat(jd)) + ' ' + fa(local.strftime('%H:%M'))
+                except (ValueError, TypeError):
+                    pass
             overdue = sum(t.get('overdue', False) and t.get('mine', False) for t in tasks)
             review = sum(t.get('review', False) for t in tasks)
             requests = sum(r.get('can_review', False) for r in snap.get('requests', []))
@@ -268,7 +281,7 @@ class ReactHomeBridge(QObject):
                 'requests_fa': fa(requests),
                 'total': len(tasks),
                 'total_fa': fa(len(tasks)),
-                'next_meeting': str(meetings[0].get('title', '')[:48]) if meetings else '',
+                'next_meeting': meeting_label,
             })
 
         quote_state = {'enabled': False}
@@ -330,6 +343,7 @@ class ReactHomeBridge(QObject):
             occasions=occasions,
             weather_payload=weather_payload,
             first_name=greeting['first_name'],
+            calendar_allowed=cal_allowed,
         )
         saved_cards = prefs.get('home_cards')
         if isinstance(saved_cards, list):
@@ -360,6 +374,7 @@ class ReactHomeBridge(QObject):
                 'gregorian': g_today.isoformat(),
                 'weekday': str(weekday),
             },
+            'mini_calendar': self._mini_calendar(today, calendar_events) if cal_allowed else None,
             'permissions': {
                 'calendar': cal_allowed,
                 'calendar_create': bool(cal_allowed and allowed(owner, 'calendar', 'create')),
@@ -368,7 +383,7 @@ class ReactHomeBridge(QObject):
                 'settings': settings_allowed,
                 'settings_edit': bool(settings_allowed and allowed(owner, 'settings', 'edit')),
             },
-            'reminders': reminders,
+            'reminders': reminders[:8],
             'reminders_total': reminders_total,
             'reminders_total_fa': fa(reminders_total),
             'occasions': occasions,
@@ -383,7 +398,25 @@ class ReactHomeBridge(QObject):
             'home_skin': self._home_skin(settings),
         }
 
-    def _build_briefing(self, *, today, weekday, reminders, reminders_total, activity, occasions, weather_payload, first_name='دوست عزیز'):
+    def _mini_calendar(self, today, events):
+        # Recompute recurrence markers only when the month or event data changes.
+        from iran_calendar import day_off
+        key = (today.year, today.month, today.day, json.dumps(events, ensure_ascii=False, sort_keys=True, default=str))
+        if key == getattr(self, '_mini_key', None):
+            return self._mini_value
+        first = jalali_date(today.year, today.month, 1).togregorian()
+        offset = (first.weekday() + 2) % 7
+        cells = []
+        for day in range(1, month_last_day(today.year, today.month) + 1):
+            gd = first + timedelta(days=day-1)
+            cells.append({'day': day, 'label': fa(day), 'date': f'{today.year:04d}/{today.month:02d}/{day:02d}',
+                          'today': day == today.day, 'holiday': bool(day_off(gd)),
+                          'has_events': any(due_on(event, gd) for event in events)})
+        self._mini_key = key
+        self._mini_value = {'title': MONTHS[today.month-1]+' '+fa(today.year), 'offset': offset, 'days': cells}
+        return self._mini_value
+
+    def _build_briefing(self, *, today, weekday, reminders, reminders_total, activity, occasions, weather_payload, first_name='دوست عزیز', calendar_allowed=True):
         owner = self.panel.owner
         bullets = []
         parts = []
@@ -398,8 +431,8 @@ class ReactHomeBridge(QObject):
             )
             parts.append(rem_text)
             bullets.append({'type': 'reminder', 'title': 'یادآورهای امروز', 'detail': rem_text})
-        else:
-            parts.append('امروز یادآور معوق یا سررسید فوری در تقویم ندارید.')
+        elif calendar_allowed:
+            parts.append('برای امروز یادآور باز وجود ندارد.')
 
         if activity.get('allowed'):
             overdue = int(activity.get('overdue') or 0)
@@ -454,10 +487,12 @@ class ReactHomeBridge(QObject):
             parts.append(f'مناسبت امروز: {occ_detail}.')
             bullets.append({'type': 'occasion', 'title': 'مناسبت روز', 'detail': occ_detail})
 
+        priority = {'birthday': 0, 'reminder': 1, 'work': 2, 'occasion': 3, 'weather': 4}
+        bullets.sort(key=lambda item: priority.get(item['type'], 5))
         summary = f'{first_name} عزیز، امروز {weekday} {jformat(today)}، ' + ' '.join(parts)
         return {
             'summary': summary,
-            'ai_powered': True,
+            'ai_powered': False,
             'bullets': bullets[:3],
         }
 
@@ -501,6 +536,13 @@ class ReactHomeBridge(QObject):
                 if key not in owner.modules or not allowed(owner, key):
                     raise ValueError('دسترسی به این بخش مجاز نیست.')
                 owner.tabs.setCurrentWidget(owner.modules[key])
+            elif action == 'open_calendar_day' and set(data) == {'date'} and isinstance(data['date'], str):
+                if not allowed(owner, 'calendar'):
+                    raise ValueError('دسترسی به تقویم مجاز نیست.')
+                selected = parse_j(data['date'])
+                owner.year, owner.month = selected.year, selected.month
+                owner.selected_changed(selected)
+                owner.tabs.setCurrentWidget(owner.modules['calendar'])
             elif action == 'open_assistant_prompt' and set(data) == {'prompt'} and isinstance(data['prompt'], str):
                 if not allowed(owner, 'assistant', 'use'):
                     raise ValueError('دسترسی به دستیار هوشمند مجاز نیست.')
@@ -526,7 +568,8 @@ class ReactHomeBridge(QObject):
                 owner.settings()
             elif action == 'toggle_theme' and not data:
                 from navigation_shortcuts import toggle_theme
-                toggle_theme(owner)
+                if not toggle_theme(owner):
+                    raise ValueError('تغییر حالت انجام نشد؛ تنظیمات و دسترسی را بررسی کنید.')
                 self.last = ''
                 self.publish()
             elif action == 'open_quote_source' and not data:

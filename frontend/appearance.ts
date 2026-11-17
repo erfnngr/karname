@@ -2,8 +2,18 @@ type Appearance={changed:{connect:(fn:(raw:string)=>void)=>void};current:(fn:(ra
 
 const modeVarCache:Record<string,Record<string,string>>={};
 let activePresetKey='default';
+let optimisticMode:boolean|null=null;
+let optimisticUntil=0;
+let reconcileCurrent:(()=>void)|null=null;
+
+export function reconcileAppearance(){
+  optimisticMode=null;
+  reconcileCurrent?.();
+}
 
 export function instantToggleAppearance(nextDark:boolean){
+  optimisticMode=nextDark;
+  optimisticUntil=Date.now()+2000;
   const root=document.documentElement;
   root.classList.toggle('dark',nextDark);
   root.style.colorScheme=nextDark?'dark':'light';
@@ -25,6 +35,8 @@ export function connectAppearance(native?:Appearance){
       const value=JSON.parse(raw);
       const root=document.documentElement;
       const dark=!!value.dark;
+      if(optimisticMode!==null && Date.now()<optimisticUntil && dark!==optimisticMode)return;
+      optimisticMode=null;
       root.classList.toggle('dark',dark);
       root.style.colorScheme=dark?'dark':'light';
 
@@ -117,5 +129,6 @@ export function connectAppearance(native?:Appearance){
     }
   };
   native.changed.connect(apply);
+  reconcileCurrent=()=>native.current(apply);
   native.current(apply);
 }
