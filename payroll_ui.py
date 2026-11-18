@@ -4,13 +4,26 @@ from pathlib import Path
 from PySide6.QtCore import Qt,QMarginsF,QSizeF
 from PySide6.QtGui import QPdfWriter,QPageSize,QPageLayout,QTextDocument,QFont
 from PySide6.QtWidgets import (QWidget,QVBoxLayout,QHBoxLayout,QFormLayout,QLineEdit,QComboBox,QLabel,QPushButton,QFrame,QDialog,QDialogButtonBox,QTableWidget,QTableWidgetItem,QCheckBox,QMessageBox,QFileDialog,QGridLayout,QScrollArea)
-from storage import fa,today_j,jformat
+from storage import fa,today_j,jformat,normalize
 from payroll import compute_payroll
 from ui_icons import iconize
 
 DEFAULTS=dict(base='0',days='30',period_days='30',hours_base='220',overtime_hours='0',overtime_factor='1.4',night_hours='0',night_factor='0.35',housing='0',food='0',children='0',seniority='0',bonus='0',insurance_basis='0',worker_rate='7',employer_rate='23',insurance_override=False,tax_override=False,tax_basis='0',tax_deduction='0',tax_exemption='0',tax_rate='0',tax_amount='0',tax_mode='manual',advance='0',loan='0',other_deductions='0',brackets=[],unit='ریال',name='',code='',company='',period='')
 DEFAULTS.update(spouse='0',transport='0',lunch='0',commission='0',other_benefits='0',father_name='',birth_certificate='',birth_date='',education='',employment_date='',employment_type='',department='',cost_center='',job_title='',previous_job='',workplace='',job_group='',grade='',order_type='',order_description='',order_date='',effective_date='',signer='')
 LABELS=dict(wage='حقوق کارکرد',overtime='اضافه‌کاری',night='شب‌کاری',benefits='جمع مزایا',gross='حقوق ناخالص',insurance='بیمه سهم فرد',company_insurance='بیمه سهم کارفرما',tax='مالیات',deductions='سایر کسورات',net='خالص پرداختی',employer_cost='هزینه کارفرما')
+
+def payroll_identity(p):
+    company=normalize(str(p.get('company',''))).strip().casefold()
+    code=normalize(str(p.get('code',''))).strip()
+    name=normalize(str(p.get('name',''))).strip().casefold()
+    return (company,('code',code) if code else ('name',name),normalize(str(p.get('period',''))).strip())
+
+def payroll_period_key(p):
+    from storage import parse_j
+    try:
+        date=parse_j(normalize(str(p.get('period',''))).strip().replace('-','/')+'/01')
+        return (date.year,date.month)
+    except ValueError:return (0,0)
 
 def payroll_pdf(path,p,result):
     esc=lambda s:html.escape(str(s));money=lambda x:fa(f'{x:,.0f}')+' '+p.get('unit','ریال')
@@ -106,16 +119,17 @@ class PayrollPanel(QWidget):
     def load_person_defaults(self):
         code=self.fields['code'].text().strip();company=self.fields['company'].text().strip();period=self.fields['period'].text()
         if not code or not company:QMessageBox.information(self,'بازیابی اطلاعات','ابتدا شرکت و شماره پرسنلی را وارد کنید.');return
-        matches=[x for x in self.owner.data.get('payroll_slips',[]) if x.get('code','').strip()==code and x.get('company','').strip()==company]
+        identity=payroll_identity(dict(code=code,company=company))[:2]
+        matches=[x for x in self.owner.data.get('payroll_slips',[]) if payroll_identity(x)[:2]==identity]
         if not matches:QMessageBox.information(self,'بازیابی اطلاعات','فیش ذخیره‌شده‌ای برای این فرد و شرکت پیدا نشد.');return
-        self.p=dict(DEFAULTS,**copy.deepcopy(matches[-1]));self.p['period']=period
+        matches.sort(key=payroll_period_key);self.p=dict(DEFAULTS,**copy.deepcopy(matches[-1]));self.p['period']=period
         for key,widget in self.fields.items():widget.setText(str(self.p.get(key,'')))
         self.unit.setCurrentText(self.p['unit']);self.compute()
     def save_slip(self):
         if self.current is None:return
         p=self.values()
         if not p['name'].strip():QMessageBox.warning(self,'حقوق','نام فرد را وارد کنید.');return
-        self.owner.data['payroll_current']=p;slips=self.owner.data.setdefault('payroll_slips',[]);key=(p['name'],p['period']);slips[:]=[x for x in slips if (x['name'],x['period'])!=key];slips.append(copy.deepcopy(p));self.owner.persist();self.saved.blockSignals(True);self.saved.clear();self.saved.addItem('فیش‌های ذخیره‌شده',None)
+        self.owner.data['payroll_current']=p;slips=self.owner.data.setdefault('payroll_slips',[]);key=payroll_identity(p);slips[:]=[x for x in slips if payroll_identity(x)!=key];slips.append(copy.deepcopy(p));self.owner.persist();self.saved.blockSignals(True);self.saved.clear();self.saved.addItem('فیش‌های ذخیره‌شده',None)
         for x in slips:self.saved.addItem(x['name']+' | '+x['period'],x)
         self.saved.blockSignals(False);self.owner.statusBar().showMessage('فیش ذخیره شد.',5000)
     def load_slip(self):

@@ -54,7 +54,7 @@ class PayrollBatchPanel(QWidget):
         if d.exec():
             self.defaults=d.p
             for p in self.slips:
-                for k in ('housing','food','children','seniority','bonus','hours_base','overtime_factor','worker_rate','employer_rate','insurance_override','insurance_basis','tax_mode','tax_exemption','tax_rate','tax_deduction','brackets'):p[k]=copy.deepcopy(d.p[k])
+                for k in ('housing','food','children','seniority','bonus','spouse','transport','lunch','commission','other_benefits','hours_base','overtime_factor','worker_rate','employer_rate','insurance_override','insurance_basis','tax_mode','tax_exemption','tax_rate','tax_deduction','brackets'):p[k]=copy.deepcopy(d.p[k])
             self.draw()
     def person_options(self):
         i=self.table.currentRow()
