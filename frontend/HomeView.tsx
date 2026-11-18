@@ -147,12 +147,12 @@ export function HomeView() {
         <div className={`w-full max-w-[1840px] mx-auto flex-1 min-h-0 flex flex-col justify-between ${gapCls}`}>
         <SeaWelcomeHero state={state} dark={dark} />
         {/* Main Frosted-Glass Home Grid (Zero Vertical Scroll) */}
-        <div className={`grid grid-cols-1 lg:grid-cols-12 ${gapCls} items-stretch flex-1 min-h-0`}>
+        <div className={`grid grid-cols-1 lg:grid-cols-12 ${gapCls} items-start flex-1 min-h-0 overflow-y-auto content-start`}>
           {/* Weather Card (Compact Interactive Hourly/Weekly + Details Modal) */}
           {showWeather && (
             <section
               aria-label="آب‌وهوای تهران"
-              className={`${spanCls} rounded-2xl border ${presetCardFrame} bg-[var(--glass-bg)] ${padCls} flex flex-col gap-2.5 overflow-y-auto backdrop-blur-lg transition-colors duration-200 min-h-0`}
+              className={`${spanCls} rounded-2xl border ${presetCardFrame} bg-[var(--glass-bg)] ${padCls} flex flex-col gap-2.5 overflow-y-auto backdrop-blur-lg transition-colors duration-200 min-h-0 max-h-full`}
               style={{ boxShadow: 'var(--glass-shadow)', borderRadius: presetCardRadius }}
             >
               <WeatherForecastCompact
@@ -168,7 +168,7 @@ export function HomeView() {
           {showBriefing && (
             <AiDailyBriefingCard
               state={state}
-              cardClass={`${spanCls} ${presetCardFrame}`}
+              cardClass={`${spanCls} ${presetCardFrame} max-h-full`}
               cardStyle={{ boxShadow: 'var(--glass-shadow)', borderRadius: presetCardRadius }}
             />
           )}
@@ -177,7 +177,7 @@ export function HomeView() {
           {showToday && (
           <section
             aria-label="امروز"
-            className={`${spanCls} rounded-2xl border ${presetCardFrame} bg-[var(--glass-bg)] ${padCls} flex flex-col gap-2.5 overflow-y-auto backdrop-blur-lg transition-colors duration-200 min-h-0`}
+            className={`${spanCls} rounded-2xl border ${presetCardFrame} bg-[var(--glass-bg)] ${padCls} flex flex-col gap-2.5 overflow-y-auto backdrop-blur-lg transition-colors duration-200 min-h-0 max-h-full`}
             style={{ boxShadow: 'var(--glass-shadow)', borderRadius: presetCardRadius }}
           >
             <div className="flex items-start justify-between gap-2 pb-2 border-b border-[var(--color-border)]">

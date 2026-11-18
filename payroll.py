@@ -20,7 +20,7 @@ def compute_payroll(p):
     if not period_days or not divisor or days>period_days or period_days>31 or n('overtime_hours')>744 or factor>10:raise ValueError('کارکرد باید بین صفر و روزهای ماه باشد؛ ساعات مبنا و روزهای ماه بزرگ‌تر از صفر باشند.')
     wage=base*days/period_days;overtime=base/divisor*n('overtime_hours')*factor
     night=base/divisor*n('night_hours')*n('night_factor','0.35')
-    benefits=sum((n(k) for k in ('housing','food','children','seniority','bonus')),Decimal(0))
+    benefits=sum((n(k) for k in ('housing','food','children','seniority','bonus','spouse','transport','lunch','commission','other_benefits')),Decimal(0))
     gross=wage+overtime+night+benefits
     insured=n('insurance_basis') if p.get('insurance_override') else gross
     worker=n('worker_rate','7');employer=n('employer_rate','23')

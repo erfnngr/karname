@@ -369,7 +369,7 @@ export function WeatherForecastCompact({
               </div>
               {w.estimated && <span className="text-[10px] text-[var(--color-muted-foreground)]">پیش‌بینی تخمینی است</span>}
               {activeTab === 'hourly' && w.show_hourly && (w.hours?.length ?? 0) > 0 && (
-                <div className="flex gap-1.5 overflow-x-auto pb-1">
+                <div className="flex gap-1.5 overflow-x-auto pb-1" aria-label="پیش‌بینی ساعتی">
                   {w.hours!.slice(0, 24).map((h, idx) => (
                     <div
                       key={`${h.time}-${idx}`}
@@ -378,6 +378,17 @@ export function WeatherForecastCompact({
                       <span className="text-[10px] text-[var(--color-muted-foreground)]">{h.time}</span>
                       <WeatherGlyph kind={h.kind} className="w-4 h-4" />
                       <span className="font-bold">{h.temp}°</span>
+                    </div>
+                  ))}
+                </div>
+              )}
+              {activeTab === 'hourly' && weeklyAvailable && (
+                <div className="grid grid-cols-3 gap-1.5" aria-label="چند روز آینده">
+                  {w.days!.slice(0, 3).map((day, idx) => (
+                    <div key={`${day.date_fa}-${idx}`} className="min-w-0 rounded-xl border border-[var(--color-border)] bg-[var(--color-background)] px-2 py-2 flex flex-col items-center gap-1 text-[11px]">
+                      <span className="max-w-full truncate text-[var(--color-muted-foreground)]">{day.name}</span>
+                      <WeatherGlyph kind={day.kind} className="w-4 h-4" />
+                      <span className="font-bold" dir="ltr">{day.max}° / {day.min}°</span>
                     </div>
                   ))}
                 </div>

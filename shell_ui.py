@@ -58,6 +58,14 @@ class SidebarController(QObject):
             ac_ss='color:white;font-size:11px;';pt_ss='color:white;padding:5px 10px;font-weight:bold;'
         if getattr(self,'_last_sb_qss',None)!=sb_qss:self._last_sb_qss=sb_qss;self.sidebar.setStyleSheet(sb_qss)
         if getattr(self,'_last_hb_qss',None)!=hb_qss:self._last_hb_qss=hb_qss;self.owner.header_bar.setStyleSheet(hb_qss)
+        # These controls remain visible while the application-wide stylesheet is
+        # deferred for the embedded React view. Give them an immediate local
+        # palette so they cannot retain the previous theme's foreground/background.
+        header_text=sb_text if sb_over else c['text'] if emerald else '#FFFFFF'
+        header_controls=(self.owner.settings_button,self.owner.trash_button,self.owner.help_button)
+        control_css=f'QPushButton {{background:transparent;color:{header_text};border:0;border-radius:8px;}} QPushButton:hover {{background:{c["hover"]};color:{c["text"]};}}'
+        for control in header_controls:control.setStyleSheet(control_css)
+        self.owner.settings_button.setIcon(gear_icon(header_text));self.owner.trash_button.setIcon(symbol('trash',header_text))
         if getattr(self,'_last_ac_ss',None)!=ac_ss:self._last_ac_ss=ac_ss;self.owner.account_name.setStyleSheet(ac_ss)
         if getattr(self,'_last_pt_ss',None)!=pt_ss:self._last_pt_ss=pt_ss;self.owner.page_title.setStyleSheet(pt_ss)
         from PySide6.QtWidgets import QBoxLayout
@@ -94,7 +102,7 @@ def install_shell(o,wrapper,outer,oldbar,gear,help_button):
                 if attempts<50:QTimer.singleShot(200,lambda:fetch_when_ready(attempts+1))
             else:o.workspace.refresh()
         fetch_when_ready()
-    top=QFrame();o.header_bar=top;top.setObjectName('Navigation');top.setLayoutDirection(Qt.LeftToRight);line=QHBoxLayout(top);line.setContentsMargins(8,4,8,4);line.addWidget(gear);o.settings_button=gear;trash=QPushButton();trash.setIcon(symbol('trash','white'));trash.setToolTip('سطل بازیافت');trash.setAccessibleName('سطل بازیافت');trash.clicked.connect(open_trash);line.addWidget(trash);o.trash_button=trash;line.addWidget(help_button);line.addWidget(o.account_badge);line.addStretch();quick=QPushButton('جستجو و فرمان');quick.setToolTip('دسترسی سریع');quick.clicked.connect(lambda:CommandPalette(o).exec());line.addWidget(quick);o.page_title=QLabel('خانه');o.page_title.setStyleSheet('color:white;padding:5px 10px;font-weight:bold;');line.addWidget(o.page_title);outer.addWidget(top)
+    top=QFrame();o.header_bar=top;top.setObjectName('Navigation');top.setLayoutDirection(Qt.LeftToRight);line=QHBoxLayout(top);line.setContentsMargins(8,4,8,4);line.addWidget(gear);o.settings_button=gear;trash=QPushButton();trash.setIcon(symbol('trash','white'));trash.setToolTip('سطل بازیافت');trash.setAccessibleName('سطل بازیافت');trash.clicked.connect(open_trash);line.addWidget(trash);o.trash_button=trash;o.help_button=help_button;line.addWidget(help_button);line.addWidget(o.account_badge);line.addStretch();quick=QPushButton('جستجو و فرمان');quick.setToolTip('دسترسی سریع');quick.clicked.connect(lambda:CommandPalette(o).exec());line.addWidget(quick);o.page_title=QLabel('خانه');o.page_title.setStyleSheet('color:white;padding:5px 10px;font-weight:bold;');line.addWidget(o.page_title);outer.addWidget(top)
     from navigation_shortcuts import toggle_theme,sync_theme
     from liquid_controls import LiquidThemeToggle,LiquidNavEffect,LiquidSidebarEffect,HoverSubmenuController,prepare_glass_menu
     o.theme_button=LiquidThemeToggle();o.theme_button.clicked.connect(lambda:toggle_theme(o));line.insertWidget(2,o.theme_button);sync_theme(o)
@@ -132,6 +140,8 @@ def install_shell(o,wrapper,outer,oldbar,gear,help_button):
         from appearance import menu_stylesheet
         key=o.data['settings'].get('theme_preset','default');dark=o.data['settings'].get('theme')=='dark';c=palette_for(o.data['settings']);fg=accent_foreground(c['accent']);sharp=key in ('orange_grid','paper_ink');rad=2 if sharp else 18 if key in ('blue_cloud','glass_mist','bento_grid') else 9
         header.setStyleSheet('QFrame#ThemeHeader {background:%s;border:0;border-radius:14px;} QWidget#ThemeBrand {background:transparent;} QLabel#ThemeBrandText {background:transparent;color:%s;font-size:20px;font-weight:bold;} QPushButton {color:%s;}'%(c['panel'],c['text'],c['text']));header_gear.setVisible(not gear.isHidden());header_gear.setIcon(gear_icon(c['text']));header_trash.setIcon(symbol('trash',c['text']));header_mode.setVisible(not o.theme_button.isHidden());header_mode.setIcon(symbol('sun' if dark else 'moon',c['text']));header_mode.set_theme_state(dark,palette=c,animate=True)
+        control_css=f'QPushButton {{background:transparent;color:{c["text"]};border:0;border-radius:8px;}} QPushButton:hover {{background:{c["hover"]};color:{c["text"]};}}'
+        for control in (header_gear,header_trash,header_help):control.setStyleSheet(control_css)
         mqss=menu_stylesheet(o.data['settings'])
         for m in (getattr(o,'calendar_menu',None),getattr(o,'services_menu',None),getattr(o,'desk_menu',None)):
             if m is not None:m.setStyleSheet(mqss)
