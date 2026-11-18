@@ -16,7 +16,10 @@ def payroll_identity(p):
     company=normalize(str(p.get('company',''))).strip().casefold()
     code=normalize(str(p.get('code',''))).strip()
     name=normalize(str(p.get('name',''))).strip().casefold()
-    return (company,('code',code) if code else ('name',name),normalize(str(p.get('period',''))).strip())
+    period=normalize(str(p.get('period',''))).strip()
+    year,month=payroll_period_key(p)
+    if year:period=f'{year:04d}/{month:02d}'
+    return (company,('code',code) if code else ('name',name),period)
 
 def payroll_period_key(p):
     from storage import parse_j
