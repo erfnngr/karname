@@ -41,7 +41,7 @@ SCHEMAS['insurance_workshop']=dict(label='کارگاه بیمه',area='finance',
  F('title','نام کارگاه',required=True),F('workshop_code','کد کارگاه',required=True),
  F('employer_name','نام کارفرما'),F('national_id','شناسه ملی شرکت'),
  F('branch','شعبه تأمین اجتماعی'),F('address','نشانی','multiline'),F('contact','اطلاعات تماس'),
- F('contract_row','ردیف پیمان'),F('workshop_type','نوع کارگاه'),
+ F('contract_row','ردیف پیمان'),F('workshop_type','نوع کارگاه'),F('access_users','افراد مجاز کارگاه','user_scope'),
  F('labor_law','وضعیت شمول قانون کار','choice',False,['نامشخص','مشمول','غیرمشمول']),
  F('unemployment','وضعیت بیمه بیکاری','choice',False,['نامشخص','مشمول','غیرمشمول']),
  F('wage_type','نوع دستمزد','choice',False,['نامشخص','عادی','مقطوع','طبقه‌بندی مشاغل']),
@@ -49,8 +49,9 @@ SCHEMAS['insurance_workshop']=dict(label='کارگاه بیمه',area='finance',
  F('exemptions','مجوزها و معافیت‌های قابل بررسی','multiline'),F('notes','توضیحات','multiline')])
 SCHEMAS['insurance_employee']=dict(label='اطلاعات بیمه‌ای کارمند',area='finance',fields=[
  F('title','عنوان پرونده',required=True),F('employee_id','کارمند مرتبط',required=True),F('workshop_id','کارگاه مرتبط',required=True),
+ F('first_name','نام'),F('last_name','نام خانوادگی'),
  F('national_id','کد ملی'),F('insurance_number','شماره بیمه'),F('birth_certificate','شماره شناسنامه'),
- F('father_name','نام پدر'),F('birth_date','تاریخ تولد شمسی','date'),F('issue_place','محل صدور'),
+ F('father_name','نام پدر'),F('birth_date','تاریخ تولد شمسی','date'),F('issue_place','محل صدور'),F('issue_date','تاریخ صدور شناسنامه','date'),
  F('gender','جنسیت','choice',False,['نامشخص','زن','مرد']),F('nationality','تابعیت'),
  F('job_title','عنوان شغلی'),F('job_code','کد شغلی'),F('start_date','شروع همکاری','date'),F('end_date','پایان همکاری','date'),
  F('employment_type','نوع همکاری'),F('insurance_status','وضعیت بیمه'),F('seniority_basis','سابقه قابل بررسی سنوات'),
@@ -64,3 +65,12 @@ SCHEMAS['insurance_rules']=dict(label='نسخه قواعد بیمه',area='finan
  F('effective_from','اعتبار از','date',True),F('effective_to','اعتبار تا','date',True),
  F('worker_rate','درصد کارمند',required=True),F('employer_rate','درصد کارفرما',required=True),F('unemployment_rate','درصد بیکاری',required=True),
  F('minimum_daily','حداقل روزانه ریال',required=True),F('maximum_daily','حداکثر روزانه ریال',required=True),F('approved','تأیید اعتبار قواعد','bool')])
+SCHEMAS['insurance_evidence']=dict(label='پیگیری دستی بیمه',area='finance',fields=[
+ F('title','عنوان',required=True),F('insurance_list_id','لیست مربوط',required=True),F('kind','نوع پیگیری','choice',True,['ارسال دستی','پرداخت دستی']),
+ F('date','تاریخ','date',True),F('reference','شماره پیگیری یا رسید',required=True),F('amount','مبلغ پرداخت ریال'),F('notes','توضیحات','multiline')])
+SCHEMAS['insurance_calculation']=dict(label='محاسبه آزمایشی ثبت‌شده بیمه',area='finance',fields=[
+ F('title','عنوان',required=True),F('insurance_list_id','لیست بیمه',required=True),F('rules_id','نسخه قواعد',required=True)])
+SCHEMAS['insurance_review']=dict(label='بررسی داخلی محاسبه بیمه',area='finance',fields=[
+ F('title','عنوان',required=True),F('calculation_id','محاسبه',required=True),F('notes','توضیح بررسی هشدارها','multiline')])
+SCHEMAS['payroll_confirmation']=dict(label='تأیید داخلی دوره حقوق',area='finance',fields=[
+ F('title','عنوان',required=True),F('payroll_batch_id','دوره حقوق',required=True),F('reference','مرجع یا شماره تأیید حقوق',required=True),F('notes','توضیحات','multiline')])

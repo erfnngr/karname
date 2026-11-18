@@ -26,7 +26,7 @@ def public_record_data(actor,record):
     return result
 
 def record_module(kind):
-    return {'task':'workspace','attendance':'attendance','employee':'attendance','payroll_batch':'payroll','proposal':'news','client':'clients','invoice':'clients','tax_job':'clients','tax_case':'tax','insurance_workshop':'tax','insurance_employee':'payroll','insurance_list':'payroll','insurance_rules':'payroll'}.get(kind,'company')
+    return {'task':'workspace','attendance':'attendance','employee':'attendance','payroll_batch':'payroll','payroll_confirmation':'payroll','proposal':'news','client':'clients','invoice':'clients','tax_job':'clients','tax_case':'tax','insurance_workshop':'tax','insurance_employee':'payroll','insurance_list':'payroll','insurance_rules':'payroll','insurance_evidence':'payroll','insurance_calculation':'payroll','insurance_review':'payroll'}.get(kind,'company')
 
 def record_action(kind,action):
     module=record_module(kind)
@@ -228,6 +228,28 @@ class Store(FinanceStoreMixin,InventoryStoreMixin,WorkspaceStoreMixin,ChatStoreM
         with self.db() as c:row=c.execute('SELECT * FROM records WHERE id=? AND deleted=0',(id,)).fetchone()
         if not row:raise DomainError('پرونده پیدا نشد.',404)
         return dict(row,payload=json.loads(row['payload']))
+    def insurance_workshop_access(self,actor,record):
+        kind=record['kind'];p=record['payload'];company=record['company_id']
+        if kind not in ('insurance_workshop','insurance_employee','insurance_list','insurance_evidence','insurance_calculation','insurance_review'):return True
+        if actor['global_role']=='group_admin' or self.role(actor,company)=='company_manager':return True
+        with self.db() as c:
+            def lookup(id,expected):
+                row=c.execute('SELECT payload FROM records WHERE id=? AND company_id=? AND kind=? AND deleted=0',(id,company,expected)).fetchone()
+                return json.loads(row['payload']) if row else None
+            if kind=='insurance_workshop':workshop=p
+            else:
+                if kind=='insurance_review':
+                    p=lookup(p.get('calculation_id'),'insurance_calculation')
+                    if not p:return False
+                    kind='insurance_calculation'
+                if kind=='insurance_calculation':wid=p.get('draft_snapshot',{}).get('workshop_id')
+                elif kind=='insurance_evidence':
+                    linked=lookup(p.get('insurance_list_id'),'insurance_list');wid=linked.get('workshop_id') if linked else None
+                else:wid=p.get('workshop_id')
+                workshop=lookup(wid,'insurance_workshop')
+            if workshop is None:return False
+            allowed=workshop.get('access_users')
+            return allowed is None or (isinstance(allowed,list) and actor['id'] in allowed)
     def readable(self,actor,record):
         p=record['payload']
         if record['kind']=='notice':
@@ -237,6 +259,7 @@ class Store(FinanceStoreMixin,InventoryStoreMixin,WorkspaceStoreMixin,ChatStoreM
             active=(not p.get('publish_at') or datetime.fromisoformat(p['publish_at']).astimezone(timezone.utc)<=now) and (not p.get('expires_at') or datetime.fromisoformat(p['expires_at']).astimezone(timezone.utc)>=now)
             return active and actor['id'] in p.get('recipients',[]) and (actor['global_role']=='group_admin' or any(self.role(actor,co) for co in p.get('companies',[])))
         if not self.module_permission(actor,record['company_id'],record_module(record['kind']),'view'):return False
+        if not self.insurance_workshop_access(actor,record):return False
         if record['private']:return actor['id']==record['owner_id']
         kind=record['kind'];area=SCHEMAS.get(kind,{}).get('area','work');role=self.role(actor,record['company_id'])
         if not self.permission(actor,record['company_id'],area):return False
@@ -314,6 +337,16 @@ class Store(FinanceStoreMixin,InventoryStoreMixin,WorkspaceStoreMixin,ChatStoreM
             from insurance_rules import normalize_rules
             try:normalize_rules(payload)
             except ValueError as exc:raise DomainError(str(exc)) from exc
+        if kind=='insurance_evidence':
+            from insurance_evidence import normalize_evidence
+            try:normalize_evidence(payload)
+            except ValueError as exc:raise DomainError(str(exc)) from exc
+        if kind=='insurance_calculation':
+            if not isinstance(payload,dict) or set(payload)!={'title','insurance_list_id','rules_id'} or any(not isinstance(v,str) or not v.strip() or len(v)>200 for v in payload.values()):raise DomainError('اطلاعات محاسبه معتبر نیست.')
+        if kind=='insurance_review':
+            if not isinstance(payload,dict) or set(payload)!={'title','calculation_id','notes'} or any(not isinstance(v,str) or len(v)>2000 for v in payload.values()) or not payload['title'].strip() or not payload['calculation_id'].strip():raise DomainError('اطلاعات بررسی معتبر نیست.')
+        if kind=='payroll_confirmation':
+            if not isinstance(payload,dict) or set(payload)!={'title','payroll_batch_id','reference','notes'} or any(not isinstance(v,str) or len(v)>2000 for v in payload.values()) or any(not payload[k].strip() for k in ('title','payroll_batch_id','reference')):raise DomainError('دوره حقوق و مرجع تأیید آن لازم است.')
         from penalties import number
         for field in SCHEMAS[kind]['fields']:
             value=payload.get(field['key'])
@@ -357,6 +390,10 @@ class Store(FinanceStoreMixin,InventoryStoreMixin,WorkspaceStoreMixin,ChatStoreM
             from insurance_rules import normalize_rules
             try:p=normalize_rules(p)
             except ValueError as exc:raise DomainError(str(exc)) from exc
+        if kind=='insurance_evidence':
+            from insurance_evidence import normalize_evidence
+            try:p=normalize_evidence(p)
+            except ValueError as exc:raise DomainError(str(exc)) from exc
         self.validate(kind,p)
         if len(packed(p))>(1000000 if kind=='payroll_batch' else 200000):raise DomainError('متن پرونده بیش از حد بزرگ است.')
         area=SCHEMAS.get(kind,{}).get('area','work')
@@ -390,6 +427,97 @@ class Store(FinanceStoreMixin,InventoryStoreMixin,WorkspaceStoreMixin,ChatStoreM
                 if p['approved']:self.require(self.role(actor,company) in MANAGERS|{'finance'},'تأیید قواعد فقط توسط مدیر یا مسئول مالی مجاز است.')
                 duplicate=any(json.loads(row['payload']).get('rules_version')==p['rules_version'] for row in c.execute("SELECT payload FROM records WHERE company_id=? AND kind='insurance_rules'",(company,)))
                 self.require(not duplicate,'شناسه این نسخه قواعد قبلاً در شرکت ثبت شده است.')
+            if kind=='insurance_evidence':
+                if old:raise DomainError('سابقه پیگیری ثبت‌شده تغییر نمی‌کند؛ سابقه اصلاحی جدید ثبت کنید.',409)
+                linkedrow=c.execute("SELECT * FROM records WHERE id=? AND company_id=? AND kind='insurance_list' AND deleted=0",(p['insurance_list_id'],company)).fetchone()
+                self.require(bool(linkedrow),'لیست بیمه در همین شرکت پیدا نشد.')
+                linked=dict(linkedrow,payload=json.loads(linkedrow['payload']));self.require(self.readable(actor,linked),'دسترسی لیست بیمه لازم است.')
+            if kind=='insurance_calculation':
+                if old:raise DomainError('محاسبه ثبت‌شده قابل تغییر نیست؛ نسخه تازه بسازید.',409)
+                linked=[]
+                for field,expected in (('insurance_list_id','insurance_list'),('rules_id','insurance_rules')):
+                    row=c.execute('SELECT * FROM records WHERE id=? AND company_id=? AND kind=? AND deleted=0',(p[field],company,expected)).fetchone()
+                    self.require(bool(row),'لیست یا قواعد در همین شرکت پیدا نشد.')
+                    record=dict(row,payload=json.loads(row['payload']));self.require(self.readable(actor,record),'دسترسی لیست و قواعد لازم است.');linked.append(record)
+                draft,rule_record=linked;rules=rule_record['payload']
+                self.require(rules['approved'],'قواعد این دوره تأیید نشده است.')
+                from storage import month_last_day
+                first=parse_j(draft['payload']['period']+'/01');last=parse_j(draft['payload']['period']+'/'+str(month_last_day(first.year,first.month)))
+                self.require(parse_j(rules['effective_from'])<=first and parse_j(rules['effective_to'])>=last,'نسخه قواعد تمام ماه را پوشش نمی‌دهد.')
+                from insurance_monthly import calculate_draft
+                params={key:rules[key] for key in ('worker_rate','employer_rate','unemployment_rate','minimum_daily','maximum_daily','source','rules_version','approved')}
+                try:result=calculate_draft(draft['payload'],params)
+                except ValueError as exc:raise DomainError(str(exc)) from exc
+                if result['errors']:
+                    details=[]
+                    for issue in result['errors'][:8]:
+                        row=c.execute("SELECT * FROM records WHERE id=? AND company_id=? AND kind='insurance_employee' AND deleted=0",(issue['profile_id'],company)).fetchone()
+                        profile=dict(row,payload=json.loads(row['payload'])) if row else None
+                        name=profile['title'] if profile and self.readable(actor,profile) else 'کارمند غیرقابل مشاهده'
+                        details.append(name+': '+issue['message'])
+                    if len(result['errors'])>8:details.append('و '+str(len(result['errors'])-8)+' ردیف دیگر؛ کنترل آزمایشی را اجرا کنید.')
+                    raise DomainError('ردیف‌های لیست ناقص یا نامعتبرند:\n'+'\n'.join(details))
+                workshoprow=c.execute("SELECT * FROM records WHERE id=? AND company_id=? AND kind='insurance_workshop' AND deleted=0",(draft['payload']['workshop_id'],company)).fetchone()
+                self.require(bool(workshoprow),'کارگاه لیست پیدا نشد.')
+                workshop=dict(workshoprow,payload=json.loads(workshoprow['payload']));self.require(self.readable(actor,workshop),'دسترسی کارگاه لازم است.')
+                people=[];confirmations=[dict(r,payload=json.loads(r['payload'])) for r in c.execute("SELECT * FROM records WHERE company_id=? AND kind='payroll_confirmation' AND deleted=0",(company,))]
+                for line in draft['payload']['rows']:
+                    profilerow=c.execute("SELECT * FROM records WHERE id=? AND company_id=? AND kind='insurance_employee' AND deleted=0",(line['profile_id'],company)).fetchone()
+                    self.require(bool(profilerow),'پرونده بیمه‌ای یکی از کارکنان در دسترس نیست.')
+                    profile=dict(profilerow,payload=json.loads(profilerow['payload']));self.require(self.readable(actor,profile) and profile['payload'].get('workshop_id')==workshop['id'],'دسترسی پرونده بیمه‌ای و تعلق آن به کارگاه لازم است.')
+                    personrow=c.execute("SELECT * FROM records WHERE id=? AND company_id=? AND kind='employee' AND deleted=0",(profile['payload']['employee_id'],company)).fetchone()
+                    self.require(bool(personrow),'پرونده کارمند در دسترس نیست.')
+                    person=dict(personrow,payload=json.loads(personrow['payload']));self.require(self.readable(actor,person),'دسترسی اطلاعات کارمند لازم است.')
+                    snapshot={'profile_id':profile['id'],'profile_version':profile['version'],'profile':copy.deepcopy(profile['payload']),'employee_id':person['id'],'employee_version':person['version'],'employee':{'title':person['payload'].get('title',''),'employee_code':person['payload'].get('employee_code','')}}
+                    if line.get('payroll_batch_id'):
+                        batchrow=c.execute("SELECT * FROM records WHERE id=? AND company_id=? AND kind='payroll_batch' AND deleted=0",(line['payroll_batch_id'],company)).fetchone()
+                        self.require(bool(batchrow),'دوره حقوق مبنا در دسترس نیست.')
+                        batch=dict(batchrow,payload=json.loads(batchrow['payload']));self.require(self.readable(actor,batch) and batch['payload'].get('period')==draft['payload']['period'],'دسترسی دوره حقوق همان ماه لازم است.')
+                        matches=[slip for slip in batch['payload'].get('slips',[]) if normalize(slip.get('code',''))==normalize(person['payload'].get('employee_code',''))]
+                        self.require(len(matches)==1,'فیش یکتای کارمند در دوره حقوق مبنا پیدا نشد.')
+                        snapshot['payroll_estimate']={'id':batch['id'],'version':batch['version'],'slip':copy.deepcopy(matches[0]),'finalized':False}
+                        confirmation=next((r for r in confirmations if r['payload'].get('payroll_batch_id')==batch['id'] and r['payload'].get('batch_version')==batch['version'] and self.readable(actor,r)),None)
+                        if confirmation:snapshot['payroll_estimate']['internal_confirmation']={'id':confirmation['id'],'reference':confirmation['payload']['reference'],'confirmed_by':confirmation['payload']['confirmed_by'],'confirmed_at':confirmation['payload']['confirmed_at']}
+                    people.append(snapshot)
+                p.update(list_version=draft['version'],draft_snapshot=copy.deepcopy(draft['payload']),rules_snapshot=copy.deepcopy(rules),workshop_snapshot=copy.deepcopy(workshop['payload']),workshop_version=workshop['version'],people_snapshot=people,result=result,calculated_at=stamp(),calculated_by=actor['id'])
+                if len(packed(p))>5000000:raise DomainError('حجم محاسبه و اطلاعات مبنا بیش از حد مجاز است.')
+            if kind=='insurance_review':
+                if old:raise DomainError('بررسی ثبت‌شده قابل تغییر نیست.',409)
+                self.require(self.role(actor,company) in MANAGERS|{'finance'},'بررسی داخلی فقط توسط مدیر یا مسئول مالی مجاز است.')
+                calcrow=c.execute("SELECT * FROM records WHERE id=? AND company_id=? AND kind='insurance_calculation' AND deleted=0",(p['calculation_id'],company)).fetchone()
+                self.require(bool(calcrow),'محاسبه در همین شرکت پیدا نشد.')
+                calc=dict(calcrow,payload=json.loads(calcrow['payload']));self.require(self.readable(actor,calc),'دسترسی محاسبه لازم است.');cp=calc['payload']
+                listrow=c.execute("SELECT version FROM records WHERE id=? AND company_id=? AND kind='insurance_list' AND deleted=0",(cp['insurance_list_id'],company)).fetchone()
+                self.require(bool(listrow) and listrow['version']==cp['list_version'],'لیست تغییر کرده است؛ ابتدا محاسبه تازه ثبت کنید.')
+                workshoprow=c.execute("SELECT version FROM records WHERE id=? AND company_id=? AND kind='insurance_workshop' AND deleted=0",(cp['draft_snapshot']['workshop_id'],company)).fetchone()
+                self.require(bool(workshoprow) and workshoprow['version']==cp.get('workshop_version'),'کارگاه تغییر کرده یا نسخه آن مشخص نیست؛ محاسبه تازه ثبت کنید.')
+                profiles={};employees={}
+                for person in cp.get('people_snapshot',[]):
+                    for field,version,kindname in (('profile_id','profile_version','insurance_employee'),('employee_id','employee_version','employee')):
+                        current=c.execute('SELECT version FROM records WHERE id=? AND company_id=? AND kind=? AND deleted=0',(person[field],company,kindname)).fetchone()
+                        self.require(bool(current) and current['version']==person[version],'اطلاعات کارمند تغییر کرده است؛ محاسبه تازه ثبت کنید.')
+                    profiles[person['profile_id']]=person['profile'];employees[person['employee_id']]=person['employee']
+                    payroll=person.get('payroll_estimate')
+                    if payroll:
+                        current=c.execute("SELECT version FROM records WHERE id=? AND company_id=? AND kind='payroll_batch' AND deleted=0",(payroll['id'],company)).fetchone()
+                        self.require(bool(current) and current['version']==payroll['version'],'دوره حقوق مبنا تغییر کرده یا در دسترس نیست؛ محاسبه تازه ثبت کنید.')
+                from insurance_validation import review
+                issues=review(cp['draft_snapshot'],cp['workshop_snapshot'],profiles,employees)
+                for person in cp.get('people_snapshot',[]):
+                    if not person.get('payroll_estimate',{}).get('internal_confirmation'):
+                        issues.append({'severity':'warning','profile_id':person['profile_id'],'message':'حقوق مبنای این فرد تأیید داخلی مرتبط ندارد؛ بررسی دستی لازم است.'})
+                if any(issue['severity']=='error' for issue in issues):raise DomainError('خطاهای بررسی اولیه باید پیش از تأیید داخلی برطرف شوند.')
+                if issues and not p['notes'].strip():raise DomainError('توضیح بررسی هشدارها را وارد کنید.')
+                p.update(issues=issues,reviewed_at=stamp(),reviewed_by=actor['id'],scope='internal_preliminary')
+            if kind=='payroll_confirmation':
+                if old:raise DomainError('تأیید حقوق ثبت‌شده قابل تغییر نیست.',409)
+                self.require(self.role(actor,company) in MANAGERS|{'finance'},'تأیید حقوق فقط توسط مدیر یا مسئول مالی مجاز است.')
+                batchrow=c.execute("SELECT * FROM records WHERE id=? AND company_id=? AND kind='payroll_batch' AND deleted=0",(p['payroll_batch_id'],company)).fetchone()
+                self.require(bool(batchrow),'دوره حقوق در همین شرکت پیدا نشد.')
+                batch=dict(batchrow,payload=json.loads(batchrow['payload']));self.require(self.readable(actor,batch),'دسترسی دوره حقوق لازم است.')
+                duplicate=any(json.loads(row['payload']).get('payroll_batch_id')==batch['id'] for row in c.execute("SELECT payload FROM records WHERE company_id=? AND kind='payroll_confirmation'",(company,)))
+                self.require(not duplicate,'برای این دوره قبلاً تأیید داخلی ثبت شده است.')
+                p.update(batch_version=batch['version'],confirmed_at=stamp(),confirmed_by=actor['id'],scope='internal_payroll_only')
             if kind=='tax_case':
                 from tax_workflows import workflow_progress
                 if old and old['payload'].get('tax_type')!=p.get('tax_type') and (any(old['payload'].get('workflow_done',[])) or old['payload'].get('insured_entries')):raise DomainError('برای تغییر نوع، پرونده جدید ثبت کنید؛ مراحل و فهرست بیمه پرونده قبلی محفوظ می‌ماند.')
@@ -397,6 +525,13 @@ class Store(FinanceStoreMixin,InventoryStoreMixin,WorkspaceStoreMixin,ChatStoreM
                 current=workflow_progress(p)
                 if sum(current)>sum(previous)+1:raise DomainError('هر بار فقط مرحله بعد قابل تأیید است.')
             if kind=='insurance_workshop':
+                previous=old['payload'].get('access_users') if old else None
+                current=p.get('access_users')
+                if previous!=current:
+                    self.require(actor['global_role']=='group_admin' or self.role(actor,company)=='company_manager','تغییر دسترسی کارگاه فقط توسط مدیر مجاز است.')
+                    for user_id in current or []:
+                        member=c.execute('SELECT 1 FROM users u JOIN memberships m ON m.user_id=u.id WHERE u.id=? AND u.active=1 AND m.company_id=?',(user_id,company)).fetchone()
+                        self.require(bool(member),'افراد مجاز باید عضو فعال همین شرکت باشند.')
                 duplicate=any(row['id']!=id and json.loads(row['payload']).get('workshop_code')==p['workshop_code'] and json.loads(row['payload']).get('contract_row','')==p.get('contract_row','') for row in c.execute("SELECT id,payload FROM records WHERE company_id=? AND kind='insurance_workshop' AND deleted=0",(company,)))
                 self.require(not duplicate,'این کد کارگاه و ردیف پیمان قبلاً در همین شرکت ثبت شده است.')
             if kind=='insurance_employee':
@@ -415,16 +550,40 @@ class Store(FinanceStoreMixin,InventoryStoreMixin,WorkspaceStoreMixin,ChatStoreM
                     if existing.get('employee_id')==p['employee_id'] or any(p.get(field) and p.get(field)==existing.get(field) for field in ('national_id','insurance_number')):
                         raise DomainError('کارمند یا شناسه بیمه‌ای او قبلاً در همین شرکت ثبت شده است.')
             if kind=='insurance_list':
+                if old and any(json.loads(row['payload']).get('insurance_list_id')==id for row in c.execute("SELECT payload FROM records WHERE company_id=? AND kind='insurance_evidence'",(company,))):raise DomainError('برای این لیست پیگیری ثبت شده و پیش‌نویس آن قابل تغییر نیست؛ لیست جدید بسازید.',409)
+                if old and p!=old['payload']:
+                    if not isinstance(reason,str) or not reason.strip() or len(reason)>500:raise DomainError('علت اصلاح لیست را حداکثر در ۵۰۰ نویسه وارد کنید.')
+                    reason=reason.strip()
                 workshoprow=c.execute("SELECT * FROM records WHERE id=? AND company_id=? AND kind='insurance_workshop' AND deleted=0",(p['workshop_id'],company)).fetchone()
                 self.require(bool(workshoprow),'کارگاه باید در همین شرکت ثبت شده باشد.')
                 workshop=dict(workshoprow,payload=json.loads(workshoprow['payload']));self.require(self.readable(actor,workshop),'دسترسی مشاهده کارگاه لازم است.')
-                if old:self.require(old['payload']['workshop_id']==p['workshop_id'] and old['payload']['period']==p['period'],'کارگاه و ماه لیست قابل تغییر نیست؛ لیست جدید بسازید.')
+                if old:self.require(all(old['payload'].get(k,'1' if k=='revision' else '')==p[k] for k in ('workshop_id','period','list_no','revision','copy_from')),'کارگاه، ماه، شماره و نسخه لیست قابل تغییر نیست؛ نسخه جدید بسازید.')
                 for row in p['rows']:
                     profilerow=c.execute("SELECT * FROM records WHERE id=? AND company_id=? AND kind='insurance_employee' AND deleted=0",(row['profile_id'],company)).fetchone()
                     self.require(bool(profilerow),'پرونده بیمه‌ای یکی از کارکنان پیدا نشد.')
                     profile=dict(profilerow,payload=json.loads(profilerow['payload']));self.require(self.readable(actor,profile) and profile['payload'].get('workshop_id')==p['workshop_id'],'پرونده کارکنان باید متعلق به همین کارگاه و قابل مشاهده باشد.')
-                duplicate=any(row['id']!=id and (q:=json.loads(row['payload'])).get('workshop_id')==p['workshop_id'] and q.get('period')==p['period'] and q.get('list_no')==p['list_no'] for row in c.execute("SELECT id,payload FROM records WHERE company_id=? AND kind='insurance_list' AND deleted=0",(company,)))
-                self.require(not duplicate,'این شماره لیست برای کارگاه و ماه انتخاب‌شده قبلاً ثبت شده است.')
+                    if row['payroll_batch_id']:
+                        batchrow=c.execute("SELECT * FROM records WHERE id=? AND company_id=? AND kind='payroll_batch' AND deleted=0",(row['payroll_batch_id'],company)).fetchone()
+                        self.require(bool(batchrow),'دوره حقوق مرتبط پیدا نشد.')
+                        batch=dict(batchrow,payload=json.loads(batchrow['payload']));self.require(self.readable(actor,batch) and batch['payload'].get('period')==p['period'],'دوره حقوق باید قابل مشاهده و متعلق به همین ماه باشد.')
+                        personrow=c.execute("SELECT * FROM records WHERE id=? AND company_id=? AND kind='employee' AND deleted=0",(profile['payload']['employee_id'],company)).fetchone()
+                        self.require(bool(personrow),'پرونده کارمند مرتبط پیدا نشد.')
+                        person=dict(personrow,payload=json.loads(personrow['payload']));self.require(self.readable(actor,person),'دسترسی اطلاعات کارمند لازم است.')
+                        code=normalize(person['payload'].get('employee_code',''))
+                        self.require(bool(code) and sum(normalize(s.get('code',''))==code for s in batch['payload'].get('slips',[]))==1,'فیش حقوقی یکتای کارمند در این دوره پیدا نشد.')
+                siblings=[(row['id'],json.loads(row['payload'])) for row in c.execute("SELECT id,payload FROM records WHERE company_id=? AND kind='insurance_list'",(company,))]
+                siblings=[(rid,q) for rid,q in siblings if rid!=id and q.get('workshop_id')==p['workshop_id'] and q.get('period')==p['period'] and q.get('list_no')==p['list_no']]
+                if not old:
+                    if siblings:
+                        source=next(((rid,q) for rid,q in siblings if rid==p['copy_from']),None)
+                        self.require(bool(source),'برای ساخت نسخه اصلاحی باید نسخه مبنا را انتخاب کنید.')
+                        if not isinstance(reason,str) or not reason.strip() or len(reason)>500:raise DomainError('علت ساخت نسخه اصلاحی را حداکثر در ۵۰۰ نویسه وارد کنید.')
+                        reason=reason.strip()
+                        srcrow=c.execute('SELECT * FROM records WHERE id=? AND deleted=0',(p['copy_from'],)).fetchone()
+                        self.require(bool(srcrow) and self.readable(actor,dict(srcrow,payload=json.loads(srcrow['payload']))),'نسخه مبنا در دسترس نیست.')
+                        expected=max(int(q.get('revision','1')) for _,q in siblings)+1
+                        p['revision']=str(expected)
+                    else:self.require(p['revision']=='1' and not p['copy_from'],'نسخه اول نباید مبنا داشته باشد.')
             for link,expected in [('client_id','client'),('contract_id','contract')]:
                 if p.get(link):
                     linked=self.record(p[link]);self.require(linked['kind']==expected and linked['company_id']==company and self.readable(actor,linked),'پرونده مرتبط باید در همین شرکت و قابل دسترسی باشد.')
@@ -513,6 +672,8 @@ class Store(FinanceStoreMixin,InventoryStoreMixin,WorkspaceStoreMixin,ChatStoreM
                 self.inventory_invoice_change(c,actor,company,id,old['payload'] if old else None,p)
                 self.finance_invoice_change(c,actor,company,id,p)
             c.execute('INSERT INTO records VALUES(?,?,?,?,?,?,?,?,?,?,?,0) ON CONFLICT(id) DO UPDATE SET title=excluded.title,payload=excluded.payload,version=excluded.version,updated=excluded.updated',(id,kind,company,owner,int(private),department,p.get('title',''),packed(p),v,created,stamp()));self.audit(c,actor,company,id,'edit' if old else 'create',old['payload'] if old else None,p,reason)
+            if kind=='insurance_workshop' and (old['payload'].get('access_users') if old else None)!=p.get('access_users'):
+                self.audit(c,actor,company,id,'permissions_update',after={'updated':True})
             if request_id:c.execute('INSERT INTO workspace_invoice_requests VALUES(?,?,?,?,?)',(actor['id'],request_id,company,request_digest,id))
             if kind in ('task','tax_job') and (not old or p.get('due_date')!=old['payload'].get('due_date') or p.get('assignee_id')!=old['payload'].get('assignee_id')):
                 for person in set(filter(None,[p.get('assignee_id'),p.get('substitute_id')])):
@@ -545,6 +706,14 @@ class Store(FinanceStoreMixin,InventoryStoreMixin,WorkspaceStoreMixin,ChatStoreM
     def delete_record(self,actor,id,version):
         old=self.record(id);self.require(self.writable(actor,old,'delete'))
         with self.db(True) as c:
+            if old['kind'] in ('insurance_evidence','insurance_review','payroll_confirmation'):
+                raise DomainError('سابقه پیگیری یا بررسی ثبت‌شده قابل بایگانی نیست؛ برای اصلاح، سابقه جدید ثبت کنید.',409)
+            if old['kind']=='payroll_batch' and any(json.loads(row['payload']).get('payroll_batch_id')==id for row in c.execute("SELECT payload FROM records WHERE company_id=? AND kind='payroll_confirmation'",(old['company_id'],))):
+                raise DomainError('دوره حقوق تأییدشده مبنای سابقه است و قابل بایگانی نیست.',409)
+            if old['kind'] in ('insurance_calculation','insurance_rules'):
+                target_kind,field=('insurance_review','calculation_id') if old['kind']=='insurance_calculation' else ('insurance_calculation','rules_id')
+                linked=any(json.loads(row['payload']).get(field)==id for row in c.execute('SELECT payload FROM records WHERE company_id=? AND kind=?',(old['company_id'],target_kind)))
+                if linked:raise DomainError('این پرونده مبنای سابقه بیمه دیگری است و قابل بایگانی نیست.',409)
             if old['kind'] in ('employee','insurance_workshop'):
                 field='employee_id' if old['kind']=='employee' else 'workshop_id'
                 linked=any(json.loads(row['payload']).get(field)==id for row in c.execute("SELECT payload FROM records WHERE company_id=? AND kind='insurance_employee'",(old['company_id'],)))
@@ -552,6 +721,10 @@ class Store(FinanceStoreMixin,InventoryStoreMixin,WorkspaceStoreMixin,ChatStoreM
             if old['kind'] in ('insurance_employee','insurance_workshop'):
                 linked=any((q.get('workshop_id')==id if old['kind']=='insurance_workshop' else any(line.get('profile_id')==id for line in q.get('rows',[]))) for q in (json.loads(row['payload']) for row in c.execute("SELECT payload FROM records WHERE company_id=? AND kind='insurance_list'",(old['company_id'],))))
                 if linked:raise DomainError('این پرونده در لیست بیمه استفاده شده است؛ ابتدا لیست‌های مرتبط را تعیین تکلیف کنید.',409)
+            if old['kind']=='insurance_list' and any(json.loads(row['payload']).get('insurance_list_id')==id for row in c.execute("SELECT payload FROM records WHERE company_id=? AND kind='insurance_evidence'",(old['company_id'],))):
+                raise DomainError('برای این لیست سابقه پیگیری ثبت شده است و بایگانی آن مجاز نیست.',409)
+            if old['kind']=='insurance_list' and any(json.loads(row['payload']).get('copy_from')==id for row in c.execute("SELECT payload FROM records WHERE company_id=? AND kind='insurance_list'",(old['company_id'],))):
+                raise DomainError('این لیست مبنای یک نسخه اصلاحی است و قابل بایگانی نیست.',409)
             result=c.execute('UPDATE records SET deleted=1,version=version+1,updated=? WHERE id=? AND version=? AND deleted=0',(stamp(),id,int(version)))
             if not result.rowcount:raise DomainError('پرونده تغییر کرده است؛ تازه‌سازی کنید.',409)
             if old['kind']=='invoice':

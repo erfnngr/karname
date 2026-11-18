@@ -32,6 +32,7 @@ class InsuranceInput:
     insured_benefits: int
     non_insured_benefits: int
     unemployment_applies: bool
+    spouse_benefit: int = 0
 
 
 def _money(value):
@@ -55,18 +56,18 @@ def calculate_insurance(item: InsuranceInput, rules: InsuranceRules):
         raise ValueError('تعداد روزهای بیمه در محدوده ماه نیست.')
     if type(item.unemployment_applies) is not bool:
         raise ValueError('وضعیت بیمه بیکاری باید مشخص باشد.')
-    for value in (item.daily_wage,item.daily_seniority,item.insured_benefits,item.non_insured_benefits,rules.minimum_daily,rules.maximum_daily):_money(value)
+    for value in (item.daily_wage,item.daily_seniority,item.insured_benefits,item.non_insured_benefits,item.spouse_benefit,rules.minimum_daily,rules.maximum_daily):_money(value)
     if not rules.minimum_daily or rules.maximum_daily < rules.minimum_daily:
         raise ValueError('حداقل و حداکثر دستمزد تأییدشده معتبر نیست.')
     monthly_wage=(item.daily_wage+item.daily_seniority)*item.insured_days
-    insured=monthly_wage+item.insured_benefits
+    insured=monthly_wage+item.insured_benefits+item.spouse_benefit
     if item.insured_days and not rules.minimum_daily*item.insured_days <= insured <= rules.maximum_daily*item.insured_days:
         raise ValueError('مبلغ مشمول خارج از حدود تأییدشده دوره است؛ وضعیت فرد را بررسی کنید.')
     if not item.insured_days and insured:
         raise ValueError('برای کارکرد صفر مبلغ مشمول ثبت شده است؛ وضعیت فرد را بررسی کنید.')
     worker=_share(insured,rules.worker_percent);employer=_share(insured,rules.employer_percent)
     unemployment=_share(insured,rules.unemployment_percent) if item.unemployment_applies else 0
-    return {'monthly_wage':monthly_wage,'seniority_total':item.daily_seniority*item.insured_days,
+    return {'monthly_wage':monthly_wage,'seniority_total':item.daily_seniority*item.insured_days,'spouse_benefit':item.spouse_benefit,
             'insured_total':insured,'gross_total':insured+item.non_insured_benefits,
             'worker':worker,'employer':employer,'unemployment':unemployment,'insurance_total':worker+employer+unemployment,
             'rules_version':rules.version}

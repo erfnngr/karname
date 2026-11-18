@@ -280,6 +280,7 @@ export function WeatherForecastCompact({
             type="button"
             onClick={() => act('refresh_weather')}
             title="به‌روزرسانی آب‌وهوا"
+            aria-label="به‌روزرسانی آب‌وهوا"
             className="p-1.5 rounded-full border border-[var(--color-border)] bg-[var(--color-card)] hover:bg-[var(--color-accent)] cursor-pointer transition"
           >
             <RefreshCw className={`w-3.5 h-3.5 ${w.busy ? 'animate-spin' : ''}`} />
@@ -308,7 +309,7 @@ export function WeatherForecastCompact({
                 <WeatherGlyph kind={w.current?.kind || 'cloud'} className="w-7 h-7" />
               </div>
               <div className="min-w-0">
-                <div className="text-3xl font-extrabold leading-none">{w.current?.temp}°</div>
+                <div className="text-3xl font-extrabold leading-none">{w.current?.temp ? `${w.current.temp}°` : '—'}</div>
                 <div className="text-xs leading-5 text-[var(--color-muted-foreground)] mt-1 truncate">
                   {w.current?.label}
                 </div>
@@ -324,11 +325,19 @@ export function WeatherForecastCompact({
               {w.current?.wind != null && (
                 <span className="inline-flex items-center gap-1">
                   <Wind className="w-3 h-3 text-emerald-500" />
-                  باد {w.current.wind} کیلومتر
+                  باد {w.current.wind} کیلومتر/ساعت
                 </span>
               )}
             </div>
           </div>
+
+          {w.days?.[0] && (
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-1 rounded-xl border border-[var(--color-border)] bg-[var(--color-background)] px-3 py-2 text-xs text-[var(--color-foreground)]">
+              <span className="font-semibold">امروز</span>
+              <span>بیشینه {w.days[0].max}°</span>
+              <span>کمینه {w.days[0].min}°</span>
+            </div>
+          )}
 
           {interactiveToggle && (hourlyAvailable || weeklyAvailable) ? (
             <div className="flex flex-col gap-2">
@@ -358,9 +367,10 @@ export function WeatherForecastCompact({
                   هفتگی
                 </button>
               </div>
+              {w.estimated && <span className="text-[10px] text-[var(--color-muted-foreground)]">پیش‌بینی تخمینی است</span>}
               {activeTab === 'hourly' && w.show_hourly && (w.hours?.length ?? 0) > 0 && (
                 <div className="flex gap-1.5 overflow-x-auto pb-1">
-                  {w.hours!.slice(0, 10).map((h, idx) => (
+                  {w.hours!.slice(0, 24).map((h, idx) => (
                     <div
                       key={`${h.time}-${idx}`}
                       className="shrink-0 w-14 rounded-2xl border border-[var(--color-border)] bg-[var(--color-background)] px-1.5 py-2 flex flex-col items-center gap-1 text-[11px]"
@@ -374,7 +384,7 @@ export function WeatherForecastCompact({
               )}
               {activeTab === 'weekly' && w.show_weekly && (w.days?.length ?? 0) > 0 && (
                 <div className="flex flex-col gap-1">
-                  {w.days!.slice(0, 4).map((d, idx) => (
+                  {w.days!.slice(0, 7).map((d, idx) => (
                     <div
                       key={`${d.name}-${idx}`}
                       className="flex items-center justify-between rounded-xl bg-[var(--color-background)] border border-[var(--color-border)] px-3 py-1.5 text-xs"
@@ -397,7 +407,7 @@ export function WeatherForecastCompact({
                     {w.estimated ? 'ساعت‌های آینده · تخمینی' : 'ساعت‌های آینده'}
                   </div>
                   <div className="flex gap-1.5 overflow-x-auto pb-1">
-                    {w.hours!.slice(0, 10).map((h, idx) => (
+                    {w.hours!.slice(0, 24).map((h, idx) => (
                       <div
                         key={`${h.time}-${idx}`}
                         className="shrink-0 w-14 rounded-xl border border-[var(--color-border)] bg-[var(--color-background)] px-1.5 py-1.5 flex flex-col items-center gap-1 text-[11px]"
@@ -412,7 +422,7 @@ export function WeatherForecastCompact({
               )}
               {w.show_weekly && (w.days?.length ?? 0) > 0 && (
                 <div className="flex flex-col gap-1.5">
-                  {w.days!.slice(0, 5).map((d, idx) => (
+                  {w.days!.slice(0, 7).map((d, idx) => (
                     <div
                       key={`${d.name}-${idx}`}
                       className="flex items-center justify-between rounded-lg bg-[var(--color-background)] border border-[var(--color-border)] px-2.5 py-1.5 text-xs"

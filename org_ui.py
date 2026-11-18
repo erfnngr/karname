@@ -4,7 +4,7 @@ from pathlib import Path
 from datetime import datetime,date
 from PySide6.QtCore import Qt,QObject,Signal,QTimer,QUrl
 from PySide6.QtGui import QDesktopServices
-from PySide6.QtWidgets import (QWidget,QDialog,QVBoxLayout,QHBoxLayout,QFormLayout,QLabel,QLineEdit,QPushButton,QComboBox,QSpinBox,QCheckBox,QTextEdit,QScrollArea,QDialogButtonBox,QTableWidget,QTableWidgetItem,QAbstractItemView,QFileDialog,QMessageBox,QInputDialog,QMenu,QApplication)
+from PySide6.QtWidgets import (QWidget,QDialog,QVBoxLayout,QHBoxLayout,QFormLayout,QLabel,QLineEdit,QPushButton,QComboBox,QSpinBox,QCheckBox,QTextEdit,QScrollArea,QDialogButtonBox,QTableWidget,QTableWidgetItem,QAbstractItemView,QFileDialog,QMessageBox,QInputDialog,QMenu,QApplication,QListWidget,QListWidgetItem)
 from storage import app_dir,fa,parse_j,today_j,jformat,normalize
 from org_schema import SCHEMAS,STATUSES,ROLES
 from org_client import Client,inspect_certificate,validate_url
@@ -43,6 +43,18 @@ class RecordDialog(QDialog):
                     for r in parent.records:
                         if r['kind']==t and r['company_id']==target_company:w.addItem(r['title'],r['id'])
                 w.setCurrentIndex(max(0,w.findData(value)))
+            elif t=='user_scope':
+                w=QWidget();box=QVBoxLayout(w);box.setContentsMargins(0,0,0,0)
+                w.everyone=QCheckBox('همه افراد دارای دسترسی بخش بیمه');w.everyone.setChecked(p.get(k) is None);box.addWidget(w.everyone)
+                w.people=QListWidget();w.people.setMaximumHeight(150);box.addWidget(w.people)
+                selected=p.get(k) or [];seen=set()
+                for person in parent.people:
+                    if any(m['company_id']==target_company for m in person.get('memberships',[])):
+                        item=QListWidgetItem(person['fullname']);item.setData(Qt.UserRole,person['id']);item.setFlags(item.flags()|Qt.ItemIsUserCheckable);item.setCheckState(Qt.Checked if person['id'] in selected else Qt.Unchecked);w.people.addItem(item);seen.add(person['id'])
+                for user_id in selected:
+                    if user_id not in seen:
+                        item=QListWidgetItem('کاربر خارج از فهرست');item.setData(Qt.UserRole,user_id);item.setFlags(item.flags()|Qt.ItemIsUserCheckable);item.setCheckState(Qt.Checked);w.people.addItem(item)
+                w.people.setEnabled(not w.everyone.isChecked());w.everyone.toggled.connect(lambda checked,items=w.people:items.setEnabled(not checked))
             elif t=='bool':
                 w=QCheckBox();w.setChecked(bool(record.get('private') if record and k=='private' else value if value!='' else k=='require_approval'))
             elif t=='dependencies':
@@ -80,7 +92,7 @@ class RecordDialog(QDialog):
         try:
             p=copy.deepcopy(self.record['payload']) if self.record else {}
             for k,(w,t) in self.widgets.items():
-                p[k]=w.isChecked() if t=='bool' else w.currentData() if t in ('choice','user','rate','form','client','contract','employee','insurance_workshop') else w.toPlainText() if t=='multiline' else (w.currentData() if w.currentIndex()>=0 and w.currentText()==w.itemText(w.currentIndex()) else w.currentText()) if t=='dependencies' else w.text().strip()
+                p[k]=(None if w.everyone.isChecked() else [w.people.item(i).data(Qt.UserRole) for i in range(w.people.count()) if w.people.item(i).checkState()==Qt.Checked]) if t=='user_scope' else w.isChecked() if t=='bool' else w.currentData() if t in ('choice','user','rate','form','client','contract','employee','insurance_workshop') else w.toPlainText() if t=='multiline' else (w.currentData() if w.currentIndex()>=0 and w.currentText()==w.itemText(w.currentIndex()) else w.currentText()) if t=='dependencies' else w.text().strip()
             if self.kind=='form_response' and self.answer_widgets:p['answers']=json.dumps({k:w.text() for k,w in self.answer_widgets.items()},ensure_ascii=False)
             if self.kind=='task':
                 p['dependencies']=[x.strip() for x in (p['dependencies'] or '').split(',') if x.strip()];p['checklist']=[dict(text=line.strip().removeprefix('[x]').removeprefix('[X]').removeprefix('[ ]').strip(),done=line.strip().lower().startswith('[x]')) for line in p['checklist'].splitlines() if line.strip()]
@@ -408,7 +420,7 @@ class CompanyPanel(QWidget):
     def record_details(self,record):
         if not self.client:return
         def ready(value):
-            d=QDialog(self);d.setWindowTitle(record['title']);d.resize(700,600);v=QVBoxLayout(d);box=QTextEdit();box.setReadOnly(True);box.setPlainText('شناسه پرونده: '+record['id']+'\n\n'+json.dumps(record['payload'],ensure_ascii=False,indent=2)+'\n\n'+ '\n'.join(c.get('fullname','')+': '+c['text'] for c in value['comments'])+'\n\nتاریخچه:\n'+'\n'.join(h['created']+' · '+(h.get('fullname') or 'سیستم')+' · '+h['action'] for h in value['history']));v.addWidget(box)
+            d=QDialog(self);d.setWindowTitle(record['title']);d.resize(700,600);v=QVBoxLayout(d);box=QTextEdit();box.setReadOnly(True);box.setPlainText('شناسه پرونده: '+record['id']+'\n\n'+json.dumps(record['payload'],ensure_ascii=False,indent=2)+'\n\n'+ '\n'.join(c.get('fullname','')+': '+c['text'] for c in value['comments'])+'\n\nتاریخچه:\n'+'\n'.join(h['created']+' · '+(h.get('fullname') or 'سیستم')+' · '+h['action']+(' · علت: '+h['reason'] if h.get('reason') else '') for h in value['history']));v.addWidget(box)
             choices=QComboBox()
             for f in value['files']:choices.addItem(f['name']+' · نسخه '+fa(f['version']),f['id'])
             v.addWidget(choices);row=QHBoxLayout();row.addWidget(action('افزودن مدرک','import',lambda:self.upload(record,d)));row.addWidget(action('دریافت مدرک','export',lambda:self.download(choices.currentData())));row.addWidget(action('خواندن متن PDF / تصویر','search',lambda:self.extract(choices.currentData(),box)));v.addLayout(row);comment=QLineEdit();comment.setPlaceholderText('نظر یا توضیح');v.addWidget(comment);v.addWidget(action('ثبت نظر','save',lambda:self.post_comment(record,comment.text(),d)));d.exec()

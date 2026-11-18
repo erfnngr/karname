@@ -27,6 +27,9 @@ class InsuranceEmployeeTests(unittest.TestCase):
     def test_bad_dates_and_identifiers_rejected(self):
         with self.assertRaises(DomainError):self.s.save_record(self.admin,'insurance_employee',{**self.p,'end_date':'۱۴۰۴/۱۲/۲۹'},'mana')
         with self.assertRaises(DomainError):self.s.save_record(self.admin,'insurance_employee',{**self.p,'insurance_number':'A100'},'mana')
+    def test_separate_names_and_issue_date_are_saved(self):
+        record=self.s.save_record(self.admin,'insurance_employee',{**self.p,'first_name':'نمونه','last_name':'آزمایشی','issue_date':'۱۳۸۰/۰۱/۰۱'},'mana')
+        self.assertEqual(record['payload']['first_name'],'نمونه');self.assertEqual(record['payload']['last_name'],'آزمایشی');self.assertEqual(record['payload']['issue_date'],'1380/01/01')
     def test_referenced_workshop_and_employee_cannot_be_archived(self):
         self.s.save_record(self.admin,'insurance_employee',self.p,'mana')
         for record in (self.employee,self.workshop):

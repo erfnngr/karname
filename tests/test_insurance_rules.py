@@ -12,3 +12,8 @@ class InsuranceRulesTests(unittest.TestCase):
             with self.assertRaises(DomainError):store.save_record(actor,'insurance_rules',p,'mana')
             with self.assertRaises(DomainError):store.save_record(actor,'insurance_rules',p,'mana',record['id'],record['version'])
             with self.assertRaises(DomainError):store.save_record(actor,'insurance_rules',{**p,'rules_version':'x','maximum_daily':'1'},'mana')
+            with self.assertRaises(DomainError):store.save_record(actor,'insurance_rules',{**p,'rules_version':'x','effective_to':'۱۴۰۴/۱۲/۲۹'},'mana')
+            uid=store.save_user(actor,dict(username='worker',password='pass',fullname='همکار',memberships=[dict(company_id='mana',role='employee')]))['id']
+            employee=store.user(uid)
+            self.assertEqual(store.list_records(employee,'insurance_rules','mana')['total'],0)
+            with self.assertRaises(DomainError):store.save_record(employee,'insurance_rules',{**p,'rules_version':'y'},'mana')

@@ -6,14 +6,14 @@ type Props = { calculate: (values: Record<string, unknown>) => Promise<Result> }
 const inputs = [
   ["period", "ماه شمسی (۱۴۰۵/۰۸)", "۱۴۰۵/۰۸"], ["days", "روزهای بیمه", ""],
   ["daily_wage", "مزد روزانه (ریال)", ""], ["daily_seniority", "سنوات روزانه (ریال)", ""],
-  ["insured_benefits", "جمع مزایای مشمول (ریال)", ""], ["non_insured_benefits", "جمع مزایای غیرمشمول (ریال)", ""],
+  ["spouse_benefit", "حق تأهل مشمول (ریال)", ""], ["insured_benefits", "سایر مزایای مشمول بدون حق تأهل (ریال)", ""], ["non_insured_benefits", "جمع مزایای غیرمشمول (ریال)", ""],
   ["minimum_daily", "حداقل روزانه مصوب (ریال)", ""], ["maximum_daily", "حداکثر روزانه مصوب (ریال)", ""],
   ["worker_rate", "نرخ سهم کارمند (درصد)", ""], ["employer_rate", "نرخ سهم کارفرما (درصد)", ""],
   ["unemployment_rate", "نرخ بیمه بیکاری (درصد)", ""], ["rules_version", "نسخه قواعد", ""],
   ["source", "منبع رسمی و تاریخ اعتبار", ""],
 ] as const;
 const labels: [string, string][] = [
-  ["monthly_wage", "مزد و سنوات"], ["seniority_total", "جمع سنوات"], ["insured_total", "جمع مشمول"],
+  ["monthly_wage", "مزد و سنوات"], ["seniority_total", "جمع سنوات"], ["spouse_benefit", "حق تأهل مشمول"], ["insured_total", "جمع مشمول"],
   ["gross_total", "جمع پرداختی"], ["worker", "سهم کارمند"], ["employer", "سهم کارفرما"],
   ["unemployment", "سهم بیکاری"], ["insurance_total", "جمع حق بیمه"],
 ];

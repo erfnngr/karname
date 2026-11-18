@@ -81,3 +81,71 @@ def compare_schemas(reference: Schema, candidate: Schema):
                 return 'وجود ندارد' if field is None else f'{field.name} ({field.kind}, {field.length}, {field.decimals})'
             differences.append(f'ستون {index+1}: مرجع {describe(expected)}، فایل {describe(actual)}')
     return differences
+
+def field_evolution(reference: Schema, candidate: Schema):
+    """Compare named fields without treating appended columns as shifted fields."""
+    before={f.name:f for f in reference.fields};after={f.name:f for f in candidate.fields}
+    added=[f.name for f in candidate.fields if f.name not in before]
+    removed=[f.name for f in reference.fields if f.name not in after]
+    changed=[name for name in before if name in after and before[name]!=after[name]]
+    old_order=[f.name for f in reference.fields if f.name in after]
+    new_order=[f.name for f in candidate.fields if f.name in before]
+    return {'added':added,'removed':removed,'changed':changed,'common_order_equal':old_order==new_order,
+            'code_page_equal':reference.code_page==candidate.code_page,'version_equal':reference.version==candidate.version}
+
+def encoding_statistics(path, encodings=('utf-8','cp1256'), *, max_records=10000):
+    """Return aggregate decode counts only; never return any record content.
+
+    A successful decode is not evidence of the correct Persian encoding.
+    """
+    schema=inspect_schema(path)
+    if schema.record_count>max_records:raise ValueError('تعداد رکوردها برای بررسی نمونه بیش از حد مجاز است.')
+    counts={encoding:{'non_ascii':0,'decodable':0} for encoding in encodings}
+    with Path(path).open('rb') as stream:
+        stream.seek(schema.header_length)
+        for _ in range(schema.record_count):
+            record=stream.read(schema.record_length)
+            if len(record)!=schema.record_length:raise ValueError('رکورد ناقص است.')
+            if record[:1]!=b' ':continue
+            offset=1
+            for field in schema.fields:
+                raw=record[offset:offset+field.length].rstrip(b' \x00');offset+=field.length
+                if field.kind!='C' or not any(byte>=128 for byte in raw):continue
+                for encoding in encodings:
+                    counts[encoding]['non_ascii']+=1
+                    try:raw.decode(encoding,'strict');counts[encoding]['decodable']+=1
+                    except (UnicodeError,LookupError):pass
+    return counts
+
+def assess_reference_pair(workshop,employees):
+    """Flag known gaps; a clean result is not proof of official compatibility."""
+    w={f.name.upper() for f in workshop.fields};e={f.name.upper() for f in employees.fields};issues=[]
+    if 'DSK_ID' not in w or 'DSW_ID' not in e:issues.append('فایل‌ها نشانه‌های اصلی کارگاه و کارکنان را ندارند؛ ترتیب فایل‌ها را بررسی کنید.')
+    if 'DSK_INC' not in w:issues.append('ستون جداگانه پایه سنوات کارگاه در نمونه وجود ندارد.')
+    if not {'DSK_SPOUSE','DSK_SPOUS'} & w:issues.append('ستون جداگانه حق تأهل کارگاه در نمونه وجود ندارد.')
+    if 'DSW_INC' not in e:issues.append('ستون جداگانه پایه سنوات کارکنان در نمونه وجود ندارد.')
+    if 'DSW_SPOUSE' not in e:issues.append('ستون جداگانه حق تأهل کارکنان در نمونه وجود ندارد.')
+    if workshop.code_page!=employees.code_page:issues.append('شناسه صفحه کد در دو سرآیند متفاوت است؛ کدگذاری باید جداگانه بررسی شود.')
+    return issues
+
+def roundtrip_statistics(path,decode,encode,*,max_records=10000):
+    """Compare non-ASCII field bytes in aggregate without returning field values."""
+    schema=inspect_schema(path)
+    if schema.record_count>max_records:raise ValueError('تعداد رکوردها برای بررسی نمونه بیش از حد مجاز است.')
+    fields={}
+    with Path(path).open('rb') as stream:
+        stream.seek(schema.header_length)
+        for _ in range(schema.record_count):
+            record=stream.read(schema.record_length)
+            if len(record)!=schema.record_length:raise ValueError('رکورد ناقص است.')
+            if record[:1]!=b' ':continue
+            offset=1
+            for field in schema.fields:
+                raw=record[offset:offset+field.length].rstrip(b' \x00');offset+=field.length
+                if field.kind!='C' or not any(byte>=128 for byte in raw):continue
+                stat=fields.setdefault(field.name,{'total':0,'exact':0,'errors':0});stat['total']+=1
+                try:
+                    text=decode(raw);encoded=encode(text.strip())
+                    if encoded==raw:stat['exact']+=1
+                except Exception:stat['errors']+=1
+    return fields

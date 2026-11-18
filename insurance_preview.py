@@ -6,25 +6,29 @@ from storage import normalize, parse_j, month_last_day, jalali_date
 
 
 def calculate_preview(data):
+    labels={'period':'ماه','days':'روز بیمه','daily_wage':'مزد روزانه','daily_seniority':'سنوات روزانه',
+            'spouse_benefit':'حق تأهل مشمول','insured_benefits':'سایر مزایای مشمول','non_insured_benefits':'مزایای غیرمشمول',
+            'worker_rate':'نرخ کارمند','employer_rate':'نرخ کارفرما','unemployment_rate':'نرخ بیکاری',
+            'minimum_daily':'حداقل روزانه','maximum_daily':'حداکثر روزانه','source':'منبع','rules_version':'نسخه قواعد'}
     fields={'period','days','daily_wage','daily_seniority','insured_benefits',
             'non_insured_benefits','worker_rate','employer_rate','unemployment_rate',
             'minimum_daily','maximum_daily','source','rules_version','approved','unemployment_applies'}
-    if not isinstance(data,dict) or set(data)!=fields:
+    if not isinstance(data,dict) or not fields<=set(data) or set(data)-fields-{'spouse_benefit'}:
         raise ValueError('اطلاعات محاسبه کامل نیست.')
     if data['approved'] is not True or type(data['unemployment_applies']) is not bool:
         raise ValueError('منبع و اعتبار نرخ‌ها را تأیید کنید و وضعیت بیمه بیکاری را مشخص کنید.')
     def text(key, length=150):
         value=data[key]
         if not isinstance(value,str) or not value.strip() or len(value)>length:
-            raise ValueError('مقدار معتبر برای «'+key+'» لازم است.')
+            raise ValueError('مقدار معتبر برای «'+labels.get(key,key)+'» لازم است.')
         return normalize(value)
     def integer(key):
         value=text(key,18).replace(',','').replace('٬','')
-        if not re.fullmatch(r'\d{1,15}',value):raise ValueError('مبالغ و روزها باید عدد صحیح غیرمنفی باشند.')
+        if not re.fullmatch(r'\d{1,15}',value):raise ValueError('«'+labels[key]+'» باید عدد صحیح غیرمنفی باشد.')
         return int(value)
     def rate(key):
         value=text(key,10).replace('٫','.')
-        if not re.fullmatch(r'\d{1,3}(?:\.\d{1,4})?',value):raise ValueError('نرخ باید عددی بین صفر و صد باشد.')
+        if not re.fullmatch(r'\d{1,3}(?:\.\d{1,4})?',value):raise ValueError('«'+labels[key]+'» باید عددی بین صفر و صد باشد.')
         try:return Decimal(value)
         except InvalidOperation as exc:raise ValueError('نرخ معتبر نیست.') from exc
     period=text('period',10).replace('-','/')
@@ -37,6 +41,6 @@ def calculate_preview(data):
                          rate('worker_rate'),rate('employer_rate'),rate('unemployment_rate'),
                          integer('minimum_daily'),integer('maximum_daily'),True)
     item=InsuranceInput(start,end,days,integer('days'),integer('daily_wage'),integer('daily_seniority'),
-                        integer('insured_benefits'),integer('non_insured_benefits'),data['unemployment_applies'])
+                        integer('insured_benefits'),integer('non_insured_benefits'),data['unemployment_applies'],integer('spouse_benefit') if 'spouse_benefit' in data else 0)
     result=calculate_insurance(item,rules)
     return {key: str(value) if type(value) is int else value for key,value in result.items()}

@@ -5,6 +5,7 @@ let activePresetKey='default';
 let optimisticMode:boolean|null=null;
 let optimisticUntil=0;
 let reconcileCurrent:(()=>void)|null=null;
+let previousCustomKeys:string[]=[];
 
 export function reconcileAppearance(){
   optimisticMode=null;
@@ -39,6 +40,8 @@ export function connectAppearance(native?:Appearance){
       optimisticMode=null;
       root.classList.toggle('dark',dark);
       root.style.colorScheme=dark?'dark':'light';
+      for(const key of previousCustomKeys)root.style.removeProperty(key);
+      previousCustomKeys=[];
 
       const c=value.colors||{};
       const setVar=(name:string,fallback:string)=>{
@@ -117,7 +120,7 @@ export function connectAppearance(native?:Appearance){
       else root.style.removeProperty('--home-bg');
       const customVars=(tokensObj.vars&&typeof tokensObj.vars==='object'?tokensObj.vars:{}) as Record<string,unknown>;
       for(const [k,v] of Object.entries(customVars)){
-        if(/^--[a-zA-Z0-9_-]{2,48}$/.test(k)&&typeof v==='string')tokens[k]=v;
+        if(/^--[a-zA-Z0-9_-]{2,48}$/.test(k)&&typeof v==='string'){tokens[k]=v;previousCustomKeys.push(k);}
       }
       const presetId=typeof value.preset==='string'&&value.preset?value.preset:activePresetKey;
       activePresetKey=presetId;

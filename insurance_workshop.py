@@ -12,10 +12,15 @@ _CHOICES={'labor_law':{'نامشخص','مشمول','غیرمشمول'},
           'hard_work':{'نامشخص','احراز نشده','احراز شده'}}
 
 def normalize_workshop(payload):
-    if not isinstance(payload,dict) or set(payload)-_TEXT_FIELDS:
+    if not isinstance(payload,dict) or set(payload)-(_TEXT_FIELDS|{'access_users'}):
         raise ValueError('اطلاعات کارگاه معتبر نیست.')
     result={}
     for key,value in payload.items():
+        if key=='access_users':
+            if value is not None and (not isinstance(value,list) or len(value)>500 or any(not isinstance(x,str) or not re.fullmatch(r'[0-9a-f]{32}',x) for x in value) or len(set(value))!=len(value)):
+                raise ValueError('فهرست دسترسی کارگاه معتبر نیست.')
+            result[key]=sorted(value) if value is not None else None
+            continue
         if not isinstance(value,str):raise ValueError('اطلاعات کارگاه باید به صورت متن وارد شود.')
         value=normalize(value)
         if len(value)>(2000 if key in _MULTILINE else 200):raise ValueError('متن اطلاعات کارگاه بیش از حد طولانی است.')

@@ -456,7 +456,11 @@ class ReactHomeBridge(QObject):
 
         # 2) Weather tip
         cur_w = weather_payload.get('current') if weather_payload.get('has_data') else None
-        if cur_w:
+        if cur_w and (weather_payload.get('cached') or weather_payload.get('error')):
+            w_detail='اطلاعات آب‌وهوا ذخیره‌شده است؛ برای وضعیت فعلی، به‌روزرسانی را بررسی کنید.'
+            parts.append(w_detail)
+            bullets.append({'type': 'weather', 'title': 'وضعیت هوا', 'detail': w_detail})
+        elif cur_w:
             wlabel = cur_w.get('label', '')
             wtemp = cur_w.get('temp', '')
             advice = ''
